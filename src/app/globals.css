@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  @apply bg-white text-black;
+}
+.dark {
+  @apply bg-black text-white;
+}
+
+@layer base {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+  .flex-evenly {
+    @apply flex items-center justify-evenly;
+  }
+}
