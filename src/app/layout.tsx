@@ -48,7 +48,7 @@ export default function RootLayout({
       >
         <Providers>
           <TopNav />
-          <main className="container">{children}</main>
+          <main className="w-full">{children}</main>
         </Providers>
       </body>
     </html>
