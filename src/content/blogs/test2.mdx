@@ -1,7 +1,7 @@
 ---
-slug: test1
-title: test1
-date: 12-07-2024
+slug: test2
+title: test2
+date: 12-05-2024
 description: test test test
 tags: [mdx, framer]
 image: /images/blogs/og.jpg
@@ -30,7 +30,7 @@ There are only 3 steps to achieve this effect:
 
 We need to encode the video in such format that each frame can be seeked given a timestamp. We can use ffmpeg to encode the video. Here is the command to encode the video:
 
-```tsx
+```/app.tsx
 ffmpeg -i input_video.mp4 -movflags faststart -vcodec libx264 -crf 23 -g 1 -pix_fmt yuv420p output_video.mp4
 ```
 
@@ -38,7 +38,7 @@ ffmpeg -i input_video.mp4 -movflags faststart -vcodec libx264 -crf 23 -g 1 -pix_
 
 We can use any video player to render the video. For this example, we will use the `video` tag in html.
 
-```tsx
+```/app.tsx
 <video loop muted playsInline ref={videoRef}>
   <source src="video.mp4" type="video/mp4" />
 </video>
@@ -48,7 +48,7 @@ We can use any video player to render the video. For this example, we will use t
 
 We can use framer-motion to sync the time of video with the scroll position. Here is the code to achieve this effect:
 
-```tsx
+```/app.tsx
 useMotionValueEvent(scrollY, "change", (latest) => {
     const video = videoRef.current;
     const timestamp = ...; // calculate the time based on the scroll position

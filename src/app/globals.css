@@ -19,4 +19,10 @@
   .flex-evenly {
     @apply flex items-center justify-evenly;
   }
+  .custom-underline {
+    @apply hover:bg-[url('/images/assets/underline.svg')] dark:hover:bg-[url('/images/assets/underline-dark.svg')];
+  }
+  .image-border {
+    @apply border-[0.2px] shadow-md border-gray-600 dark:border-gray-400;
+  }
 }

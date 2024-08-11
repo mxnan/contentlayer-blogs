@@ -1,74 +1,45 @@
-import {
-  defineDocumentType,
-  defineNestedType,
-  makeSource,
-} from "contentlayer/source-files";
-/////////
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
-//nested type for image
-const Image = defineNestedType(() => ({
-  name: "Image",
-  fields: {
-    src: {
-      type: "string",
-      required: true,
-    },
-    alt: {
-      type: "string",
-      required: true,
-    },
-    width: {
-      type: "number",
-      required: true,
-    },
-    height: {
-      type: "number",
-      required: true,
-    },
-  },
-}));
-
-//document type for blogs
+//defineDocumentType Blogs
 export const Blogs = defineDocumentType(() => ({
   name: "Blogs",
   filePathPattern: "blogs/*.mdx",
+  contentType: "mdx",
   fields: {
-    title: {
+    title: { type: "string", required: true },
+    description: { type: "string", required: true },
+    date: { type: "string", required: true },
+    image: { type: "string", required: true },
+    tags: { type: "list", of: { type: "string" }, default: [] },
+    slug: { type: "string", required: true },
+  },
+  computedFields: {
+    url: {
       type: "string",
-      required: true,
+      resolve: (doc) => `/blogs/${doc.slug}`,
     },
-    type: {
-      type: "string",
-      required: true,
-    },
-    date: {
-      type: "string",
-      required: true,
-    },
-    description: {
-      type: "string",
-      required: true,
-    },
-    tags: {
-      type: "list",
-      of: { type: "string" },
-      required: true,
-    },
-    image: {
-      type: "nested",
-      of: Image,
-      required: true,
-    },
-    slug: {
-      type: "string",
-      required: true,
+    toc: {
+      type: "json",
+      resolve: (doc) => {
+        const headings = doc.body.raw.match(/^## (.*$)/gm);
+        return headings
+          ? headings.map((heading) => {
+              const title = heading.replace("## ", "").trim();
+              const slug = title
+                .toLowerCase()
+                .replace(/\s+/g, "-")
+                .replace(/[^\w-]+/g, "");
+              return { title, slug };
+            })
+          : [];
+      },
     },
   },
 }));
 
-
-//make source  function for contentlayer
+//makeSource Blogs
 export default makeSource({
   contentDirPath: "src/content",
   documentTypes: [Blogs],
+  
 });

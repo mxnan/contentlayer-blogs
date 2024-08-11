@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
 import TopNav from "@/components/top-nav";
+import Footer from "@/components/footer";
 
 ////////////////////////
 
@@ -48,7 +49,8 @@ export default function RootLayout({
       >
         <Providers>
           <TopNav />
-          <main className="w-full">{children}</main>
+          <main className="py-12 mx-auto container w-full">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
