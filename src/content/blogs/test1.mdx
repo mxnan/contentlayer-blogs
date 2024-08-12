@@ -30,7 +30,7 @@ There are only 3 steps to achieve this effect:
 
 We need to encode the video in such format that each frame can be seeked given a timestamp. We can use ffmpeg to encode the video. Here is the command to encode the video:
 
-```tsx
+```app/layout.tsx
 ffmpeg -i input_video.mp4 -movflags faststart -vcodec libx264 -crf 23 -g 1 -pix_fmt yuv420p output_video.mp4
 ```
 
@@ -38,7 +38,7 @@ ffmpeg -i input_video.mp4 -movflags faststart -vcodec libx264 -crf 23 -g 1 -pix_
 
 We can use any video player to render the video. For this example, we will use the `video` tag in html.
 
-```tsx
+```app/page.tsx
 <video loop muted playsInline ref={videoRef}>
   <source src="video.mp4" type="video/mp4" />
 </video>

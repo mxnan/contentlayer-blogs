@@ -2,9 +2,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, CopyPlus } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
-
-const CopyPasteButton = ({ id }: { id: string }) => {
+const CopyPasteButton = ({ content }: { content: string }) => {
   const [copied, setCopied] = useState(false);
   const variants = {
     hidden: { opacity: 0, scale: 0.5 },
@@ -20,13 +20,12 @@ const CopyPasteButton = ({ id }: { id: string }) => {
   }, [copied]);
 
   const handleCopy = async () => {
-    const text = document.getElementById(id)?.textContent;
     try {
-      await navigator.clipboard.writeText(text!);
+      await navigator.clipboard.writeText(content);
       setCopied(true);
-      console.log("Copied to clipboard");
+      toast.success("Copied to clipboard !");
     } catch {
-      console.error("Failed to copy");
+      toast.error("Error ! Failed to copy ?");
     }
   };
 
@@ -34,7 +33,7 @@ const CopyPasteButton = ({ id }: { id: string }) => {
     <motion.button
       whileTap={{ scale: 0.9, opacity: 0.8 }}
       onClick={handleCopy}
-      className="p-2 w-8 h-8 rounded-lg hover:bg-gray-200 dark:hover:bg-stone-900 cursor-pointer"
+      className="flex-1 p-1 flex items-center justify-center w-6 h-6 text-white rounded-lg hover:bg-stone-600 cursor-pointer"
     >
       <AnimatePresence mode="wait" initial={false}>
         {copied ? (
@@ -44,8 +43,9 @@ const CopyPasteButton = ({ id }: { id: string }) => {
             initial="hidden"
             animate="visible"
             exit="hidden"
+            className="flex items-center"
           >
-            <Check size={16} />
+            <Check className="w-4 h-4" />
           </motion.span>
         ) : (
           <motion.span
@@ -55,7 +55,7 @@ const CopyPasteButton = ({ id }: { id: string }) => {
             animate="visible"
             exit="hidden"
           >
-            <CopyPlus size={16} />
+            <CopyPlus className="w-4 h-4" />
           </motion.span>
         )}
       </AnimatePresence>

@@ -2,7 +2,8 @@ import { cn } from "@/lib/utils";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import CustomLink from "./custom-link";
 import React from "react";
-import NewPre from "./new-pre";
+import CodeBlock from "./code-block";
+
 
 const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
@@ -37,7 +38,7 @@ const components = {
       {...props}
     />
   ),
-  pre: NewPre,
+  pre: CodeBlock,
   //copy button not working
 };
 
