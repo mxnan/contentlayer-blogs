@@ -37,9 +37,23 @@ export const Blogs = defineDocumentType(() => ({
   },
 }));
 
+//defineDocumentType Components
+export const Components = defineDocumentType(() => ({
+  name: "Components",
+  filePathPattern: "components/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string", required: true },
+    date: { type: "string", required: true },
+    image: { type: "string", required: true },
+    tags: { type: "list", of: { type: "string" }, default: [] },
+    slug: { type: "string", required: true },
+  },
+}));
+
 //makeSource Blogs
 export default makeSource({
   contentDirPath: "src/content",
   documentTypes: [Blogs],
-  
 });

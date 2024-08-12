@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx"
+import { Blogs } from "contentlayer/generated";
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -30,3 +31,12 @@ export const getFormattedDate = (publishedAt: string): string => {
     return "Today";
   }
 };
+
+// sort blogs by date
+export function sortBlogsByDate(blogs: Blogs[]): Blogs[] {
+  return blogs.sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB.getTime() - dateA.getTime(); // Sort in descending order (newest first)
+  });
+}
