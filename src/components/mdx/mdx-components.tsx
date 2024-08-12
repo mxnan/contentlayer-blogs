@@ -3,9 +3,10 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import CustomLink from "./custom-link";
 import React from "react";
 import CodeBlock from "./code-block";
-
+import { Callout } from "./call-out";
 
 const components = {
+  // html components
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const id = React.useMemo(() => {
@@ -38,8 +39,10 @@ const components = {
       {...props}
     />
   ),
-  pre: CodeBlock,
-  //copy button not working
+  //////////////////////////////////////////////////////////////////////
+  // custom components down here
+  pre: CodeBlock, //pre as a  codeblock by bright.
+  Callout,
 };
 
 interface MDXProps {
@@ -55,4 +58,3 @@ export function Mdx({ source }: MDXProps) {
     </>
   );
 }
-

@@ -9,7 +9,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
-
 interface BlogPageProps {
   params: {
     slug: string;
@@ -114,7 +113,7 @@ export default function BlogPage({ params }: BlogPageProps) {
         </div>
         {/* MDX content div */}
         <article className="prose-sm  mx-auto">
-          <Mdx source={blogs.body.code} />
+          <Mdx source={blogs?.body.code} />
           <div className="flex justify-start pt-12 mb-12 xl:hidden py-4 border-custom border-t">
             <Button variant={"destructive"}>
               <Link href="/blogs" className="flex items-center gap-2">
