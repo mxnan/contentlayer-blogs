@@ -1,9 +1,9 @@
-import { type ClassValue, clsx } from "clsx"
+import { type ClassValue, clsx } from "clsx";
 import { Blogs } from "contentlayer/generated";
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 // formatted date function (DD/MM/YYYY)
@@ -32,11 +32,17 @@ export const getFormattedDate = (publishedAt: string): string => {
   }
 };
 
-// sort blogs by date
+// Parse date string (DD-MM-YYYY) to Date object
+const parseDate = (dateString: string): Date => {
+  const [day, month, year] = dateString.split("-").map(Number);
+  return new Date(year, month - 1, day);
+};
+
+// Sort blogs by date
 export function sortBlogsByDate(blogs: Blogs[]): Blogs[] {
   return blogs.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
+    const dateA = parseDate(a.date);
+    const dateB = parseDate(b.date);
     return dateB.getTime() - dateA.getTime(); // Sort in descending order (newest first)
   });
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { getFormattedDate } from "@/lib/utils";
 import { Blogs } from "contentlayer/generated";
+import { BorderBeam } from "./ui/border-beam";
 
 interface BlogCardProps {
   blog: Blogs;
@@ -10,33 +10,38 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
-    <Link href={blog.url} className="group block">
-      <article className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:transform group-hover:scale-105">
-        <div className="relative aspect-video">
-          <Image
-            src={blog.image}
-            alt={blog.title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover"
-          />
+    <div className="w-full relative max-w-md  border-stone-200 dark:border-stone-800 border h-auto shadow-xl rounded-lg overflow-hidden">
+    <BorderBeam size={200} duration={20}  />
+    <Link href={`/blogs/${blog?.slug}`} className="block h-full group/card ">
+      <div className="p-4 flex flex-col h-full">
+        <h2 className="text-xl font-bold  mb-2 line-clamp-2">{blog?.title}</h2>
+        <p className="text-stone-600 dark:text-stone-500 text-sm my-3 flex-grow line-clamp-3">
+          {blog?.description}
+        </p>
+
+        <p className="font-semibold text-xs mb-2 group-hover/card:translate-x-2  transition-all ease-in-out duration-300">
+          {getFormattedDate(blog?.date)}
+        </p>
+
+        <div className="mt-auto group-hover/card:translate-y-1 transition-all ease-in-out duration-300">
+          {blog?.tags.map((tag) => (
+            <span
+              key={tag}
+              className="relative inline-block w-max rounded-2xl px-2 py-1 m-1 text-xs font-semibold
+              transition-all ease-in-out duration-500 group-hover/card:scale-105
+                text-plight dark:text-pdark 
+                group-hover/card:bg-gray-500/10 group-hover/card:dark:bg-stone-800
+             "
+            >
+              <BorderBeam  size={30} borderWidth={1} />
+              {"# "}
+              {tag}
+            </span>
+          ))}
         </div>
-        <div className="p-6">
-          <h2 className="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors duration-300">
-            {blog.title}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
-            {blog.description}
-          </p>
-          <time
-            dateTime={blog.date}
-            className="text-sm text-gray-500 dark:text-gray-400"
-          >
-            {getFormattedDate(blog.date)}
-          </time>
-        </div>
-      </article>
+      </div>
     </Link>
+  </div>
   );
 };
 

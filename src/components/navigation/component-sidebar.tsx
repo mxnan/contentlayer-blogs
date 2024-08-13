@@ -4,22 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-
-const sidebarItems: {
-  category: string;
-  items: { name: string; href: string }[];
-}[] = [
-  {
-    category: "Buttons",
-    items: [{ name: "Shimmer", href: "/components/buttons/shimmer-button" }],
-  },
-  {
-    category: "Loaders",
-    items: [{ name: "Bounce", href: "/components/loaders/bounce-loader" }],
-  },
-
-  // Add more categories and items as needed
-];
+import { componentSidebar } from "@/lib/site.config";
 
 export default function ComponentSidebar() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -60,7 +45,7 @@ export const DesktopSidebar = () => {
         >
           <p className="custom-underline w-min pb-2">Introduction</p>
         </Link>
-        {sidebarItems.map((category) => (
+        {componentSidebar.map((category) => (
           <div key={category.category} className="mb-4">
             <h3 className="text-lg  font-semibold mb-2">{category.category}</h3>
             <ul className="space-y-2 ">
@@ -108,7 +93,7 @@ export const MobileSidebar = () => {
         >
           <p className="custom-underline text-sm w-min pb-2">Introduction</p>
         </Link>
-        {sidebarItems.map((category) => (
+        {componentSidebar.map((category) => (
           <div key={category.category} className="mb-4">
             <h3 className="text-base font-semibold mb-2">
               {category.category}

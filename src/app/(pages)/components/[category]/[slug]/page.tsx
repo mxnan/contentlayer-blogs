@@ -78,7 +78,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
               "
           >
             <ClockIcon className="w-4 h-4 text-black dark:text-white" />{" "}
-            {/*  {getFormattedDate(component?.date)} */}
+            {getFormattedDate(component?.date)}
           </p>
         </div>
       </div>

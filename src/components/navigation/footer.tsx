@@ -4,8 +4,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { Button } from "./ui/button";
+
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface NavigationItem {
   name: string;
