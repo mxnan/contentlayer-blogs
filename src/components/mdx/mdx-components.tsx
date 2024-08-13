@@ -2,8 +2,8 @@ import { cn } from "@/lib/utils";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import CustomLink from "./custom-link";
 import React from "react";
-import CodeBlock from "./code-block";
 import { Callout } from "./call-out";
+import CodeBlock from "./code-block";
 
 const components = {
   // html components

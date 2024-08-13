@@ -23,7 +23,7 @@ export const Blogs = defineDocumentType(() => ({
       resolve: (doc) => {
         const headings = doc.body.raw.match(/^## (.*$)/gm);
         return headings
-          ? headings.map((heading) => {
+          ? headings.map((heading: string) => {
               const title = heading.replace("## ", "").trim();
               const slug = title
                 .toLowerCase()
@@ -45,15 +45,39 @@ export const Components = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     description: { type: "string", required: true },
+    category: { type: "string", required: true },
     date: { type: "string", required: true },
-    image: { type: "string", required: true },
-    tags: { type: "list", of: { type: "string" }, default: [] },
-    slug: { type: "string", required: true },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.replace(/^components\//, ""),
+    },
+    category: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split('/')[1],
+    },
+    toc: {
+      type: "json",
+      resolve: (doc) => {
+        const headings = doc.body.raw.match(/^## (.*$)/gm);
+        return headings
+          ? headings.map((heading: string) => {
+              const title = heading.replace("## ", "").trim();
+              const slug = title
+                .toLowerCase()
+                .replace(/\s+/g, "-")
+                .replace(/[^\w-]+/g, "");
+              return { title, slug };
+            })
+          : [];
+      },
+    },
   },
 }));
 
 //makeSource Blogs
 export default makeSource({
   contentDirPath: "src/content",
-  documentTypes: [Blogs],
+  documentTypes: [Blogs, Components],
 });
