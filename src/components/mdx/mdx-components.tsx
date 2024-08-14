@@ -4,6 +4,7 @@ import CustomLink from "./custom-link";
 import React from "react";
 import { Callout } from "./call-out";
 import CodeBlock from "./code-block";
+import { ComponentPreview } from "./component-preview";
 
 // src\components\mdx\mdx-components.tsx
 
@@ -147,6 +148,7 @@ const components = {
   pre: CodeBlock, //pre as a  codeblock by bright.
   // callout
   Callout,
+  ComponentPreview,
 };
 
 // types

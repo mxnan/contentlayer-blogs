@@ -1,5 +1,5 @@
 //components sidebar config//
-//define new components here ,so their links aregenerated in sidebar
+//define new components here ,so their links regenerated in sidebar
 
 export const componentSidebar: {
   category: string;
@@ -13,6 +13,10 @@ export const componentSidebar: {
     category: "Loaders",
     items: [{ name: "Bounce", href: "/components/loaders/bounce-loader" }],
   },
+  {
+    category:"Playground",
+    items: [{ name: "Tabs", href: "/components/playground/tabs-with-content" }],
+  }
 
   // Add more categories and items as needed
 ];

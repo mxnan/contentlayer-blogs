@@ -55,7 +55,7 @@ export const Components = defineDocumentType(() => ({
     },
     category: {
       type: "string",
-      resolve: (doc) => doc._raw.flattenedPath.split('/')[1],
+      resolve: (doc) => doc._raw.flattenedPath.split("/")[1],
     },
     toc: {
       type: "json",
@@ -76,8 +76,19 @@ export const Components = defineDocumentType(() => ({
   },
 }));
 
+// defineDocumentType ShowcaseComponent
+export const ShowcaseComponent = defineDocumentType(() => ({
+  name: "ShowcaseComponent",
+  filePathPattern: `showcase/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    category: { type: "string", required: true },
+  },
+}));
+
 //makeSource Blogs
 export default makeSource({
   contentDirPath: "src/content",
-  documentTypes: [Blogs, Components],
+  documentTypes: [Blogs, Components, ShowcaseComponent],
 });

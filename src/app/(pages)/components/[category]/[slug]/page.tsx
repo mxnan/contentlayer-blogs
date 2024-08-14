@@ -53,7 +53,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   }
 
   return (
-    <section className="flex-1 relative min-h-screen">
+    <section className="flex-1  relative min-h-screen">
       <div className="w-full flex flex-col md:flex-row justify-between border-b dark:border-gray-700 pb-4 group/upper">
         <div
           className="space-y-6 lg:pr-8 md:w-2/3 
@@ -82,7 +82,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
           </p>
         </div>
       </div>
-      <article className="prose-sm  mx-auto py-8">
+      <article className="prose-sm py-8">
         <Mdx source={component.body.code} />
       </article>
 
