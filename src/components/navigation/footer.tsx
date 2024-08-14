@@ -5,8 +5,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
+import {
+  ArrowRightCircleIcon,
+  GithubIcon,
+  LinkedinIcon,
+  TwitterIcon,
+} from "lucide-react";
 import { Button } from "../ui/button";
+import RetroGrid from "../ui/bg-grid-pattern";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface NavigationItem {
   name: string;
@@ -45,8 +57,13 @@ const navigation: {
 const Footer: React.FC = () => {
   const pathname = usePathname();
   return (
-    <footer className="w-full">
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <footer className="w-full relative">
+      <RetroGrid />
+      <div
+        className="mx-auto  w-full max-w-6xl
+   
+       px-4 py-12 sm:px-6 lg:px-8"
+      >
         <nav className="flex flex-wrap justify-center">
           {navigation.main.map((item) => (
             <div key={item.name} className="px-5 pt-1 flexcenter ">
@@ -62,18 +79,27 @@ const Footer: React.FC = () => {
             </div>
           ))}
         </nav>
-        <div className="mt-5 flex justify-center space-x-6">
+        <div className="pt-8 flex justify-center gap-6 space-x-6">
           {navigation.social.map((item) => (
-            <Button key={item.name} variant="ghost" size={"icon"}>
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href={item.href}
-                className="text-gray-600 dark:text-gray-400"
-              >
-                {item.icon}
-              </a>
-            </Button>
+            <TooltipProvider key={item.name}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href={item.href}
+                    className=" text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
+                  >
+                    {item.icon}
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent className="mr-12 mb-2">
+                  <p className="font-title text-gray-500 flex items-center gap-2 text-sm">
+                    {item.name} <ArrowRightCircleIcon className="w-4 h-4 text-black dark:text-white" />
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ))}
         </div>
         <p className="mt-6 flex flex-col text-center text-sm ">

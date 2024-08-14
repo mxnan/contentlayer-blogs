@@ -4,11 +4,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
 
-
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/navigation/footer";
 import Navbar from "@/components/navigation/navbar";
-
 
 ////////////////////////
 
@@ -53,7 +51,7 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          <main className="py-12 mx-auto container w-full">{children}</main>
+          <main className="py-28 mx-auto container w-full">{children}</main>
           <Footer />
           <Toaster />
         </Providers>
