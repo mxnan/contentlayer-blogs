@@ -31,7 +31,7 @@ export const DesktopSidebar = () => {
   const pathname = usePathname();
   return (
     <nav className="h-full relative overflow-x-hidden overflow-y-auto">
-      <div className="sticky top-0 p-4">
+      <div className="fixed left-4 md:left-6 lg:left-10 xl:left-12 2xl:left-20  top-44 h-[70vh] bottom-0  overflow-y-auto p-4">
         <h2 className="text-xl font-bold mb-4">Components</h2>
         <Link
           href="/components"

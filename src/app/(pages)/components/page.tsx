@@ -33,13 +33,10 @@ export default async function IntroPage() {
   return (
     <section className="flex-1 relative min-h-screen">
       <article className="prose-sm ">
-        <Mdx source={components.body.code} />
+        <Mdx source={components?.body.code} />
       </article>
 
-      <TableOfContents
-        className="w-max text-gray-500 hidden 2xl:block fixed top-44 right-4 2xl:right-20"
-        toc={components.toc}
-      />
+ 
     </section>
   );
 }

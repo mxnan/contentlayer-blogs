@@ -11,7 +11,9 @@ import { motion } from 'framer-motion'
 const ShimmerButton = () => {
   return (
     <motion.button
-      className="inline-flex overflow-hidden rounded-lg bg-[linear-gradient(120deg,#FF98A4_calc(var(--shimmer-button-x)-25%),#f6f6f6_var(--shimmer-button-x),#FF98A4_calc(var(--shimmer-button-x)+25%))] [--shimmer-button-x:0%]"
+      className="inline-flex overflow-hidden rounded-lg 
+      bg-[linear-gradient(120deg,#FF98A4_calc(var(--shimmer-button-x)-25%),#f6f6f6_var(--shimmer-button-x),#FF98A4_calc(var(--shimmer-button-x)+25%))] 
+      [--shimmer-button-x:0%]"
       initial={
         {
           scale: 1,

@@ -2,7 +2,7 @@ import React from "react";
 import { notFound } from "next/navigation";
 import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
-import { TableOfContents } from "@/components/mdx/toc";
+
 import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
 import { getFormattedDate } from "@/lib/utils";
@@ -53,8 +53,10 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   }
 
   return (
-    <section className="flex-1  relative min-h-screen">
-      <div className="w-full flex flex-col md:flex-row justify-between border-b dark:border-gray-700 pb-4 group/upper">
+    <section className="flex-1 relative min-h-screen max-w-screen-2xl">
+      <div className="w-full flex flex-col border-b dark:border-gray-700 pb-4 group/upperdiv">
+        {" "}
+        {/* group/upperdiv change to group/upper for animations*/}
         <div
           className="space-y-6 lg:pr-8 md:w-2/3 
           group-hover/upper:translate-x-2 cursor-default
@@ -68,8 +70,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
             {component?.description}
           </p>
         </div>
-
-        <div className="flex flex-col justify-center items-center text-gray-500  gap-2">
+        <div className=" text-gray-500  gap-2">
           <p
             className="font-medium w-max text-xs flex items-center gap-2
             group-hover/upper:-translate-x-2 group-hover/upper:translate-y-2
@@ -83,13 +84,8 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
         </div>
       </div>
       <article className="prose-sm py-8">
-        <Mdx source={component.body.code} />
+        <Mdx source={component?.body.code} />
       </article>
-
-      <TableOfContents
-        className="w-max text-gray-500 hidden 2xl:block fixed top-44 right-4 2xl:right-20"
-        toc={component.toc}
-      />
     </section>
   );
 }
