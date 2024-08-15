@@ -9,11 +9,8 @@ export default function ComponentsLayout({
 }) {
   return (
     <div className="flex relative min-h-screen ">
-      {/* Adjust pt-44 based on your top navbar height */}
-
       <ComponentSidebar />
-
-      <div className="relative w-full md:ml-48 lg:ml-52 xl:ml-72 overflow-y-auto">
+      <div className="relative w-full max-w-5xl 2xl:max-w-7xl mx-auto">
         {children}
       </div>
     </div>

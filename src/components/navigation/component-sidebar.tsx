@@ -11,7 +11,7 @@ export default function ComponentSidebar() {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth < 1420); // Adjust breakpoint as needed
     };
 
     // Check on initial render
@@ -27,11 +27,11 @@ export default function ComponentSidebar() {
   return <>{isMobile ? <MobileSidebar /> : <DesktopSidebar />}</>;
 }
 
-export const DesktopSidebar = () => {
+const DesktopSidebar = () => {
   const pathname = usePathname();
   return (
-    <nav className="h-full relative overflow-x-hidden overflow-y-auto">
-      <div className="fixed left-4 md:left-6 lg:left-10 xl:left-12 2xl:left-20  top-44 h-[70vh] bottom-0  overflow-y-auto p-4">
+    <nav className="h-full relative overflow-x-hidden">
+      <div className="fixed font-title left-4 top-44 h-[70vh] overflow-y-auto p-4">
         <h2 className="text-xl font-bold mb-4">Components</h2>
         <Link
           href="/components"
@@ -74,7 +74,7 @@ export const DesktopSidebar = () => {
   );
 };
 
-export const MobileSidebar = () => {
+const MobileSidebar = () => {
   const pathname = usePathname();
   return (
     <nav className="h-full hidden overflow-y-auto">
@@ -123,3 +123,7 @@ export const MobileSidebar = () => {
     </nav>
   );
 };
+
+const buttonSidebar = () => {};
+
+// create a collapsible as a optional sidebar for smaller screens using uef on main export function

@@ -43,10 +43,7 @@ export function TableOfContents({ toc, className }: TocProps) {
 
   return (
     <nav className={cn("space-y-4 flex flex-col items-start", className)}>
-      <span className="font-bold text-xl font-title flex items-center gap-2 2xl:hidden">
-        <ListStartIcon className="w-4 h-4" /> TOC
-      </span>
-      <p className="font-bold text-xl font-title  max-2xl:hidden">
+      <p className="font-bold text-lg text-black dark:text-white ">
         Table of contents
       </p>
       <ul className="space-y-4 mr-4 text-sm ">
@@ -74,9 +71,7 @@ function TableOfContentsItem({ item, isActive }: TableOfContentsItemProps) {
         href={`#${item.slug}`}
         className={cn(
           " capitalize transition-all ease-in-out duration-200 flex gap-3 ",
-          isActive
-            ? " text-black dark:text-white"
-            : " text-gray-500"
+          isActive ? " text-black dark:text-white" : " text-gray-500"
         )}
       >
         <CornerDownRight className="w-4 h-4 " />

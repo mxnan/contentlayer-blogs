@@ -35,7 +35,10 @@ export default async function IntroPage() {
       <article className="prose-sm ">
         <Mdx source={components?.body.code} />
       </article>
-
+      <TableOfContents
+        className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
+        toc={components?.toc}
+      />
  
     </section>
   );

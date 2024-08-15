@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
 import { getFormattedDate } from "@/lib/utils";
 import { ClockIcon } from "lucide-react";
+import { TableOfContents } from "@/components/mdx/toc";
 
 interface ComponentPageProps {
   params: { category: string; slug: string };
@@ -53,7 +54,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   }
 
   return (
-    <section className="flex-1 relative min-h-screen max-w-screen-2xl">
+    <section className="flex-1 relative min-h-screen">
       <div className="w-full flex flex-col border-b dark:border-gray-700 pb-4 group/upperdiv">
         {" "}
         {/* group/upperdiv change to group/upper for animations*/}
@@ -83,9 +84,13 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
           </p>
         </div>
       </div>
-      <article className="prose-sm py-8">
+      <article className="prose-sm">
         <Mdx source={component?.body.code} />
       </article>
+      <TableOfContents
+        className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
+        toc={component?.toc}
+      />
     </section>
   );
 }
