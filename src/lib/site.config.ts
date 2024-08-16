@@ -6,6 +6,10 @@ export const componentSidebar: {
   items: { name: string; href: string }[];
 }[] = [
   {
+    category:"Playground",
+    items: [{ name: "Tabs", href: "/components/playground/tabs-with-content" }],
+  },
+  {
     category: "Buttons",
     items: [{ name: "Shimmer", href: "/components/buttons/shimmer-button" }],
   },
@@ -13,10 +17,7 @@ export const componentSidebar: {
     category: "Loaders",
     items: [{ name: "Bounce", href: "/components/loaders/bounce-loader" }],
   },
-  {
-    category:"Playground",
-    items: [{ name: "Tabs", href: "/components/playground/tabs-with-content" }],
-  }
+
 
   // Add more categories and items as needed
 ];

@@ -1,3 +1,4 @@
+import ParticlesReveal from "@/components/custom/paticles-reveal";
 import { Mdx } from "@/components/mdx/mdx-components";
 import { TableOfContents } from "@/components/mdx/toc";
 import { Button } from "@/components/ui/button";
@@ -59,59 +60,54 @@ export default function BlogPage({ params }: BlogPageProps) {
           </Link>
         </Button>
         {/* upper div */}
-        <div className="w-full flex flex-col md:flex-row justify-between pb-4 group/upper">
+        <div className="w-full flex flex-col md:flex-row justify-between pb-4">
           {/* text div */}
-          <div
-            className="space-y-4 lg:pr-8 md:w-2/3 
-          group-hover/upper:translate-x-2 cursor-default
-          transition-transform ease-in-out duration-500
-          "
-          >
-            <div className="space-y-6">
-              <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold">
-                {blogs?.title}
-              </h1>
-              <p className="text-base lg:text-lg max-lg:font-light">
-                {blogs?.description}
-              </p>
-            </div>
-            <div className="flex flex-col text-gray-500  gap-2">
-              <div
-                className="flex w-max group-hover/upper:translate-x-2
-          transition-transform ease-in-out duration-500"
-              >
-                {blogs.tags &&
-                  blogs.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-sm p-2 text-black dark:text-white font-bold text-muted-foreground"
-                    >
-                      [{" "}
-                      <span className="text-gray-500 font-semibold ">
-                        {tag}
-                      </span>{" "}
-                      ]
-                    </span>
-                  ))}
+          <div className="space-y-4 lg:pr-8 md:w-2/3">
+            <ParticlesReveal
+              width="fit-content"
+              className="bg-stone-200 dark:bg-stone-900"
+              duration={1}
+            >
+              <div className="space-y-6">
+                <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold">
+                  {blogs?.title}
+                </h1>
+                <p className="text-base lg:text-lg max-lg:font-light">
+                  {blogs?.description}
+                </p>
               </div>
-              <p
-                className="font-medium w-max text-xs flex items-center gap-2
-            group-hover/upper:translate-x-6 group-hover/upper:translate-y-2
-          transition-transform ease-in-out duration-700
-              "
-              >
-                <ClockIcon className="w-4 h-4 text-black dark:text-white" />{" "}
-                {getFormattedDate(blogs?.date)}
-              </p>
-            </div>
+            </ParticlesReveal>
+            <ParticlesReveal
+              width="fit-content"
+              className="bg-stone-200 dark:bg-stone-900"
+              duration={1}
+            >
+              <div className="flex flex-col text-gray-500  gap-2">
+                <div className="flex w-max">
+                  {blogs.tags &&
+                    blogs.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-sm p-2 text-black dark:text-white font-bold text-muted-foreground"
+                      >
+                        [{" "}
+                        <span className="text-gray-500 font-semibold ">
+                          {tag}
+                        </span>{" "}
+                        ]
+                      </span>
+                    ))}
+                </div>
+                <p className="font-medium w-max text-xs flex items-center gap-2">
+                  <ClockIcon className="w-4 h-4 text-black dark:text-white" />{" "}
+                  {getFormattedDate(blogs?.date)}
+                </p>
+              </div>
+            </ParticlesReveal>
           </div>
           {/* image div */}
-          <div
-            className="relative hidden md:block md:w-1/3 aspect-video
-           group-hover/upper:scale-95 group-hover/upper:translate-x-4 
-           transition-transform ease-in-out duration-500
-           "
-          >
+
+          <div className="relative hidden md:block md:w-1/3 aspect-video">
             <Image
               src={blogs?.image}
               alt={blogs?.title}
@@ -137,7 +133,7 @@ export default function BlogPage({ params }: BlogPageProps) {
       </div>
       {/* Table of contents */}
       <TableOfContents
-        className="w-max text-gray-500 hidden xl:block fixed top-44 right-4 2xl:right-20"
+          className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
         toc={blogs.toc}
       />
     </section>

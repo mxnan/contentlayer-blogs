@@ -5,6 +5,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Particles from "./particles";
 
+
 interface ParticlesRevealProps {
   children: JSX.Element;
   width?: "fit-content" | "100%";
