@@ -1,4 +1,5 @@
-import ParticlesReveal from "@/components/custom/paticles-reveal";
+// src\app\(pages)\blogs\page.tsx
+
 import { Mdx } from "@/components/mdx/mdx-components";
 import { TableOfContents } from "@/components/mdx/toc";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
-interface BlogPageProps {
+export interface BlogPageProps {
   params: {
     slug: string;
   };
@@ -63,47 +64,36 @@ export default function BlogPage({ params }: BlogPageProps) {
         <div className="w-full flex flex-col md:flex-row justify-between pb-4">
           {/* text div */}
           <div className="space-y-4 lg:pr-8 md:w-2/3">
-            <ParticlesReveal
-              width="fit-content"
-              className="bg-stone-200 dark:bg-stone-900"
-              duration={1}
-            >
-              <div className="space-y-6">
-                <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold">
-                  {blogs?.title}
-                </h1>
-                <p className="text-base lg:text-lg max-lg:font-light">
-                  {blogs?.description}
-                </p>
+            <div className="space-y-6">
+              <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold">
+                {blogs?.title}
+              </h1>
+              <p className="text-base lg:text-lg max-lg:font-light">
+                {blogs?.description}
+              </p>
+            </div>
+
+            <div className="flex flex-col text-gray-500  gap-2">
+              <div className="flex w-max">
+                {blogs.tags &&
+                  blogs.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-sm p-2 text-black dark:text-white font-bold text-muted-foreground"
+                    >
+                      [{" "}
+                      <span className="text-gray-500 font-semibold ">
+                        {tag}
+                      </span>{" "}
+                      ]
+                    </span>
+                  ))}
               </div>
-            </ParticlesReveal>
-            <ParticlesReveal
-              width="fit-content"
-              className="bg-stone-200 dark:bg-stone-900"
-              duration={1}
-            >
-              <div className="flex flex-col text-gray-500  gap-2">
-                <div className="flex w-max">
-                  {blogs.tags &&
-                    blogs.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-sm p-2 text-black dark:text-white font-bold text-muted-foreground"
-                      >
-                        [{" "}
-                        <span className="text-gray-500 font-semibold ">
-                          {tag}
-                        </span>{" "}
-                        ]
-                      </span>
-                    ))}
-                </div>
-                <p className="font-medium w-max text-xs flex items-center gap-2">
-                  <ClockIcon className="w-4 h-4 text-black dark:text-white" />{" "}
-                  {getFormattedDate(blogs?.date)}
-                </p>
-              </div>
-            </ParticlesReveal>
+              <p className="font-medium w-max text-xs flex items-center gap-2 ml-2">
+                <ClockIcon className="w-4 h-4 text-black dark:text-white" />{" "}
+                {getFormattedDate(blogs?.date)}
+              </p>
+            </div>
           </div>
           {/* image div */}
 
@@ -114,7 +104,7 @@ export default function BlogPage({ params }: BlogPageProps) {
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority
-              className="rounded-xl image-border object-cover"
+              className="rounded-xl object-cover"
             />
           </div>
         </div>
@@ -133,7 +123,7 @@ export default function BlogPage({ params }: BlogPageProps) {
       </div>
       {/* Table of contents */}
       <TableOfContents
-          className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
+        className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
         toc={blogs.toc}
       />
     </section>

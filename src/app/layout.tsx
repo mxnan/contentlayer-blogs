@@ -6,8 +6,12 @@ import { Providers } from "./providers";
 
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/navigation/footer";
-import Navbar from "@/components/navigation/navbar";
+import dynamic from "next/dynamic";
 
+// dynamic navbar for  animations
+const DynamicNavbar = dynamic(() => import("@/components/navigation/navbar"), {
+  ssr: false,
+})
 ////////////////////////
 
 //fonts
@@ -50,7 +54,7 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <Navbar />
+          <DynamicNavbar />
           <main className="py-28 mx-auto container w-full">{children}</main>
           <Footer />
           <Toaster />

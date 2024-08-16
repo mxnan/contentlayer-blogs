@@ -5,6 +5,7 @@ import React from "react";
 import { Callout } from "./call-out";
 import CodeBlock from "./code-block";
 import { ComponentPreview } from "./component-preview";
+import CustomHeading from "../custom/custom-heading";
 
 // src\components\mdx\mdx-components.tsx
 
@@ -149,6 +150,7 @@ const components = {
   // callout
   Callout,
   ComponentPreview,
+  CustomHeading,
 };
 
 // types

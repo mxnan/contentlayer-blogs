@@ -5,10 +5,8 @@ import { Mdx } from "@/components/mdx/mdx-components";
 import { TableOfContents } from "@/components/mdx/toc";
 import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
-import CustomHeading from "@/components/custom/custom-heading";
 
-
-async function getComponents(slug: string): Promise<Components | undefined> {
+export async function getComponents(slug: string): Promise<Components | undefined> {
   return allComponents.find((components) => components.slug === slug);
 }
 
@@ -34,8 +32,7 @@ export default async function IntroPage() {
 
   return (
     <section className="flex-1 relative min-h-screen">
-      <CustomHeading>{components?.title}</CustomHeading>
-      <article className="prose-sm ">
+      <article className="prose-sm">
         <Mdx source={components?.body.code} />
       </article>
       <TableOfContents

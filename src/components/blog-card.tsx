@@ -15,8 +15,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       <BorderBeam size={200} duration={20} />
       <Particles
         className="absolute inset-0 -z-10"
-        quantity={100}
-        ease={80}
+        quantity={40}
+        ease={20}
         color={"#6b7280"}
         refresh
       />

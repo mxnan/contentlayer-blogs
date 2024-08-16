@@ -5,7 +5,6 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Particles from "./particles";
 
-
 interface ParticlesRevealProps {
   children: JSX.Element;
   width?: "fit-content" | "100%";
@@ -44,7 +43,14 @@ export const ParticlesReveal = ({
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: duration ? duration : 0.7, delay: 0.25 }}
+        transition={{
+          duration: duration ? duration : 1,
+          ease: "easeInOut",
+          type: "tween",
+          damping: 50,
+          stiffness: 200,
+          restDelta: 0.001,
+        }}
       >
         {children}
       </motion.div>
@@ -58,9 +64,12 @@ export const ParticlesReveal = ({
         animate={slideControls}
         className={cn("rounded-xl", className)}
         transition={{
-          duration: duration ? duration : 0.5,
-          ease: "easeIn",
+          duration: duration ? duration : 1,
+          ease: "easeInOut",
           type: "tween",
+          damping: 50,
+          stiffness: 200,
+          restDelta: 0.001,
         }}
         style={{
           position: "absolute",
@@ -73,7 +82,7 @@ export const ParticlesReveal = ({
       >
         {" "}
         <Particles
-          className="absolute inset-0"
+          className="absolute inset-0 "
           quantity={100}
           ease={80}
           color={"#6b7280"}

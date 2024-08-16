@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useEffect, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
-import { CornerDownRight, ListStartIcon } from "lucide-react";
+import { CornerDownRight } from "lucide-react";
 
 interface TocEntry {
   title: string;
@@ -42,20 +42,24 @@ export function TableOfContents({ toc, className }: TocProps) {
   }, [toc, handleObserver]);
 
   return (
-    <nav className={cn("space-y-4 flex flex-col items-start", className)}>
-      <p className="font-bold text-lg text-black dark:text-white ">
-        Table of contents
-      </p>
-      <ul className="space-y-4 mr-4 text-sm ">
-        {toc.map((item) => (
-          <TableOfContentsItem
-            key={item.slug}
-            item={item}
-            isActive={item.slug === activeId}
-          />
-        ))}
-      </ul>
-    </nav>
+    <>
+      {toc.length > 0 && (
+        <nav className={cn("space-y-4 flex flex-col items-start", className)}>
+          <p className="font-bold text-lg text-black dark:text-white ">
+            Table of contents
+          </p>
+          <ul className="space-y-4 mr-4 text-sm ">
+            {toc.map((item) => (
+              <TableOfContentsItem
+                key={item.slug}
+                item={item}
+                isActive={item.slug === activeId}
+              />
+            ))}
+          </ul>
+        </nav>
+      )}
+    </>
   );
 }
 

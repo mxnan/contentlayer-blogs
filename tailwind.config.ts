@@ -46,6 +46,7 @@ const config = {
       colors: {
         black: "#090A0B",
         white: "#F8F9FA",
+        
       },
     },
   },

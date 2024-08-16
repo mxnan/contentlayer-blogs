@@ -55,6 +55,7 @@ export function ComponentPreview({
     <div className="w-full flex-1 relative">
       <Tabs className="mt-16 bg-[#1f1f1f] rounded-3xl" defaultValue="preview">
         <TabsList className="w-full relative bg-gray-200 dark:bg-gray-800  ">
+          {/* Tabs header */}
           <div className="flex items-center w-full justify-between px-2  ">
             {/* code info */}
             <span className="flex items-center gap-3">
