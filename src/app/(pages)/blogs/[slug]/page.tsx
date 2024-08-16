@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { getFormattedDate } from "@/lib/utils";
 import { allBlogs } from "contentlayer/generated";
 import { CircleArrowLeftIcon, ClockIcon } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -23,6 +24,16 @@ export async function generateStaticParams(): Promise<
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  const blog = allBlogs.find((blog) => blog.slug === params.slug);
+  if (!blog) return notFound();
+  return {
+    title: blog.title,
+    description: blog.description,
+  };
+}
 export default function BlogPage({ params }: BlogPageProps) {
   const blogs = allBlogs.find((blogs) => blogs.slug === params.slug);
   if (!blogs) return notFound();

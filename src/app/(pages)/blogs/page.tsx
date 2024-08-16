@@ -11,6 +11,13 @@ const DynamicBlogHero = dynamic(() => import("@/components/blog-hero"), {
   ssr: false,
 });
 
+export async function generateMetadata() {
+  return {
+    title: "Blogs",
+    description: "Showing some blogs.",
+  };
+}
+
 export default function BlogsPage() {
   const sortedBlogs = sortBlogsByDate(allBlogs);
 
