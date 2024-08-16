@@ -14,7 +14,7 @@ import {
   LucideTwitter,
   MailIcon,
 } from "lucide-react";
-import { BorderBeam } from "../ui/border-beam";
+import { BorderBeam } from "../custom/border-beam";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { ContentCard, Menu, MenuItem } from "./top-nav-items";

@@ -59,7 +59,7 @@ export function ComponentPreview({
             {/* code info */}
             <span className="flex items-center gap-3">
               <SquareCodeIcon className="text-orange-700 dark:text-green-500" />
-              <span className="text-black dark:text-white">
+              <span className="text-black dark:text-white max-md:hidden">
                 {category}/{path}.tsx
               </span>
             </span>

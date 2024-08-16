@@ -1,5 +1,5 @@
 import React from 'react'
-import TabsWithContent from "@/components/ui/tabs-with-content"
+import TabsWithContent from "@/components/custom/tabs-with-content"
 
 const TabsWithContentShowcase = () => {
   const tabs = ["preview", "code"]

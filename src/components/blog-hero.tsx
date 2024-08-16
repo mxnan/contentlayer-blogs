@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import IconCloud from "./ui/icon-cloud";
+import IconCloud from "./custom/icon-cloud";
 
 
 const slugs = [

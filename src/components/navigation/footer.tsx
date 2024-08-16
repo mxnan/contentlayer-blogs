@@ -12,7 +12,7 @@ import {
   TwitterIcon,
 } from "lucide-react";
 import { Button } from "../ui/button";
-import RetroGrid from "../ui/bg-grid-pattern";
+import RetroGrid from "../custom/bg-grid-pattern";
 import {
   Tooltip,
   TooltipContent,

@@ -1,11 +1,12 @@
-import DotPattern from "@/components/ui/bg-dot-pattern";
+import DotPattern from "@/components/custom/bg-dot-pattern";
 import { Button } from "@/components/ui/button";
-import TextRevealByWord from "@/components/ui/text-reveal-scroll";
-import { VelocityScroll } from "@/components/ui/velocity-scroll";
+
+import { VelocityScroll } from "@/components/custom/velocity-scroll";
 import { cn } from "@/lib/utils";
 import { ArrowBigLeftDashIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import TextRevealByWord from "@/components/custom/text-reveal-scroll";
 
 export default function page() {
   return (

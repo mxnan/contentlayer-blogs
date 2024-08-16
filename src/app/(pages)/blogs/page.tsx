@@ -3,9 +3,12 @@ import { allBlogs } from "contentlayer/generated";
 import { cn, sortBlogsByDate } from "@/lib/utils";
 import BlogCard from "@/components/blog-card";
 
-import DotPattern from "@/components/ui/bg-dot-pattern";
+import DotPattern from "@/components/custom/bg-dot-pattern";
 
 import dynamic from "next/dynamic";
+import CustomHeading from "@/components/custom/custom-heading";
+import ParticlesReveal from "@/components/custom/paticles-reveal";
+
 
 const DynamicBlogHero = dynamic(() => import("@/components/blog-hero"), {
   ssr: false,
@@ -31,13 +34,18 @@ export default function BlogsPage() {
       {/* BlogCards div */}
       <div className="flex-1 h-max flex flex-col gap-8">
         <div className="space-y-5 lg:ml-12">
-          <h1 className="text-[6rem] leading-[7rem] drop-shadow-xl font-semibold  uppercase">
-            Blogs
-          </h1>
-          <p className="text-sm ">
-            Just some blogs to showcase learnings and findings
-          </p>
+          <CustomHeading>Blogs</CustomHeading>
+          <ParticlesReveal
+            width="fit-content"
+            className="bg-stone-200 dark:bg-stone-900"
+            duration={1}
+          >
+            <p className="text-sm ">
+              Just some blogs to showcase learnings and findings
+            </p>
+          </ParticlesReveal>
         </div>
+
         <div
           className="flex-1 grid grid-cols-1 gap-6 p-4
                       sm:grid-cols-2 

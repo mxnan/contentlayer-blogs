@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { getFormattedDate } from "@/lib/utils";
 import { Blogs } from "contentlayer/generated";
-import { BorderBeam } from "./ui/border-beam";
+import { BorderBeam } from "./custom/border-beam";
 
 interface BlogCardProps {
   blog: Blogs;

@@ -10,7 +10,7 @@ export default function ComponentsLayout({
   return (
     <div className="flex relative min-h-screen ">
       <ComponentSidebar />
-      <div className="relative w-full max-w-5xl 2xl:max-w-7xl mx-auto">
+      <div className="relative pt-20 w-full max-w-5xl 2xl:max-w-7xl mx-auto">
         {children}
       </div>
     </div>

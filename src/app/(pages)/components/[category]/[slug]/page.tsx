@@ -8,6 +8,9 @@ import type { Components } from "contentlayer/generated";
 import { getFormattedDate } from "@/lib/utils";
 import { ClockIcon } from "lucide-react";
 import { TableOfContents } from "@/components/mdx/toc";
+import ParticlesReveal from "@/components/custom/paticles-reveal";
+import CustomHeading from "@/components/custom/custom-heading";
+
 
 interface ComponentPageProps {
   params: { category: string; slug: string };
@@ -55,34 +58,17 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
 
   return (
     <section className="flex-1 relative min-h-screen">
-      <div className="w-full flex flex-col border-b dark:border-gray-700 pb-4 group/upperdiv">
-        {" "}
-        {/* group/upperdiv change to group/upper for animations*/}
-        <div
-          className="space-y-6 lg:pr-8 md:w-2/3 
-          group-hover/upper:translate-x-2 cursor-default
-          transition-transform ease-in-out duration-500
-          "
+      <div className="w-full flex-between border-b dark:border-gray-700 pb-4 ">
+        <CustomHeading>{component?.title}</CustomHeading>
+        <ParticlesReveal
+          className="bg-stone-200 dark:bg-stone-900"
+          duration={1}
         >
-          <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold">
-            {component?.title}
-          </h1>
-          <p className="text-base lg:text-lg max-lg:font-light">
-            {component?.description}
+          <p className="flex items-center whitespace-nowrap gap-2">
+            {getFormattedDate(component?.date)}{" "}
+            <ClockIcon className="w-10 h-10 " />{" "}
           </p>
-        </div>
-        <div className=" text-gray-500  gap-2">
-          <p
-            className="font-medium w-max text-xs flex items-center gap-2
-            group-hover/upper:-translate-x-2 group-hover/upper:translate-y-2
-            group-hover/upper:animate-pulse
-          transition-all ease-in-out duration-700
-              "
-          >
-            <ClockIcon className="w-4 h-4 text-black dark:text-white" />{" "}
-            {getFormattedDate(component?.date)}
-          </p>
-        </div>
+        </ParticlesReveal>
       </div>
       <article className="prose-sm">
         <Mdx source={component?.body.code} />
