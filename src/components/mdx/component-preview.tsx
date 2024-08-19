@@ -100,7 +100,7 @@ export function ComponentPreview({
             </div>
           </div>
           {/* tabs triggers */}
-          <div className="absolute bg-[#1f1f1f] z-10 -bottom-8 left-1/2 -translate-x-1/2 rounded-xl *:rounded-md  p-2">
+          <div className="absolute  bg-[#1f1f1f] z-10 max-sm:top-0 -bottom-8 left-1/2 -translate-x-1/2 rounded-xl *:rounded-md  p-2">
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="code">Code</TabsTrigger>
           </div>

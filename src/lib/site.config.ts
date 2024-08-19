@@ -22,7 +22,7 @@ export const componentSidebar: {
   // Add more categories and items as needed
 ];
 
-export const mobileNavlinks: { name: string; link: string }[] = [
+export const Navlinks: { name: string; link: string }[] = [
   {
     name: "Home",
     link: "/",
