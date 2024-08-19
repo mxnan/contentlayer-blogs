@@ -5,7 +5,7 @@ import React from "react";
 import { Callout } from "./call-out";
 import CodeBlock from "./code-block";
 import { ComponentPreview } from "./component-preview";
-import CustomHeading from "../custom/custom-heading";
+import H1Reveal from "../custom/h1-reveal";
 
 // src\components\mdx\mdx-components.tsx
 
@@ -132,11 +132,11 @@ const components = {
     }, [props.id, props.children]);
 
     return (
-      <div className="relative w-max">
+      <div className="relative h-10 w-max">
         <h2
           id={id}
           className={cn(
-            "mt-10 scroll-m-10 pb-3 pr-4 uppercase text-[2rem] md:text-[3rem] xl:text-[4rem] leading-[4rem] font-title  font-light w-max custom-underline cursor-pointer ",
+            "mt-10 scroll-m-10 pb-3 pr-4 text-2xl font-bold capitalize w-max custom-underline cursor-pointer ",
             className
           )}
           {...props}
@@ -150,7 +150,7 @@ const components = {
   // callout
   Callout,
   ComponentPreview,
-  CustomHeading,
+  H1Reveal,
 };
 
 // types

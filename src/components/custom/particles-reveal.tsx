@@ -85,7 +85,7 @@ export const ParticlesReveal = ({
           className="absolute inset-0 "
           quantity={100}
           ease={80}
-          color={"#6b7280"}
+          color={"#ffffff"}
           refresh
         />
       </motion.div>

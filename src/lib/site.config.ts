@@ -6,18 +6,9 @@ export const componentSidebar: {
   items: { name: string; href: string }[];
 }[] = [
   {
-    category:"Playground",
-    items: [],
+    category: "Playground",
+    items: [{ name: "H1 reveal", href: "/components/playground/h1-reveal" }],
   },
-  {
-    category: "Buttons",
-    items: [{ name: "Shimmer", href: "/components/buttons/shimmer-button" }],
-  },
-  {
-    category: "Loaders",
-    items: [{ name: "Bounce", href: "/components/loaders/bounce-loader" }],
-  },
-
 
   // Add more categories and items as needed
 ];

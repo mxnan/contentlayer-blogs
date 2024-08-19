@@ -25,4 +25,7 @@
   .image-border {
     @apply border-[0.2px] shadow-md border-gray-600 dark:border-gray-400;
   }
+  .custom-text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-black dark:from-white to-lightone dark:to-darkone;
+  }
 }

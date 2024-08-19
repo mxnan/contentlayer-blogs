@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 import {
-  ArrowRightCircleIcon,
+  ArrowBigDown,
   GithubIcon,
   LinkedinIcon,
   TwitterIcon,
@@ -67,22 +67,25 @@ const Footer: React.FC = () => {
         <nav className="flex flex-wrap justify-center">
           {navigation.main.map((item) => (
             <div key={item.name} className="px-5 pt-1 flexcenter ">
-              <Link
-                href={item.href}
-                className={cn(
-                  "text-sm custom-underline pb-2 ",
-                  pathname === item.href && "text-gray-600 dark:text-gray-400"
-                )}
-              >
-                {item.name}
+              <Link href={item.href}>
+                <Button
+                  variant={"link"}
+                  size={"link"}
+                  className={cn(
+                    "text-sm custom-underline flex-1",
+                    pathname === item.href && "text-black dark:text-white"
+                  )}
+                >
+                  {item.name}
+                </Button>
               </Link>
             </div>
           ))}
         </nav>
         <div className="pt-8 flex justify-center gap-6 space-x-6">
           {navigation.social.map((item) => (
-            <TooltipProvider key={item.name}>
-              <Tooltip>
+            <TooltipProvider key={item.name} >
+              <Tooltip delayDuration={0}>
                 <TooltipTrigger>
                   <a
                     rel="noopener noreferrer"
@@ -95,7 +98,8 @@ const Footer: React.FC = () => {
                 </TooltipTrigger>
                 <TooltipContent className="mr-12 mb-2">
                   <p className="font-title text-gray-500 flex items-center gap-2 text-sm">
-                    {item.name} <ArrowRightCircleIcon className="w-4 h-4 text-black dark:text-white" />
+                    {item.name}{" "}
+                    <ArrowBigDown className="w-4 h-4 text-black dark:text-white" />
                   </p>
                 </TooltipContent>
               </Tooltip>

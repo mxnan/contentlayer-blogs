@@ -33,7 +33,7 @@ export function TableOfContents({ toc, className }: TocProps) {
 
     const observer = new IntersectionObserver(handleObserver, {
       rootMargin: "-30% 0% -30% 0%",
-      threshold: 0.5,
+      threshold: 0.8,
     });
 
     headingElements.forEach((element) => element && observer.observe(element));
@@ -73,18 +73,15 @@ function TableOfContentsItem({ item, isActive }: TableOfContentsItemProps) {
     <li className="ml-2 py-2">
       <a
         href={`#${item.slug}`}
-        className={cn(
-          " capitalize transition-all ease-in-out duration-200 flex gap-3 ",
-          isActive ? " text-black dark:text-white" : " text-gray-500"
-        )}
+        className=" capitalize transition-all ease-in-out duration-200 flex gap-3 "
       >
-        <CornerDownRight className="w-4 h-4 " />
+        <CornerDownRight className="w-4 h-4 stroke-[3] text-lightone dark:text-darkone " />
         <span
           className={cn(
             "transition-all ease-in-out duration-100",
             isActive
-              ? "translate-x-4 font-semibold text-plight dark:text-pdark "
-              : "translate-x-0 translate-y-0"
+              ? "translate-x-4 font-semibold text-black dark:text-white"
+              : "translate-x-0 translate-y-0 text-gray-500"
           )}
         >
           {item.title}

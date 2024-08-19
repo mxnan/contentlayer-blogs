@@ -34,8 +34,8 @@ export default function BlogsPage() {
         <div className="space-y-5 lg:ml-12">
           <h1
             className="scroll-m-10 pr-16 uppercase tracking-tight
-          text-[3rem] md:text-[4rem] xl:text-[6rem] leading-[7rem] 
-          drop-shadow-xl font-bold  "
+          text-[3rem] md:text-[4rem] xl:text-[6rem] md:leading-[7rem] 
+          drop-shadow-xl font-bold custom-text-gradient "
           >
             Blogs
           </h1>

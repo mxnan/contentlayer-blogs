@@ -5,7 +5,7 @@ import { TableOfContents } from "@/components/mdx/toc";
 import { Button } from "@/components/ui/button";
 import { getFormattedDate } from "@/lib/utils";
 import { allBlogs } from "contentlayer/generated";
-import { CircleArrowLeftIcon, ClockIcon } from "lucide-react";
+import { ArrowBigLeft, CircleArrowLeftIcon, ClockIcon } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,8 +46,8 @@ export default function BlogPage({ params }: BlogPageProps) {
       {/* Back button */}
       <div className="w-[100px] hidden xl:block fixed top-44 left-12 2xl:left-32 self-start">
         <Link href="/blogs">
-          <Button className="flex items-center gap-2" variant={"destructive"}>
-            <CircleArrowLeftIcon className="w-5 h-5" />
+          <Button className="flex items-center gap-2" size={"destructive"} variant={"destructive"}>
+            <ArrowBigLeft className="w-5 h-5" />
             Back
           </Button>
         </Link>
@@ -65,7 +65,7 @@ export default function BlogPage({ params }: BlogPageProps) {
           {/* text div */}
           <div className="space-y-4 lg:pr-8 md:w-2/3">
             <div className="space-y-6">
-              <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold">
+              <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold custom-text-gradient ">
                 {blogs?.title}
               </h1>
               <p className="text-base lg:text-lg max-lg:font-light">
