@@ -28,4 +28,27 @@
   .custom-text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-black dark:from-white to-lightone dark:to-darkone;
   }
+  /* global.css or styles.css */
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #111111;
+    border-radius: 10px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #111111;
+    border-radius: 10px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #2e2e2e;
+  }
+
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #111111;
+  }
 }

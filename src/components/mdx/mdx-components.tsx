@@ -5,7 +5,11 @@ import React from "react";
 import { Callout } from "./call-out";
 import CodeBlock from "./code-block";
 import { ComponentPreview } from "./component-preview";
-import H1Reveal from "../custom/h1-reveal";
+import dynamic from "next/dynamic";
+
+const H1Reveal = dynamic(() => import("../custom/h1-reveal"), {
+  ssr: false,
+});
 
 // src\components\mdx\mdx-components.tsx
 
@@ -27,7 +31,7 @@ const components = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "font-title mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "capitalize mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -151,6 +155,8 @@ const components = {
   Callout,
   ComponentPreview,
   H1Reveal,
+// importing dynamically on top
+
 };
 
 // types
