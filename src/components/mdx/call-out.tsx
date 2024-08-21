@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface CalloutProps {
+export interface CalloutProps {
   children?: React.ReactNode;
   type?: "default" | "warning" | "danger";
 }

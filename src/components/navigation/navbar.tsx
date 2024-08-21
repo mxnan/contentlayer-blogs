@@ -8,17 +8,10 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import {
-  ArrowDown10Icon,
-  LinkedinIcon,
-  LucideTwitter,
-  MailIcon,
-  Wind,
-} from "lucide-react";
+import { Wind } from "lucide-react";
 import { BorderBeam } from "../custom/border-beam";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { ContentCard, Menu, MenuItem } from "./top-nav-items";
 import { Navlinks } from "@/lib/site.config";
 import { Button } from "../ui/button";
 
@@ -50,21 +43,9 @@ export default function Navbar() {
 
 // desktop nav
 const DesktopNav = () => {
-  const [active, setActive] = useState<string | null>(null);
+  const [isHidden, setIsHidden] = useState<boolean>(true);
   const pathname = usePathname();
-  const [isHidden, setIsHidden] = useState(false);
-  const { scrollY } = useScroll();
-  const lastYRef = useRef(0);
-
-  useMotionValueEvent(scrollY, "change", (y) => {
-    const difference = y - lastYRef.current;
-    if (Math.abs(difference) > 50) {
-      setIsHidden(difference > 0);
-
-      lastYRef.current = y;
-    }
-  });
-
+ 
   return (
     <motion.div
       animate={isHidden ? "hidden" : "visible"}
@@ -99,7 +80,7 @@ const DesktopNav = () => {
       <div className="relative mt-2 px-[1.5rem] lg:px-24 w-full flex items-center justify-between">
         <Link
           href="/"
-          className="flex items-center text-gray-600 dark:text-gray-300 gap-3"
+          className="flex items-center text-sm text-gray-600 dark:text-gray-300 gap-3"
         >
           {pathname === "/" ? <Wind className="w-5 h-5" /> : <p>mxnan.com</p>}
         </Link>
@@ -108,8 +89,9 @@ const DesktopNav = () => {
             <Link key={link.link} href={link.link} legacyBehavior>
               <Button
                 variant={"ghost"}
+                size={"destructive"}
                 className={cn(
-                  "font-semibold transition-all ease-in-out duration-300",
+                  "font-semibold text-sm transition-all ease-in-out duration-300",
                   link.link === pathname && "text-gray-600 dark:text-gray-500"
                 )}
               >

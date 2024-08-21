@@ -5,12 +5,12 @@ import { useEffect, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { CornerDownRight } from "lucide-react";
 
-interface TocEntry {
+export interface TocEntry {
   title: string;
   slug: string;
 }
 
-interface TocProps {
+export interface TocProps {
   toc: TocEntry[];
   className?: string;
 }
@@ -63,12 +63,12 @@ export function TableOfContents({ toc, className }: TocProps) {
   );
 }
 
-interface TableOfContentsItemProps {
+export interface TableOfContentsItemProps {
   item: TocEntry;
   isActive: boolean;
 }
 
-function TableOfContentsItem({ item, isActive }: TableOfContentsItemProps) {
+export function TableOfContentsItem({ item, isActive }: TableOfContentsItemProps) {
   return (
     <li className="ml-2 py-2">
       <a

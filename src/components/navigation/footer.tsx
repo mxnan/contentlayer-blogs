@@ -20,13 +20,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-interface NavigationItem {
+export interface NavigationItem {
   name: string;
   href: string;
   icon?: JSX.Element;
 }
 
-const navigation: {
+export const navigation: {
   main: NavigationItem[];
   social: NavigationItem[];
 } = {

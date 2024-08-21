@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import IconCloud from "./custom/icon-cloud";
 
 
-const slugs = [
+export const slugs = [
   "typescript",
   "javascript",
   "dart",

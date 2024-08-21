@@ -4,17 +4,17 @@ import CustomLink from "./custom-link";
 import React from "react";
 import { Callout } from "./call-out";
 import CodeBlock from "./code-block";
-import { ComponentPreview } from "./component-preview";
+import  ComponentPreview  from "./component-preview";
 import dynamic from "next/dynamic";
 
-const H1Reveal = dynamic(() => import("../custom/h1-reveal"), {
+export const H1Reveal = dynamic(() => import("../custom/h1-reveal"), {
   ssr: false,
 });
 
 // src\components\mdx\mdx-components.tsx
 
 //define all mdx components here
-const components = {
+export const components = {
   //////////////////////////////////////////////////////////////////////
   // html components
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
@@ -160,7 +160,7 @@ const components = {
 };
 
 // types
-interface MDXProps {
+export interface MDXProps {
   source: string | any;
 }
 

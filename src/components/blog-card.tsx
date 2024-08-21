@@ -5,7 +5,7 @@ import { Blogs } from "contentlayer/generated";
 import { BorderBeam } from "./custom/border-beam";
 import Particles from "./custom/particles";
 
-interface BlogCardProps {
+export interface BlogCardProps {
   blog: Blogs;
 }
 

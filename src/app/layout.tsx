@@ -3,7 +3,6 @@ import { Anybody, Cuprum } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
-
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/navigation/footer";
 import dynamic from "next/dynamic";
