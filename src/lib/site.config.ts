@@ -9,6 +9,10 @@ export const componentSidebar: {
     category: "Playground",
     items: [{ name: "H1 reveal", href: "/components/playground/h1-reveal" }],
   },
+  {
+    category: "Loaders",
+    items: [{ name: "Spin", href: "/components/loaders/spin"}]
+  }
 
   // Add more categories and items as needed
 ];

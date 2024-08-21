@@ -36,7 +36,7 @@ export default async function IntroPage() {
         <Mdx source={components?.body.code} />
       </article>
       <TableOfContents
-        className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
+        className="w-max hidden 2xl:block fixed top-44 right-8 "
         toc={components?.toc}
       />
     </section>

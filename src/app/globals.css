@@ -9,7 +9,7 @@
   @apply bg-black text-white;
 }
 
-@layer base {
+@layer utilities {
   .flex-center {
     @apply flex items-center justify-center;
   }

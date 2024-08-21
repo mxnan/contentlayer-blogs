@@ -1,48 +1,10 @@
-"use client";
-import React, { useEffect, useState } from "react";
 
-import IconCloud from "./custom/icon-cloud";
+import React from "react";
 
 
-export const slugs = [
-  "typescript",
-  "javascript",
-  "dart",
-  "java",
-  "react",
-  "flutter",
-  "android",
-  "html5",
-  "css3",
-  "nodedotjs",
-  "express",
-  "nextdotjs",
-  "prisma",
-  "amazonaws",
-  "postgresql",
-  "firebase",
-  "nginx",
-  "vercel",
-  "testinglibrary",
-  "jest",
-  "cypress",
-  "docker",
-  "git",
-  "jira",
-  "github",
-  "gitlab",
-  "visualstudiocode",
-  "androidstudio",
-  "sonarqube",
-  "figma",
-];
+
 
 export default function BlogHero() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   return (
     <div className="max-w-2xl w-full mx-auto ">
@@ -56,7 +18,7 @@ export default function BlogHero() {
         </div>
         <div className="px-24 text-center">
           <h1 className="text-2xl">Tech Stack</h1>
-          {isMounted && <IconCloud iconSlugs={slugs} />}
+       
         </div>
       </div>
     </div>
