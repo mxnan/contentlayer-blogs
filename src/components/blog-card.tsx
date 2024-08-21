@@ -20,13 +20,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         color={"#6b7280"}
         refresh
       />
-      <Link href={`/blogs/${blog?.slug}`} className="block h-full">
+      <Link href={`/blogs/${blog?.slug}`} className="block w-full h-full ">
         <div className="p-4 group/card">
-          <div className=" flex flex-col h-full *:w-max *:pr-3 *:py-1 *:pl-2 *:rounded-xl">
-            <h2 className="text-xl font-bold uppercase ">
-              {blog?.title}
-            </h2>
-            <p className="text-stone-600 dark:text-stone-500 mt-2 text-sm flex-grow line-clamp-3">
+          <div className=" flex flex-col h-full *:w-full  *:py-1 *:rounded-xl">
+            <h2 className="lg:text-xl font-bold uppercase ">{blog?.title}</h2>
+            <p className="text-stone-600 dark:text-stone-500 mt-2 text-sm ">
               {blog?.description}
             </p>
             <p className="font-semibold text-xs mt-1 ">

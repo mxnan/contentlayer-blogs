@@ -50,7 +50,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 
   return (
     <Tabs
-      className="mt-16 bg-[#1f1f1f] rounded-3xl"
+      className="my-4 bg-[#1f1f1f] rounded-3xl"
       defaultValue="preview"
     >
       <TabsList className="w-full relative border-t-2 border-x-2 border-gray-500 dark:border-stone-600 bg-gray-200 dark:bg-gray-200/60">

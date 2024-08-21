@@ -3,12 +3,23 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import CustomLink from "./custom-link";
 import React from "react";
 import { Callout } from "./call-out";
-import CodeBlock from "./code-block";
-import  ComponentPreview  from "./component-preview";
-import dynamic from "next/dynamic";
 
-export const H1Reveal = dynamic(() => import("../custom/h1-reveal"), {
+import dynamic from "next/dynamic";
+import LoaderCircleSpin from "../ui/loader-circle-spin";
+
+ const H1Reveal = dynamic(() => import("../custom/h1-reveal"), {
+  ssr: true,
+  loading: () => <LoaderCircleSpin />,
+});
+
+const CodeBlock = dynamic(() => import("./code-block"), {
+  ssr: true,
+  loading: () => <LoaderCircleSpin />,
+  
+});
+const ComponentPreview = dynamic(() => import("./component-preview"), {
   ssr: false,
+  loading: () => <LoaderCircleSpin />,
 });
 
 // src\components\mdx\mdx-components.tsx
@@ -17,17 +28,6 @@ export const H1Reveal = dynamic(() => import("../custom/h1-reveal"), {
 export const components = {
   //////////////////////////////////////////////////////////////////////
   // html components
-  h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return (
-      <h1
-        className={cn(
-          "scroll-m-20 text-[3rem] md:text-[4rem] xl:text-[6rem] leading-[7rem] drop-shadow-xl font-bold  uppercase tracking-tight",
-          className
-        )}
-        {...props}
-      />
-    );
-  },
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
@@ -140,7 +140,7 @@ export const components = {
         <h2
           id={id}
           className={cn(
-            "mt-10 scroll-m-10 pb-3 pr-4 text-2xl font-bold capitalize w-max custom-underline cursor-pointer ",
+            "mt-10 scroll-m-10 pb-3 pr-4 text-3xl font-bold capitalize w-max custom-underline cursor-pointer ",
             className
           )}
           {...props}
@@ -155,8 +155,7 @@ export const components = {
   Callout,
   ComponentPreview,
   H1Reveal,
-// importing dynamically on top
-
+  // importing dynamically on top
 };
 
 // types

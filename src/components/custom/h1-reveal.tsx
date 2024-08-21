@@ -18,7 +18,7 @@ const H1Reveal = ({
       >
         <h1
           className={cn(
-            "scroll-m-10 pr-16 text-[3rem] md:text-[4rem] xl:text-[6rem] md:leading-[7rem] drop-shadow-xl font-bold  uppercase tracking-tight custom-text-gradient",
+            "pr-16 text-[3rem] md:text-[4rem] xl:text-[6rem]  drop-shadow-xl font-bold  uppercase tracking-tight custom-text-gradient",
             className
           )}
         >
