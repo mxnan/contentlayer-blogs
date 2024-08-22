@@ -35,7 +35,8 @@ export default function BlogsPage() {
           <h1
             className="scroll-m-10 pr-16 uppercase tracking-tight
           text-[3rem] md:text-[4rem] xl:text-[6rem] md:leading-[7rem] 
-          drop-shadow-xl font-bold custom-text-gradient "
+          drop-shadow-xl font-bold 
+          bg-clip-text text-transparent bg-gradient-to-r from-black dark:from-white to-lightone dark:to-darkone"
           >
             Blogs
           </h1>

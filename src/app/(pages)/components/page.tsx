@@ -1,5 +1,5 @@
 import React from "react";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
 import { TableOfContents } from "@/components/mdx/toc";
@@ -27,14 +27,14 @@ export default async function IntroPage() {
   const components = await getComponents("intro");
 
   if (!components) {
-    notFound();
+    redirect("/404");
   }
 
   return (
     <section className="flex-1 relative min-h-screen">
-      <article className="prose-sm">
+     
         <Mdx source={components?.body.code} />
-      </article>
+    
       <TableOfContents
         className="w-max hidden 2xl:block fixed top-44 right-8 "
         toc={components?.toc}

@@ -46,7 +46,11 @@ export default function BlogPage({ params }: BlogPageProps) {
       {/* Back button */}
       <div className="w-[100px] hidden xl:block fixed top-44 left-12 2xl:left-32 self-start">
         <Link href="/blogs">
-          <Button className="flex items-center gap-2" size={"destructive"} variant={"destructive"}>
+          <Button
+            className="flex items-center gap-2"
+            size={"destructive"}
+            variant={"destructive"}
+          >
             <ArrowBigLeft className="w-5 h-5" />
             Back
           </Button>
@@ -65,10 +69,14 @@ export default function BlogPage({ params }: BlogPageProps) {
           {/* text div */}
           <div className="space-y-4 lg:pr-8 md:w-2/3">
             <div className="space-y-6">
-              <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold custom-text-gradient ">
+              <h1
+                className="text-7xl xl:text-[6rem] uppercase font-semibold 
+              bg-clip-text text-transparent bg-gradient-to-r from-black dark:from-white to-lightone dark:to-darkone
+              "
+              >
                 {blogs?.title}
               </h1>
-              <p className="text-base lg:text-lg max-lg:font-light">
+              <p className="text-base lg:text-lg ">
                 {blogs?.description}
               </p>
             </div>
@@ -109,9 +117,9 @@ export default function BlogPage({ params }: BlogPageProps) {
           </div>
         </div>
         {/* MDX content div */}
-        <article className="prose-sm  mx-auto">
+        <article>
           <Mdx source={blogs?.body.code} />
-          <div className="flex justify-start pt-12 mb-12 xl:hidden py-4 border-custom border-t">
+          <div className="flex justify-start pt-12 mb-12 xl:hidden py-4 border-gray-500 border-t">
             <Button variant={"destructive"}>
               <Link href="/blogs" className="flex items-center gap-2">
                 <CircleArrowLeftIcon className="w-5 h-5" />
@@ -123,7 +131,7 @@ export default function BlogPage({ params }: BlogPageProps) {
       </div>
       {/* Table of contents */}
       <TableOfContents
-        className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
+        className="w-max hidden 2xl:block fixed top-44 right-8 "
         toc={blogs.toc}
       />
     </section>

@@ -4,7 +4,7 @@ import React from "react";
 
 const H1revealDemo = ({ className }: { className?: string }) => {
   return (
-    <div className="w-full flex-center">
+    <div className="w-full flex items-center justify-center">
       <ParticlesReveal
         width="fit-content"
         className="bg-lightone dark:bg-darkone"

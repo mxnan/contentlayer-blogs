@@ -10,7 +10,7 @@ const H1Reveal = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="w-full">
+    
       <ParticlesReveal
         width="fit-content"
         className="bg-lightone dark:bg-darkone"
@@ -18,14 +18,14 @@ const H1Reveal = ({
       >
         <h1
           className={cn(
-            "pr-16 text-[3rem] md:text-[4rem] xl:text-[6rem]  drop-shadow-xl font-bold  uppercase tracking-tight custom-text-gradient",
+            "pr-16 text-[3rem] md:text-[4rem] xl:text-[6rem]  drop-shadow-xl font-bold  uppercase tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-black dark:from-white to-lightone dark:to-darkone",
             className
           )}
         >
           {children}
         </h1>
       </ParticlesReveal>
-    </div>
+ 
   );
 };
 

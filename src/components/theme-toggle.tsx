@@ -45,7 +45,7 @@ const ThemeToggle = () => {
       aria-label="Toggle Dark Mode"
       type="button"
       className="dark-mode-toggle relative rounded-xl w-7 h-7 text-gray-500
-      flex-center overflow-hidden
+      flex items-center justify-center overflow-hidden
      
       "
       onClick={toggleTheme}

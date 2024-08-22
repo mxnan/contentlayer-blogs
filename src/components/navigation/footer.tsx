@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
       >
         <nav className="flex flex-wrap justify-center">
           {navigation.main.map((item) => (
-            <div key={item.name} className="px-5 pt-1 flexcenter ">
+            <div key={item.name} className="px-5 pt-1 flex items-center justify-center ">
               <Link href={item.href}>
                 <Button
                   variant={"link"}

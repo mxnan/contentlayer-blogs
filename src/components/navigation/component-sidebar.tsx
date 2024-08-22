@@ -56,7 +56,7 @@ const DesktopSidebar = () => {
         </Link>
         {componentSidebar.map((category) => (
           <div key={category.category} className=" space-y-4">
-            <span className="font-medium text-lg px-3 py-2 border-[1px] rounded-lg  shadow-lg border-gray-300 dark:border-gray-700 ">
+            <span className="font-normal text-lg px-1 py-2">
               {category.category}
             </span>
 

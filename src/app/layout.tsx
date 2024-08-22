@@ -1,28 +1,21 @@
 import type { Metadata } from "next";
-import { Anybody, Cuprum } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/navigation/footer";
 import dynamic from "next/dynamic";
+import { Montserrat as FontSans } from "next/font/google";
 
 // dynamic navbar for  animations
 const DynamicNavbar = dynamic(() => import("@/components/navigation/navbar"), {
   ssr: false,
-})
+});
 ////////////////////////
-
-//fonts
-export const bodyFont = Anybody({
+const fontSans = FontSans({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-sans",
 });
-export const titleFont = Cuprum({
-  subsets: ["latin"],
-  variable: "--font-title",
-});
-//fonts
 
 //metadata
 export const metadata: Metadata = {
@@ -45,13 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "relative w-full font-body",
-          bodyFont.variable,
-          titleFont.variable
-        )}
-      >
+      <body className={cn("relative w-full font-sans", fontSans.variable)}>
         <Providers>
           <DynamicNavbar />
           <main className="py-28 mx-auto container w-full">{children}</main>

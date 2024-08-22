@@ -10,40 +10,7 @@
 }
 
 @layer utilities {
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-  .flex-between {
-    @apply flex items-center justify-between;
-  }
-  .flex-evenly {
-    @apply flex items-center justify-evenly;
-  }
   .custom-underline {
     @apply hover:bg-[url('/images/assets/underline.svg')] dark:hover:bg-[url('/images/assets/underline-dark.svg')];
-  }
-  .image-border {
-    @apply border-[0.2px] shadow-md border-gray-600 dark:border-gray-400;
-  }
-  .custom-text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-black dark:from-white to-lightone dark:to-darkone;
-  }
-  .scrollbar-custom::-webkit-scrollbar {
-    width: 12px;
-  }
-  .scrollbar-custom::-webkit-scrollbar-track {
-    background: #111111;
-    border-radius: 10px;
-  }
-  .scrollbar-custom::-webkit-scrollbar-thumb {
-    background: #111111;
-    border-radius: 10px;
-  }
-  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-    background: #2e2e2e;
-  }
-  .scrollbar-custom {
-    scrollbar-width: thin;
-    scrollbar-color: #888 #111111;
   }
 }

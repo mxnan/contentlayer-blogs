@@ -84,7 +84,7 @@ const DesktopNav = () => {
         >
           {pathname === "/" ? <Wind className="w-5 h-5" /> : <p>mxnan.com</p>}
         </Link>
-        <div className="flex-center gap-8 py-3 px-4">
+        <div className="flex items-center gap-8 py-3 px-4">
           {Navlinks.slice(1).map((link) => (
             <Link key={link.link} href={link.link} legacyBehavior>
               <Button

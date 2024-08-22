@@ -25,7 +25,7 @@ const CodeBlock = ({
     .join("");
 
   return (
-    <div className="relative">
+    <div className="relative mb-6">
       <span className="flex-1 absolute right-6 top-6 z-10">
         <CopyPasteButton content={codeContent} />
       </span>

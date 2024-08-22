@@ -54,9 +54,8 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
 
   return (
     <section className="flex-1 relative min-h-screen">
-      <article className="prose-sm">
-        <Mdx source={component?.body.code} />
-      </article>
+      <Mdx source={component?.body.code} />
+
       <TableOfContents
         className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
         toc={component?.toc}
