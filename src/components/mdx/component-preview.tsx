@@ -49,10 +49,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
   }, [path, category]);
 
   return (
-    <Tabs
-      className="my-8 bg-[#1f1f1f] rounded-3xl"
-      defaultValue="preview"
-    >
+    <Tabs className="my-8 bg-[#1f1f1f] rounded-3xl" defaultValue="preview">
       <TabsList className="w-full relative border-t-2 border-x-2 border-gray-500 dark:border-stone-600 bg-gray-200 dark:bg-gray-200/60">
         {/* Tabs header */}
         <div className="flex items-center w-full justify-between px-2 ">
@@ -88,10 +85,10 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
       </TabsList>
       {/* tabs content preview */}
       <TabsContent
-        className="bg-[#1f1f1f] border-b-2 border-gray-500 dark:border-stone-600 rounded-xl"
+        className="bg-[#1f1f1f] border-b-2 border-gray-500 dark:border-stone-600 rounded-xl flex items-center justify-center min-h-80"
         value="preview"
       >
-        <div className="flex items-center justify-center min-h-80">{Preview}</div>
+        {Preview}
       </TabsContent>
       {/* tabs content code */}
       <TabsContent value="code">

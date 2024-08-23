@@ -13,9 +13,7 @@ const CodeBlock = dynamic(() => import("./code-block"), {
 });
 const ComponentPreview = dynamic(() => import("./component-preview"), {
   ssr: false,
-  loading: () => (
-    <div className="w-full h-52 bg-gray-500 rounded-2xl animate-pulse" />
-  ),
+  loading: () => <LoaderCircleSpin />,
 });
 
 // src\components\mdx\mdx-components.tsx
@@ -23,6 +21,7 @@ const ComponentPreview = dynamic(() => import("./component-preview"), {
 //define all mdx components here
 export const components = {
   ...basecomponents, // imported from mdx-base.tsx
+
   // code block
   pre: CodeBlock, //pre as a  codeblock by bright.
   // callout
@@ -41,8 +40,8 @@ export function Mdx({ source }: MDXProps) {
   const Component = useMDXComponent(source);
 
   return (
-    <article className="prose-sm">
+    
       <Component components={components} />
-    </article>
+   
   );
 }

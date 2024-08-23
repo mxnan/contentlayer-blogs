@@ -7,7 +7,7 @@ export const componentSidebar: {
 }[] = [
   {
     category: "Playground",
-    items: [{ name: "H1 reveal", href: "/components/playground/h1-reveal" }],
+    items: [{ name: "Particles reveal", href: "/components/playground/particles-reveal" }],
   },
   {
     category: "Loaders",

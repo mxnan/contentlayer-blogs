@@ -5,19 +5,40 @@ category: playground
 date: 20-06-2024
 ---
 
-# Particles-box
+# Particles-reveal
 
-> reveals children with particle-box animation
+<Callout> Reveals children with particle-box animation </Callout>
 
-<ComponentPreview category="playground" path="h1-reveal" usingCN usingFramer />
+**Inspired from magicUI box reveal .** [see docs](https://magicui.design/docs/components/box-reveal)
 
-<Callout> `Inspired by magicui box reveal` </Callout>
+---
 
-### add particles.tsx
+> Text-reveal
 
-This is directly from magicui, see [docs](https://magicui.design/docs/components/box-reveal) .
+<ComponentPreview
+  category="playground"
+  path="particles-reveal-text"
+  usingCN
+  usingFramer
+/>
+---
 
-`This will handle displaying particles on a canvas . `
+> Grid-reveal
+
+<ComponentPreview
+  category="playground"
+  path="particles-reveal-grid"
+  usingCN
+  usingFramer
+/>
+
+---
+
+<Steps>
+
+<Step className="text-2xl">Installation :</Step>
+
+<Step className="text-sm">Copy and paste the following code into your project.</Step>
 
 ```particles.tsx
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -301,12 +322,6 @@ const Particles: React.FC<ParticlesProps> = ({
 export default Particles;
 ```
 
-### add particle-reveal.tsx
-
-some text here
-
-`This will handle framer-motion logic and handling children . `
-
 ```particle-reveal.tsx
 "use client";
 
@@ -406,45 +421,6 @@ export const ParticlesReveal = ({
 export default ParticlesReveal;
 ```
 
-### finally create a h1-reveal component
+<Step className="text-sm">Update the import paths to match your project setup.</Step>
 
-some text here
-
-`This does not have to be h1, you can use any component within it with tweaking values .`
-
-```h1-reveal.tsx
-import { cn } from "@/lib/utils";
-import React from "react";
-import ParticlesReveal from "./paticles-reveal";
-
-const CustomHeading = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <div className="w-full">
-      <ParticlesReveal
-        width="fit-content"
-        className="bg-lightone dark:bg-darkone"
-        duration={1.5}
-      >
-        <h1
-          className={cn(
-            "scroll-m-10 pr-16 text-[3rem] md:text-[4rem] xl:text-[6rem] md:leading-[7rem] drop-shadow-xl font-bold  uppercase tracking-tight custom-text-gradient",
-            className
-          )}
-        >
-          {children}
-        </h1>
-      </ParticlesReveal>
-    </div>
-  );
-};
-
-export default CustomHeading;
-```
-
-- some text here
+</Steps>

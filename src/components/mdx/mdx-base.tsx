@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 import CustomLink from "./custom-link";
+import { steps } from "framer-motion";
 
 export const basecomponents = {
   //////////////////////////////////////////////////////////////////////
@@ -8,7 +9,7 @@ export const basecomponents = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
-        "mb-10 scroll-m-20 uppercase text-4xl lg:text-6xl font-bold",
+        "mb-10 scroll-m-20 uppercase text-4xl lg:text-6xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -124,6 +125,8 @@ export const basecomponents = {
   //////////////////////////////////////////////////////////////////////
   // custom components down here
 
+  hr: ({ ...props }) => <hr className="my-4 border-gray-500" {...props} />,
+
   // customLink
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <CustomLink
@@ -131,6 +134,23 @@ export const basecomponents = {
         "font-semibold text-gray-500 custom-underline mx-1 pb-[6px]",
         className
       )}
+      {...props}
+    />
+  ),
+  ///////
+  // steps
+  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
+    <h3
+      className={cn(
+        "my-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        className
+      )}
+      {...props}
+    />
+  ),
+  Steps: ({ ...props }) => (
+    <div
+      className="[&>h3]:step steps mb-12 ml-4 border-l border-gray-500  pl-8 [counter-reset:step]"
       {...props}
     />
   ),
