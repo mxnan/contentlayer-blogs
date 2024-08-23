@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { getFormattedDate } from "@/lib/utils";
 import { Blogs } from "contentlayer/generated";
-import { BorderBeam } from "./custom/border-beam";
 import Particles from "./custom/particles";
 
 export interface BlogCardProps {
@@ -11,8 +10,7 @@ export interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
-    <div className="w-full relative max-w-md  border-stone-200 dark:border-stone-800 border h-auto shadow-xl rounded-lg overflow-hidden">
-      <BorderBeam size={200} duration={20} />
+    <div className="w-full relative max-w-lg  border-stone-200 dark:border-stone-800 border h-auto shadow-xl rounded-lg overflow-hidden">
       <Particles
         className="absolute inset-0 -z-10"
         quantity={40}
@@ -20,7 +18,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         color={"#6b7280"}
         refresh
       />
-      <Link href={`/blogs/${blog?.slug}`} className="block w-full h-full ">
+      <Link  href={`/blogs/${blog?.slug}`} className="block w-full h-full ">
         <div className="p-4 group/card">
           <div className=" flex flex-col h-full *:w-full  *:py-1 *:rounded-xl">
             <h2 className="lg:text-xl font-bold uppercase ">{blog?.title}</h2>

@@ -1,5 +1,3 @@
-import React from "react";
-import { notFound, redirect } from "next/navigation";
 import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
 import { TableOfContents } from "@/components/mdx/toc";
@@ -25,16 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function IntroPage() {
   const components = await getComponents("intro");
-
-  if (!components) {
-    redirect("/404");
-  }
-
   return (
     <section className="flex-1 relative min-h-screen">
-     
         <Mdx source={components?.body.code} />
-    
       <TableOfContents
         className="w-max hidden 2xl:block fixed top-44 right-8 "
         toc={components?.toc}

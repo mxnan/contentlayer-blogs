@@ -5,14 +5,14 @@ import { useEffect, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { CornerDownRight } from "lucide-react";
 
-export interface TocEntry {
+ interface TocEntry {
   title: string;
   slug: string;
 }
 
-export interface TocProps {
+ interface TocProps {
   toc: TocEntry[];
-  className?: string;
+  className: string;
 }
 
 export function TableOfContents({ toc, className }: TocProps) {

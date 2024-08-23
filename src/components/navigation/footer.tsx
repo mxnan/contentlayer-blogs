@@ -39,17 +39,17 @@ export const navigation: {
     {
       name: "Twitter",
       href: "https://twitter.com/etc_etcx",
-      icon: <TwitterIcon className="w-5 h-5" />,
+      icon: <TwitterIcon className="w-6 h-6" />,
     },
     {
       name: "GitHub",
       href: "https://github.com/mxnan",
-      icon: <GithubIcon className="w-5 h-5" />,
+      icon: <GithubIcon className="w-6 h-6" />,
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/manan-negi-377373140/",
-      icon: <LinkedinIcon className="w-5 h-5" />,
+      icon: <LinkedinIcon className="w-6 h-6" />,
     },
   ],
 };
@@ -66,9 +66,13 @@ const Footer: React.FC = () => {
       >
         <nav className="flex flex-wrap justify-center">
           {navigation.main.map((item) => (
-            <div key={item.name} className="px-5 pt-1 flex items-center justify-center ">
+            <div
+              key={item.name}
+              className="px-5 pt-1 flex items-center justify-center "
+            >
               <Link href={item.href}>
                 <Button
+                  aria-label={item.name}
                   variant={"link"}
                   size={"link"}
                   className={cn(
@@ -84,10 +88,11 @@ const Footer: React.FC = () => {
         </nav>
         <div className="pt-8 flex justify-center gap-6 space-x-6">
           {navigation.social.map((item) => (
-            <TooltipProvider key={item.name} >
-              <Tooltip delayDuration={0}>
+            <TooltipProvider key={item.name}>
+              <Tooltip disableHoverableContent delayDuration={0}>
                 <TooltipTrigger>
                   <a
+                    aria-label={item.name}
                     rel="noopener noreferrer"
                     target="_blank"
                     href={item.href}

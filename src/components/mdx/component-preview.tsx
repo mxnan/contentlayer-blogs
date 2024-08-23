@@ -32,7 +32,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
       () => import(`@/showcase/${category}/${path}`),
       {
         loading: () => <LoaderCircleSpin />,
-        ssr: false,
+        ssr: true,
       }
     );
     return <DynamicComponent />;
@@ -85,7 +85,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
       </TabsList>
       {/* tabs content preview */}
       <TabsContent
-        className="bg-[#1f1f1f] border-b-2 border-gray-500 dark:border-stone-600 rounded-xl flex items-center justify-center min-h-80"
+        className="bg-[#1f1f1f] border-b-2 border-gray-500 dark:border-stone-600 rounded-xl min-h-80"
         value="preview"
       >
         {Preview}

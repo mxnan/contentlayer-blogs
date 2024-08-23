@@ -3,18 +3,18 @@ import React from "react";
 
 const GridItems = [
   {
-    title: "Particles Reveal",
-    description: "Reveal particles with animation",
+    title: "Grid Reveal",
+    description: "Reveals grid particles with animation",
     info: ["Enter text here", "Enter text here", "Enter text here"],
   },
   {
-    title: "Particles Reveal",
-    description: "Reveal particles with animation",
+    title: "Grid Reveal",
+    description: "Reveals grid particles with animation",
     info: ["Enter text here", "Enter text here", "Enter text here"],
   },
   {
-    title: "Particles Reveal",
-    description: "Reveal particles with animation",
+    title: "Grid Reveal",
+    description: "Reveals grid particles with animation",
     info: ["Enter text here", "Enter text here", "Enter text here"],
   },
 

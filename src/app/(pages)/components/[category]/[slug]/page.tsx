@@ -1,5 +1,4 @@
 import React from "react";
-import { notFound } from "next/navigation";
 import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
 import type { Metadata } from "next";
@@ -47,11 +46,6 @@ export async function generateMetadata({
 
 export default async function ComponentPage({ params }: ComponentPageProps) {
   const component = await getComponents(params.category, params.slug);
-
-  if (!component) {
-    notFound();
-  }
-
   return (
     <section className="flex-1 relative min-h-screen">
       <Mdx source={component?.body.code} />
