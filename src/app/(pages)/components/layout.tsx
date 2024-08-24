@@ -1,10 +1,9 @@
 // app/components/layout.tsx
-import LoaderCircleSpin from "@/components/ui/loader-circle-spin";
 import dynamic from "next/dynamic";
 
 const DynamicComponentSidebar = dynamic(
   () => import("@/components/navigation/component-sidebar"),
-  { ssr: true, loading: () => <LoaderCircleSpin /> }
+  { ssr: true }
 );
 
 export default function ComponentsLayout({

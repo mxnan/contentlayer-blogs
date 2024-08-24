@@ -4,16 +4,19 @@ import { Button } from "@/components/ui/button";
 import LoaderCircleSpin from "@/components/ui/loader-circle-spin";
 import { getFormattedDate } from "@/lib/utils";
 import { allBlogs } from "contentlayer/generated";
-import { ArrowBigLeft, CircleArrowLeftIcon, ClockIcon } from "lucide-react";
+import { CircleArrowLeft, ClockIcon } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 
-const DynamicTableOfContents = dynamic(() => import('@/components/mdx/toc').then(mod => mod.TableOfContents), {
-  ssr: false,
-  loading: () => <LoaderCircleSpin />
-});
+const DynamicTableOfContents = dynamic(
+  () => import("@/components/mdx/toc").then((mod) => mod.TableOfContents),
+  {
+    ssr: false,
+    loading: () => <LoaderCircleSpin />,
+  }
+);
 
 export interface BlogPageProps {
   params: {
@@ -41,28 +44,29 @@ export async function generateMetadata({
 export default async function BlogPage({ params }: BlogPageProps) {
   const blogs = allBlogs.find((blogs) => blogs.slug === params.slug);
 
-  
-
   return (
     <section className="flex-1 relative min-h-screen">
       {/* Back button */}
-      <div className="w-[100px] hidden xl:block fixed top-44 left-12 2xl:left-32 self-start">
-        <Link href="/blogs">
-          <Button
-            className="flex items-center gap-2"
-            size={"destructive"}
-            variant={"destructive"}
-          >
-            <ArrowBigLeft className="w-6 h-6" />
-            Back
-          </Button>
-        </Link>
-      </div>
+
+      <Link
+        href="/blogs"
+        className="w-[100px] hidden xl:block fixed top-44 left-12 2xl:left-32 self-start"
+      >
+        <Button
+          className="flex items-center gap-2"
+          size={"destructive"}
+          variant={"destructive"}
+        >
+          <CircleArrowLeft className="w-4 h-4" />
+          Back
+        </Button>
+      </Link>
+
       {/* Content */}
       <div className="w-full max-w-4xl 2xl:max-w-5xl mx-auto space-y-16">
         <Button variant={"destructive"} className="xl:hidden mt-4">
           <Link href="/blogs" className="flex items-center gap-2">
-            <CircleArrowLeftIcon className="w-6 h-6" />
+            <CircleArrowLeft className="w-4 h-4" />
             Back
           </Link>
         </Button>
@@ -78,9 +82,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               >
                 {blogs?.title}
               </h1>
-              <p className="text-base lg:text-lg ">
-                {blogs?.description}
-              </p>
+              <p className="text-base lg:text-lg ">{blogs?.description}</p>
             </div>
 
             <div className="flex flex-col text-gray-500  gap-2">
@@ -120,14 +122,16 @@ export default async function BlogPage({ params }: BlogPageProps) {
         {/* MDX content div */}
         <div>
           <Mdx source={blogs?.body.code} />
-          <div className="flex justify-start pt-12 mb-12 xl:hidden py-4 border-gray-500 border-t">
-            <Button variant={"destructive"}>
-              <Link href="/blogs" className="flex items-center gap-2">
-                <CircleArrowLeftIcon className="w-6 h-6" />
-                Back
-              </Link>
+
+          <Link
+            href="/blogs"
+            className="flex justify-start pt-12 mb-12 xl:hidden py-4 border-gray-500 border-t"
+          >
+            <Button className="flex items-center gap-2" variant={"destructive"}>
+              <CircleArrowLeft className="w-4 h-4" />
+              Back
             </Button>
-          </div>
+          </Link>
         </div>
       </div>
       {/* Table of contents */}

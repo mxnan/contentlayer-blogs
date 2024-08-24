@@ -125,7 +125,7 @@ export const basecomponents = {
   //////////////////////////////////////////////////////////////////////
   // custom components down here
 
-  hr: ({ ...props }) => <hr className="my-4 border-gray-500" {...props} />,
+  hr: ({ ...props }) => <hr className="my-4 max-w-3xl w-full border-gray-500" {...props} />,
 
   // customLink
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (

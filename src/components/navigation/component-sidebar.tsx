@@ -5,8 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { componentSidebar } from "@/lib/site.config";
-import { ArrowBigRight } from "lucide-react";
-import { BorderBeam } from "../custom/border-beam";
+import {  CircleArrowRight } from "lucide-react";
 
 export default function ComponentSidebar() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -34,19 +33,20 @@ const DesktopSidebar = () => {
   return (
     <nav className="h-full relative overflow-x-hidden">
       <div className="fixed left-4 top-44 h-[70vh] overflow-y-auto space-y-5 p-4">
+        {/* Link for /components*/}
         <Link
           href="/components"
           className={cn(
-            "flex justify-between w-full  hover:translate-x-2 transition-transform ease-in-out duration-300",
+            "flex justify-between w-full  hover:translate-x-2 transition-all ease-in-out duration-300",
             {
               "font-semibold translate-x-2": pathname === "/components",
               "text-gray-500": pathname !== "/components",
             }
           )}
         >
-          <p className="custom-underline  flex items-center gap-2 text-lg w-min pb-2">
+          <p className="custom-underline  flex items-center gap-2 text-base w-min pb-2">
             Introduction
-            <ArrowBigRight
+            <CircleArrowRight 
               className={cn(
                 "w-4 h-4  opacity-0 transition-opacity ease-in-out duration-300",
                 pathname === "/components" && "opacity-100"
@@ -54,9 +54,10 @@ const DesktopSidebar = () => {
             />
           </p>
         </Link>
+        {/* Mapping over componentSidebar from lib/site.config*/}
         {componentSidebar.map((category) => (
           <div key={category.category} className=" space-y-4">
-            <span className="font-normal text-lg px-1 py-2">
+            <span className="font-medium  px-1 py-2">
               {category.category}
             </span>
 
@@ -64,12 +65,12 @@ const DesktopSidebar = () => {
               {category.items.map((item) => (
                 <li
                   key={item.name}
-                  className=" mb-1 hover:translate-x-2 transition-transform ease-in-out duration-300"
+                  className=" mb-1  hover:translate-x-2 transition-all ease-in-out duration-300"
                 >
                   <Link
                     href={item.href}
                     className={cn(
-                      "custom-underline w-max pb-2 flex items-center gap-2 text-base ",
+                      "custom-underline w-max pb-2 flex items-center gap-2 text-sm ",
                       {
                         "font-semibold translate-x-2 transition-all ease-in-out duration-300 ":
                           pathname === item.href,
@@ -78,7 +79,7 @@ const DesktopSidebar = () => {
                     )}
                   >
                     {item.name}
-                    <ArrowBigRight
+                    <CircleArrowRight 
                       className={cn(
                         "w-4 h-4 opacity-0 ",
                         pathname === item.href && "opacity-100"

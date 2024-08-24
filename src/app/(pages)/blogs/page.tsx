@@ -8,7 +8,7 @@ import LoaderCircleSpin from "@/components/ui/loader-circle-spin";
 const DynamicBlogCard = dynamic(() => import("@/components/blog-card"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-52 ">
+    <div className="w-full relative h-52 flex items-center justify-center ">
       <LoaderCircleSpin />
     </div>
   ),
@@ -42,7 +42,8 @@ export default async function BlogsPage() {
           </p>
         </div>
         <div
-          className="flex-1 grid grid-cols-1 p-4
+          className="flex-1 grid grid-cols-1 p-4 md:border-x 
+                    border-gray-300 dark:border-gray-700
                       md:grid-cols-2
                       lg:grid-cols-2
                       justify-items-center content-center"

@@ -9,11 +9,14 @@ import { basecomponents } from "./mdx-base";
 
 const CodeBlock = dynamic(() => import("./code-block"), {
   ssr: true,
-  loading: () => <LoaderCircleSpin />,
 });
 const ComponentPreview = dynamic(() => import("./component-preview"), {
   ssr: false,
-  loading: () => <LoaderCircleSpin />,
+  loading: () => (
+    <div className="w-full h-80 flex items-center justify-center">
+      <LoaderCircleSpin />
+    </div>
+  ),
 });
 
 // src\components\mdx\mdx-components.tsx
@@ -39,9 +42,5 @@ export function Mdx({ source }: MDXProps) {
   // use mdx component hook
   const Component = useMDXComponent(source);
 
-  return (
-    
-      <Component components={components} />
-   
-  );
+  return <Component components={components} />;
 }

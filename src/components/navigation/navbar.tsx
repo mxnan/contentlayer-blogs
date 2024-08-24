@@ -80,7 +80,11 @@ const DesktopNav = () => {
         },
       }}
       transition={{
-        duration: 0.5,
+        duration: 0.3,
+        type: "tween",
+        damping: 80,
+        stiffness: 200,
+
         ease: "easeInOut",
       }}
       className={cn(
@@ -109,12 +113,13 @@ const DesktopNav = () => {
                 {hoveredIndex === index && (
                   <motion.span
                     className="absolute inset-0 h-full w-full block rounded-lg
-                bg-gray-100/[0.5] dark:bg-stone-700/[0.5]
+                  bg-gray-300/[0.2] dark:bg-stone-700/[0.5]
                  border-gray-300 dark:border-gray-700 border"
                     layoutId="hoverBackground"
                     initial={{ opacity: 0 }}
                     animate={{
                       opacity: 1,
+
                       transition: {
                         duration: 0.2,
                         ease: "easeInOut",
@@ -234,7 +239,11 @@ const MobileNav = () => {
                   shadow-md rounded-xl p-4 flex flex-col gap-3"
               >
                 {Navlinks.slice(1).map((link) => (
-                  <Link key={link.link} href={link.link} className="font-medium">
+                  <Link
+                    key={link.link}
+                    href={link.link}
+                    className="font-medium"
+                  >
                     {link.name}
                   </Link>
                 ))}
@@ -247,70 +256,3 @@ const MobileNav = () => {
   );
 };
 
-/// not using menu and menuitem from top-nav-items as it slows pages  down ..
-/// top-nav-items.tsx items
-{
-  /***  
-        <Menu setActive={setActive}>
-     
-          <MenuItem setActive={setActive} active={active} item="Components">
-            <div className="flex flex-col space-y-2 md:space-y-4">
-              <ContentCard
-                title="Shimmer Button"
-                href="/components/buttons/shimmer-button"
-              />
-              <ContentCard
-                title="Bounce Loader"
-                href="/components/loaders/bounce-loader"
-              />
-            </div>
-          </MenuItem>
-         
-          <MenuItem setActive={setActive} active={active} item="Blogs">
-            <div className="flex flex-col space-y-4 md:space-y-6">
-              <ContentCard
-                title="emailjs"
-                href="/blogs/test"
-                src="/images/blogs/og.jpg"
-                description="implement emailjs on your app using hooks and shadcn form to recieve emails to sned jasdb dsanbjhd jhshbdsa hsd"
-              />
-              <ContentCard
-                title="test"
-                href="/blogs/test2"
-                src="/images/blogs/og.jpg"
-                description="test test test"
-              />
-            </div>
-          </MenuItem>
-        
-          <MenuItem setActive={setActive} active={active} item="Contact">
-            <div className="flex flex-col font-title space-y-4 pr-2 text-sm text-gray-600 dark:text-gray-400">
-              <a
-                href="/contact#email"
-                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
-              >
-                email{" "}
-                <MailIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
-              </a>
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://www.linkedin.com/in/manan-negi-377373140/"
-                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
-              >
-                linkedin{" "}
-                <LinkedinIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
-              </a>
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://twitter.com/etc_etcx"
-                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
-              >
-                twitter{" "}
-                <LucideTwitter className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
-              </a>
-            </div>
-          </MenuItem>
-        </Menu>***/
-}

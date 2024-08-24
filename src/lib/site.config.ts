@@ -1,5 +1,5 @@
 //components sidebar config//
-//define new components here ,so their links regenerated in sidebar
+//define new components here ,so their links regenerated in component-sidebar.tsx
 
 export const componentSidebar: {
   category: string;
@@ -37,3 +37,4 @@ export const Navlinks: { name: string; link: string }[] = [
     link: "/contact",
   },
 ];
+

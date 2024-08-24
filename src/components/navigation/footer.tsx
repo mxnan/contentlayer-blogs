@@ -7,6 +7,7 @@ import React from "react";
 
 import {
   ArrowBigDown,
+  CircleArrowDown,
   GithubIcon,
   LinkedinIcon,
   TwitterIcon,
@@ -20,13 +21,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-export interface NavigationItem {
+interface NavigationItem {
   name: string;
   href: string;
   icon?: JSX.Element;
 }
 
-export const navigation: {
+const navigation: {
   main: NavigationItem[];
   social: NavigationItem[];
 } = {
@@ -104,7 +105,7 @@ const Footer: React.FC = () => {
                 <TooltipContent className="mr-12 mb-2">
                   <p className="font-title text-gray-500 flex items-center gap-2 text-sm">
                     {item.name}{" "}
-                    <ArrowBigDown className="w-4 h-4 text-black dark:text-white" />
+                    <CircleArrowDown  className="w-4 h-4 text-black dark:text-white" />
                   </p>
                 </TooltipContent>
               </Tooltip>

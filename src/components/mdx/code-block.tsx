@@ -1,7 +1,6 @@
 import React from "react";
-
-import { Code } from "bright";
 import CopyPasteButton from "./copy-button";
+import { Code } from "bright";
 
 const CodeBlock = ({
   className,
@@ -30,9 +29,10 @@ const CodeBlock = ({
         <CopyPasteButton content={codeContent} />
       </span>
 
-      <div className="bg-[#1f1f1f] prose-sm max-h-80 overflow-y-auto scrollbar-custom  px-1 rounded-lg">
+      <div className="bg-[#1f1f1f]  max-h-80 overflow-y-auto px-1 rounded-lg">
         <Code
-          className="text-lg"
+          className="text-sm"
+          lang="tsx"
           titleClassName="text-base font-medium rounded-xl "
           theme={"min-dark"}
           lineNumbers
