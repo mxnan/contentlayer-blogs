@@ -42,7 +42,7 @@ export default async function BlogsPage() {
           </p>
         </div>
         <div
-          className="flex-1 grid grid-cols-1 gap-4 p-4
+          className="flex-1 grid grid-cols-1 p-4
                       md:grid-cols-2
                       lg:grid-cols-2
                       justify-items-center content-center"
