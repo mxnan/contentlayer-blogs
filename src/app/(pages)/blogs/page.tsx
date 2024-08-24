@@ -47,8 +47,8 @@ export default async function BlogsPage() {
                       lg:grid-cols-2
                       justify-items-center content-center"
         >
-          {sortedBlogs.map((blog) => (
-            <DynamicBlogCard blog={blog} key={blog.slug} />
+          {sortedBlogs.map((blog, index) => (
+            <DynamicBlogCard blog={blog} key={blog.slug} index={index} />
           ))}
         </div>
       </div>

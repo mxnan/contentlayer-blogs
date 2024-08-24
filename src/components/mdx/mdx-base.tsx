@@ -137,8 +137,7 @@ export const basecomponents = {
       {...props}
     />
   ),
-  ///////
-  // steps
+  /////// steps
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
@@ -150,7 +149,7 @@ export const basecomponents = {
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>h3]:step steps mb-12 ml-4 border-l border-gray-500  pl-8 [counter-reset:step]"
+      className="[&>h3]:step steps mb-12 ml-4 border-l border-gray-500 pl-8 [counter-reset:step]"
       {...props}
     />
   ),

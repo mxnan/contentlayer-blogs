@@ -4,7 +4,7 @@ import { TableOfContents } from "@/components/mdx/toc";
 import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
 
-export async function getComponents(slug: string): Promise<Components | undefined> {
+async function getComponents(slug: string): Promise<Components | undefined> {
   return allComponents.find((components) => components.slug === slug);
 }
 
@@ -12,7 +12,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const components = await getComponents("intro");
 
   if (!components) {
-    return {};
+    return {
+      title: "Introduction",
+      description: "Component introduction",
+    };
   }
 
   return {
@@ -23,13 +26,20 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function IntroPage() {
   const components = await getComponents("intro");
+
+  if (!components) {
+    return <div>Component not found</div>;
+  }
+
   return (
     <section className="flex-1 relative min-h-screen">
-        <Mdx source={components?.body.code} />
-      <TableOfContents
-        className="w-max hidden 2xl:block fixed top-44 right-8 "
-        toc={components?.toc}
-      />
+      <Mdx source={components.body.code} />
+      {components.toc && (
+        <TableOfContents
+          className="w-max hidden 2xl:block fixed top-44 right-8"
+          toc={components.toc}
+        />
+      )}
     </section>
   );
 }
