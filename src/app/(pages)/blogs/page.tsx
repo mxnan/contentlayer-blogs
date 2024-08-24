@@ -32,7 +32,7 @@ export default async function BlogsPage() {
             className="scroll-m-10 uppercase tracking-tight
           text-[3rem] md:text-[4rem] xl:text-[6rem] md:leading-[7rem] 
           drop-shadow-2xl font-semibold 
-          bg-clip-text text-transparent bg-gradient-to-r from-black/80 dark:from-white/80 to-lightone dark:to-darkone/80"
+          bg-clip-text text-transparent bg-gradient-to-r from-stone-800/80 dark:from-gray-200/80 to-lightone dark:to-darkone/80"
           >
             Blogs
           </h1>

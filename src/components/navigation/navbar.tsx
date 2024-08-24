@@ -13,7 +13,6 @@ import { BorderBeam } from "../custom/border-beam";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { Navlinks } from "@/lib/site.config";
-import { Button } from "../ui/button";
 
 // main navbar for exporting to baselayout
 export default function Navbar() {
@@ -43,9 +42,25 @@ export default function Navbar() {
 
 // desktop nav
 const DesktopNav = () => {
-  const [isHidden, setIsHidden] = useState<boolean>(true);
+  // for auto hiding navbar on scrolldown
   const pathname = usePathname();
- 
+  const [isHidden, setIsHidden] = useState(false);
+  const { scrollY } = useScroll();
+  const lastYRef = useRef(0);
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const difference = y - lastYRef.current;
+    if (Math.abs(difference) > 50) {
+      setIsHidden(difference > 0);
+
+      lastYRef.current = y;
+    }
+  });
+  //////////////////////////
+
+  // for hover effect
+  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  /// ////////////////////////////
+
   return (
     <motion.div
       animate={isHidden ? "hidden" : "visible"}
@@ -65,15 +80,12 @@ const DesktopNav = () => {
         },
       }}
       transition={{
-        duration: 0.2,
-        type: "tween",
-        damping: 30,
-        stiffness: 120,
-        restDelta: 0.001,
+        duration: 0.5,
+        ease: "easeInOut",
       }}
       className={cn(
         "w-full backdrop-blur-3xl fixed -top-1  max-sm:py-6 inset-x-0 border-stone-200 dark:border-stone-800   ",
-        isHidden ? "border-b-[5px]   " : "border-b-[1px]  "
+        isHidden ? "border-b-[5px]" : "border-b-[1px]  "
       )}
     >
       <BorderBeam />
@@ -84,19 +96,43 @@ const DesktopNav = () => {
         >
           {pathname === "/" ? <Wind className="w-5 h-5" /> : <p>mxnan.com</p>}
         </Link>
-        <div className="flex items-center gap-8 py-3 px-4">
-          {Navlinks.slice(1).map((link) => (
-            <Link key={link.link} href={link.link} legacyBehavior>
-              <Button
-                variant={"ghost"}
-                size={"destructive"}
-                className={cn(
-                  "font-semibold text-sm transition-all ease-in-out duration-300",
-                  link.link === pathname && "text-gray-600 dark:text-gray-500"
+        <div className="flex items-center my-3">
+          {Navlinks.slice(1).map((link, index) => (
+            <Link
+              key={link.link}
+              href={link.link}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="relative block w-full px-6 py-2  h-full text-sm font-medium "
+            >
+              <AnimatePresence mode="wait">
+                {hoveredIndex === index && (
+                  <motion.span
+                    className="absolute inset-0 h-full w-full block rounded-lg
+                bg-gray-100/[0.5] dark:bg-stone-700/[0.5]
+                 border-gray-300 dark:border-gray-700 border"
+                    layoutId="hoverBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: {
+                        duration: 0.2,
+                        ease: "easeInOut",
+                      },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: {
+                        duration: 0.1,
+                        delay: 0.05,
+                        ease: "easeInOut",
+                      },
+                    }}
+                  />
                 )}
-              >
-                {link.name}
-              </Button>
+              </AnimatePresence>
+
+              {link.name}
             </Link>
           ))}
         </div>
@@ -144,7 +180,7 @@ const MobileNav = () => {
   return (
     <div className="relative w-full z-50 bg-white dark:bg-black  ">
       <div
-        className="fixed top-0 fixed-nav
+        className="fixed top-0 backdrop-blur-3xl
       flex items-center justify-between py-4 container"
       >
         <ThemeToggle />
@@ -153,7 +189,7 @@ const MobileNav = () => {
             <Link href={Navlinks[0].link} legacyBehavior>
               <a
                 className={cn(
-                  "font-semibold block py-2",
+                  "font-medium block py-2",
                   pathname === "/" && "text-plight dark:text-pdark"
                 )}
               >
@@ -195,18 +231,11 @@ const MobileNav = () => {
                 className="absolute top-10 right-0 w-max mx-auto
                  bg-stone-100 dark:bg-stone-900
                   border-[1px] border-stone-200 dark:border-stone-800
-                  shadow-md rounded-xl p-4"
+                  shadow-md rounded-xl p-4 flex flex-col gap-3"
               >
                 {Navlinks.slice(1).map((link) => (
-                  <Link key={link.link} href={link.link} legacyBehavior>
-                    <a
-                      className={cn(
-                        "block py-2 font-semibold",
-                        link.link === pathname && "text-plight dark:text-pdark"
-                      )}
-                    >
-                      {link.name}
-                    </a>
+                  <Link key={link.link} href={link.link} className="font-medium">
+                    {link.name}
                   </Link>
                 ))}
               </motion.div>

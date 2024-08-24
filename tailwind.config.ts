@@ -45,7 +45,7 @@ const config = {
       colors: {
         black: "#090A0B",
         white: "#F8F9FA",
-        lightone: "#36816C", // english violet
+        lightone: "#8338ec", // english violet
         darkone: "#3A0CA3", // zaffre
       },
     },

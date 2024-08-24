@@ -14,12 +14,12 @@ export interface BlogCardProps {
 const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   return (
-    <div className="w-full relative max-w-lg rounded-lg">
+    
       <Link
         href={`/blogs/${blog.slug}`}
         onMouseEnter={() => setHoveredIndex(index)}
         onMouseLeave={() => setHoveredIndex(null)}
-        className="relative block w-full h-full "
+        className="relative block w-full max-w-lg h-full "
       >
         <AnimatePresence mode="wait">
           {hoveredIndex === index && (
@@ -42,7 +42,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
             />
           )}
         </AnimatePresence>
-        <div className="p-6 relative ">
+        <div className="p-4 lg:p-6 relative ">
           <Particles
             className="absolute inset-0 "
             quantity={40}
@@ -75,7 +75,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
           </div>
         </div>
       </Link>
-    </div>
+   
   );
 };
 
