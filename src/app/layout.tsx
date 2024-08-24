@@ -1,31 +1,27 @@
 import type { Metadata } from "next";
-import { Anybody, Cuprum } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
-
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/navigation/footer";
-import Navbar from "@/components/navigation/navbar";
+import dynamic from "next/dynamic";
+import { Anybody as FontSans } from "next/font/google";
 
+// dynamic navbar for  animations
+const DynamicNavbar = dynamic(() => import("@/components/navigation/navbar"), {
+  ssr: false,
+});
 ////////////////////////
-
-//fonts
-export const bodyFont = Anybody({
+const fontSans = FontSans({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-sans",
 });
-export const titleFont = Cuprum({
-  subsets: ["latin"],
-  variable: "--font-title",
-});
-//fonts
 
 //metadata
 export const metadata: Metadata = {
   metadataBase: new URL("https://mxnan.com"),
   title: {
-    template: "%s || mxnan",
+    template: "%s || mxnan.com",
     default: "mxnan.com",
   },
   description: `Personal website, creating components and some blogs . `,
@@ -35,22 +31,16 @@ export const metadata: Metadata = {
 };
 
 //layout function
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "relative w-full font-body",
-          bodyFont.variable,
-          titleFont.variable
-        )}
-      >
+      <body className={cn("relative w-full font-sans", fontSans.variable)}>
         <Providers>
-          <Navbar />
+          <DynamicNavbar />
           <main className="py-28 mx-auto container w-full">{children}</main>
           <Footer />
           <Toaster />

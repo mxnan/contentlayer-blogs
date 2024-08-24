@@ -5,6 +5,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { componentSidebar } from "@/lib/site.config";
+import { ArrowBigRight } from "lucide-react";
+import { BorderBeam } from "../custom/border-beam";
 
 export default function ComponentSidebar() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -31,38 +33,57 @@ const DesktopSidebar = () => {
   const pathname = usePathname();
   return (
     <nav className="h-full relative overflow-x-hidden">
-      <div className="fixed font-title left-4 top-44 h-[70vh] overflow-y-auto p-4">
-        <h2 className="text-xl font-bold mb-4">Components</h2>
+      <div className="fixed left-4 top-44 h-[70vh] overflow-y-auto space-y-5 p-4">
         <Link
           href="/components"
           className={cn(
-            "flex justify-between w-full mb-2 hover:translate-x-2 transition-transform ease-in-out duration-300",
+            "flex justify-between w-full  hover:translate-x-2 transition-transform ease-in-out duration-300",
             {
-              "font-semibold ": pathname === "/components",
+              "font-semibold translate-x-2": pathname === "/components",
               "text-gray-500": pathname !== "/components",
             }
           )}
         >
-          <p className="custom-underline w-min pb-2">Introduction</p>
+          <p className="custom-underline  flex items-center gap-2 text-lg w-min pb-2">
+            Introduction
+            <ArrowBigRight
+              className={cn(
+                "w-4 h-4  opacity-0 transition-opacity ease-in-out duration-300",
+                pathname === "/components" && "opacity-100"
+              )}
+            />
+          </p>
         </Link>
         {componentSidebar.map((category) => (
-          <div key={category.category} className="mb-4">
-            <h3 className="text-lg  font-semibold mb-2">{category.category}</h3>
+          <div key={category.category} className=" space-y-4">
+            <span className="font-normal text-lg px-1 py-2">
+              {category.category}
+            </span>
+
             <ul className="space-y-2 ">
               {category.items.map((item) => (
                 <li
                   key={item.name}
-                  className="mb-1 hover:translate-x-2 transition-transform ease-in-out duration-300"
+                  className=" mb-1 hover:translate-x-2 transition-transform ease-in-out duration-300"
                 >
                   <Link
                     href={item.href}
-                    className={cn("custom-underline w-max pb-2 ", {
-                      "font-semibold translate-x-2 transition-transform ease-in-out duration-300 ":
-                        pathname === item.href,
-                      "text-gray-500": pathname !== item.href,
-                    })}
+                    className={cn(
+                      "custom-underline w-max pb-2 flex items-center gap-2 text-base ",
+                      {
+                        "font-semibold translate-x-2 transition-all ease-in-out duration-300 ":
+                          pathname === item.href,
+                        "text-gray-500": pathname !== item.href,
+                      }
+                    )}
                   >
                     {item.name}
+                    <ArrowBigRight
+                      className={cn(
+                        "w-4 h-4 opacity-0 ",
+                        pathname === item.href && "opacity-100"
+                      )}
+                    />
                   </Link>
                 </li>
               ))}

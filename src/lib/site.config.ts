@@ -6,22 +6,18 @@ export const componentSidebar: {
   items: { name: string; href: string }[];
 }[] = [
   {
-    category: "Buttons",
-    items: [{ name: "Shimmer", href: "/components/buttons/shimmer-button" }],
+    category: "Playground",
+    items: [{ name: "Particles reveal", href: "/components/playground/particles-reveal" }],
   },
   {
     category: "Loaders",
-    items: [{ name: "Bounce", href: "/components/loaders/bounce-loader" }],
-  },
-  {
-    category:"Playground",
-    items: [{ name: "Tabs", href: "/components/playground/tabs-with-content" }],
+    items: [{ name: "Spin", href: "/components/loaders/spin"}]
   }
 
   // Add more categories and items as needed
 ];
 
-export const mobileNavlinks: { name: string; link: string }[] = [
+export const Navlinks: { name: string; link: string }[] = [
   {
     name: "Home",
     link: "/",

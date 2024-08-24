@@ -9,20 +9,8 @@
   @apply bg-black text-white;
 }
 
-@layer base {
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-  .flex-between {
-    @apply flex items-center justify-between;
-  }
-  .flex-evenly {
-    @apply flex items-center justify-evenly;
-  }
+@layer utilities {
   .custom-underline {
     @apply hover:bg-[url('/images/assets/underline.svg')] dark:hover:bg-[url('/images/assets/underline-dark.svg')];
-  }
-  .image-border {
-    @apply border-[0.2px] shadow-md border-gray-600 dark:border-gray-400;
   }
 }

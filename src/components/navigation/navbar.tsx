@@ -8,17 +8,11 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import {
-  ArrowDown10Icon,
-  LinkedinIcon,
-  LucideTwitter,
-  MailIcon,
-} from "lucide-react";
-import { BorderBeam } from "../ui/border-beam";
+import { Wind } from "lucide-react";
+import { BorderBeam } from "../custom/border-beam";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { ContentCard, Menu, MenuItem } from "./top-nav-items";
-import { mobileNavlinks } from "@/lib/site.config";
+import { Navlinks } from "@/lib/site.config";
 
 // main navbar for exporting to baselayout
 export default function Navbar() {
@@ -48,12 +42,11 @@ export default function Navbar() {
 
 // desktop nav
 const DesktopNav = () => {
-  const [active, setActive] = useState<string | null>(null);
+  // for auto hiding navbar on scrolldown
   const pathname = usePathname();
   const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
   const lastYRef = useRef(0);
-
   useMotionValueEvent(scrollY, "change", (y) => {
     const difference = y - lastYRef.current;
     if (Math.abs(difference) > 50) {
@@ -62,6 +55,11 @@ const DesktopNav = () => {
       lastYRef.current = y;
     }
   });
+  //////////////////////////
+
+  // for hover effect
+  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  /// ////////////////////////////
 
   return (
     <motion.div
@@ -82,91 +80,63 @@ const DesktopNav = () => {
         },
       }}
       transition={{
-        duration: 0.2,
-        type: "tween",
-        damping: 30,
-        stiffness: 120,
-        restDelta: 0.001,
+        duration: 0.5,
+        ease: "easeInOut",
       }}
       className={cn(
         "w-full backdrop-blur-3xl fixed -top-1  max-sm:py-6 inset-x-0 border-stone-200 dark:border-stone-800   ",
-        isHidden ? "border-b-[5px]   " : "border-b-[1px]  "
+        isHidden ? "border-b-[5px]" : "border-b-[1px]  "
       )}
     >
       <BorderBeam />
       <div className="relative mt-2 px-[1.5rem] lg:px-24 w-full flex items-center justify-between">
         <Link
           href="/"
-          className="flex items-center text-gray-600 dark:text-gray-300 gap-3"
+          className="flex items-center text-sm text-gray-600 dark:text-gray-300 gap-3"
         >
-          {pathname === "/" ? (
-            <ArrowDown10Icon className="w-5 h-5" />
-          ) : (
-            <p>mxnan.com</p>
-          )}
+          {pathname === "/" ? <Wind className="w-5 h-5" /> : <p>mxnan.com</p>}
         </Link>
-        <Menu setActive={setActive}>
-          {/*Components*/}
-          <MenuItem setActive={setActive} active={active} item="Components">
-            <div className="flex flex-col space-y-2 md:space-y-4">
-              <ContentCard
-                title="Shimmer Button"
-                href="/components/buttons/shimmer-button"
-              />
-              <ContentCard
-                title="Bounce Loader"
-                href="/components/loaders/bounce-loader"
-              />
-            </div>
-          </MenuItem>
-          {/*Blogs*/}
-          <MenuItem setActive={setActive} active={active} item="Blogs">
-            <div className="flex flex-col space-y-4 md:space-y-6">
-              <ContentCard
-                title="emailjs"
-                href="/blogs/test"
-                src="/images/blogs/og.jpg"
-                description="implement emailjs on your app using hooks and shadcn form to recieve emails to sned jasdb dsanbjhd jhshbdsa hsd"
-              />
-              <ContentCard
-                title="test"
-                href="/blogs/test2"
-                src="/images/blogs/og.jpg"
-                description="test test test"
-              />
-            </div>
-          </MenuItem>
-          {/*Contact*/}
-          <MenuItem setActive={setActive} active={active} item="Contact">
-            <div className="flex flex-col font-title space-y-4 pr-2 text-sm text-gray-600 dark:text-gray-400">
-              <a
-                href="/contact#email"
-                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
-              >
-                email{" "}
-                <MailIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
-              </a>
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://www.linkedin.com/in/manan-negi-377373140/"
-                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
-              >
-                linkedin{" "}
-                <LinkedinIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
-              </a>
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://twitter.com/etc_etcx"
-                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
-              >
-                twitter{" "}
-                <LucideTwitter className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
-              </a>
-            </div>
-          </MenuItem>
-        </Menu>
+        <div className="flex items-center my-3">
+          {Navlinks.slice(1).map((link, index) => (
+            <Link
+              key={link.link}
+              href={link.link}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="relative block w-full px-6 py-2  h-full text-sm font-medium "
+            >
+              <AnimatePresence mode="wait">
+                {hoveredIndex === index && (
+                  <motion.span
+                    className="absolute inset-0 h-full w-full block rounded-lg
+                bg-gray-100/[0.5] dark:bg-stone-700/[0.5]
+                 border-gray-300 dark:border-gray-700 border"
+                    layoutId="hoverBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: {
+                        duration: 0.2,
+                        ease: "easeInOut",
+                      },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: {
+                        duration: 0.1,
+                        delay: 0.05,
+                        ease: "easeInOut",
+                      },
+                    }}
+                  />
+                )}
+              </AnimatePresence>
+
+              {link.name}
+            </Link>
+          ))}
+        </div>
+
         <ThemeToggle />
       </div>
     </motion.div>
@@ -210,29 +180,29 @@ const MobileNav = () => {
   return (
     <div className="relative w-full z-50 bg-white dark:bg-black  ">
       <div
-        className="fixed top-0 fixed-nav
+        className="fixed top-0 backdrop-blur-3xl
       flex items-center justify-between py-4 container"
       >
         <ThemeToggle />
         <div className="relative uppercase  font-body text-lg ">
           <div className="flex items-center justify-between gap-4">
-            <Link href={mobileNavlinks[0].link} legacyBehavior>
+            <Link href={Navlinks[0].link} legacyBehavior>
               <a
                 className={cn(
-                  "font-semibold block py-2",
+                  "font-medium block py-2",
                   pathname === "/" && "text-plight dark:text-pdark"
                 )}
               >
-                {mobileNavlinks[0].name}
+                {Navlinks[0].name}
               </a>
             </Link>
             <button
-              className=""
+              className="fill-black dark:fill-white"
               onClick={toggleMenu}
               aria-label="Toggle Mobile Menu"
             >
               <svg
-                className="h-6 w-6 fill-plight dark:fill-pdark "
+                className="h-6 w-6 "
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
@@ -261,18 +231,11 @@ const MobileNav = () => {
                 className="absolute top-10 right-0 w-max mx-auto
                  bg-stone-100 dark:bg-stone-900
                   border-[1px] border-stone-200 dark:border-stone-800
-                  shadow-md rounded-xl p-4"
+                  shadow-md rounded-xl p-4 flex flex-col gap-3"
               >
-                {mobileNavlinks.slice(1).map((link) => (
-                  <Link key={link.link} href={link.link} legacyBehavior>
-                    <a
-                      className={cn(
-                        "block py-2 font-semibold",
-                        link.link === pathname && "text-plight dark:text-pdark"
-                      )}
-                    >
-                      {link.name}
-                    </a>
+                {Navlinks.slice(1).map((link) => (
+                  <Link key={link.link} href={link.link} className="font-medium">
+                    {link.name}
                   </Link>
                 ))}
               </motion.div>
@@ -283,3 +246,71 @@ const MobileNav = () => {
     </div>
   );
 };
+
+/// not using menu and menuitem from top-nav-items as it slows pages  down ..
+/// top-nav-items.tsx items
+{
+  /***  
+        <Menu setActive={setActive}>
+     
+          <MenuItem setActive={setActive} active={active} item="Components">
+            <div className="flex flex-col space-y-2 md:space-y-4">
+              <ContentCard
+                title="Shimmer Button"
+                href="/components/buttons/shimmer-button"
+              />
+              <ContentCard
+                title="Bounce Loader"
+                href="/components/loaders/bounce-loader"
+              />
+            </div>
+          </MenuItem>
+         
+          <MenuItem setActive={setActive} active={active} item="Blogs">
+            <div className="flex flex-col space-y-4 md:space-y-6">
+              <ContentCard
+                title="emailjs"
+                href="/blogs/test"
+                src="/images/blogs/og.jpg"
+                description="implement emailjs on your app using hooks and shadcn form to recieve emails to sned jasdb dsanbjhd jhshbdsa hsd"
+              />
+              <ContentCard
+                title="test"
+                href="/blogs/test2"
+                src="/images/blogs/og.jpg"
+                description="test test test"
+              />
+            </div>
+          </MenuItem>
+        
+          <MenuItem setActive={setActive} active={active} item="Contact">
+            <div className="flex flex-col font-title space-y-4 pr-2 text-sm text-gray-600 dark:text-gray-400">
+              <a
+                href="/contact#email"
+                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
+              >
+                email{" "}
+                <MailIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
+              </a>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://www.linkedin.com/in/manan-negi-377373140/"
+                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
+              >
+                linkedin{" "}
+                <LinkedinIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
+              </a>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://twitter.com/etc_etcx"
+                className="flex-between group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
+              >
+                twitter{" "}
+                <LucideTwitter className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-black dark:text-white" />
+              </a>
+            </div>
+          </MenuItem>
+        </Menu>***/
+}

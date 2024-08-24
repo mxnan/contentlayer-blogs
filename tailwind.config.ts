@@ -40,12 +40,13 @@ const config = {
         sm: "500px",
       },
       fontFamily: {
-        body: ["var(--font-body)"],
-        title: ["var(--font-title)"],
+        sans: ["var(--font-sans)"],
       },
       colors: {
         black: "#090A0B",
         white: "#F8F9FA",
+        lightone: "#8338ec", // english violet
+        darkone: "#3A0CA3", // zaffre
       },
     },
   },

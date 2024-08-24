@@ -1,12 +1,8 @@
 import React from "react";
-import { notFound } from "next/navigation";
 import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
-
 import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
-import { getFormattedDate } from "@/lib/utils";
-import { ClockIcon } from "lucide-react";
 import { TableOfContents } from "@/components/mdx/toc";
 
 interface ComponentPageProps {
@@ -24,12 +20,13 @@ async function getComponents(
   );
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<ComponentPageProps["params"][]> {
   return allComponents.map((components) => ({
     category: components.category,
-    slug: components.slug.split("/").pop(),
+    slug: components.slug.split("/").pop() ?? "",
   }));
 }
+ 
 
 export async function generateMetadata({
   params,
@@ -46,51 +43,24 @@ export async function generateMetadata({
   };
 }
 
-export default async function ComponentPage({ params }: ComponentPageProps) {
+export default async function ComponentPage({
+  params,
+}: ComponentPageProps): Promise<React.ReactElement> {
   const component = await getComponents(params.category, params.slug);
 
   if (!component) {
-    notFound();
+    return <div>Component not found</div>;
   }
 
   return (
     <section className="flex-1 relative min-h-screen">
-      <div className="w-full flex flex-col border-b dark:border-gray-700 pb-4 group/upperdiv">
-        {" "}
-        {/* group/upperdiv change to group/upper for animations*/}
-        <div
-          className="space-y-6 lg:pr-8 md:w-2/3 
-          group-hover/upper:translate-x-2 cursor-default
-          transition-transform ease-in-out duration-500
-          "
-        >
-          <h1 className="text-7xl xl:text-[6rem] uppercase font-semibold">
-            {component?.title}
-          </h1>
-          <p className="text-base lg:text-lg max-lg:font-light">
-            {component?.description}
-          </p>
-        </div>
-        <div className=" text-gray-500  gap-2">
-          <p
-            className="font-medium w-max text-xs flex items-center gap-2
-            group-hover/upper:-translate-x-2 group-hover/upper:translate-y-2
-            group-hover/upper:animate-pulse
-          transition-all ease-in-out duration-700
-              "
-          >
-            <ClockIcon className="w-4 h-4 text-black dark:text-white" />{" "}
-            {getFormattedDate(component?.date)}
-          </p>
-        </div>
-      </div>
-      <article className="prose-sm">
-        <Mdx source={component?.body.code} />
-      </article>
-      <TableOfContents
-        className="w-max font-title hidden 2xl:block fixed top-44 right-8 "
-        toc={component?.toc}
-      />
+      <Mdx source={component.body.code} />
+      {component.toc && (
+        <TableOfContents
+          className="w-max font-title hidden 2xl:block fixed top-44 right-8"
+          toc={component.toc}
+        />
+      )}
     </section>
   );
 }
