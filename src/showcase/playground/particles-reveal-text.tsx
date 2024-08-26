@@ -6,7 +6,7 @@ const ParticlesRevealTextDemo = () => {
     <div className="w-full h-72 flex items-center justify-center">
       <ParticlesReveal
         width="fit-content"
-        className="bg-lightone dark:bg-darkone"
+        className="bg-stone-800"
         duration={1.5}
       >
         <h1 className="text-7xl font-semibold text-gray-500">

@@ -11,6 +11,6 @@
 
 @layer utilities {
   .custom-underline {
-    @apply hover:bg-[url('/images/assets/underline.svg')] dark:hover:bg-[url('/images/assets/underline-dark.svg')];
+    @apply hover:bg-[url('/assets/underline.svg')] dark:hover:bg-[url('/assets/underline-dark.svg')];
   }
 }

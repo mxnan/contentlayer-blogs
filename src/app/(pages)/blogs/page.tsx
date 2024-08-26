@@ -4,6 +4,7 @@ import { sortBlogsByDate } from "@/lib/utils";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
 import LoaderCircleSpin from "@/components/ui/loader-circle-spin";
+import { FadeText } from "@/components/custom/fade-text";
 
 const DynamicBlogCard = dynamic(() => import("@/components/blog-card"), {
   ssr: false,
@@ -24,18 +25,25 @@ export default async function BlogsPage() {
   const sortedBlogs = sortBlogsByDate(allBlogs);
 
   return (
-    <section className="w-full max-w-4xl mx-auto min-h-screen flex-1 lg:flex max-lg:space-y-32 py-12">
+    <section className="w-full max-w-4xl mx-auto flex-1 lg:flex max-lg:space-y-32 py-12">
       {/* BlogCards div */}
       <div className="flex-1 h-max flex flex-col gap-8">
-        <div className="space-y-5">
-          <h1
+        <div className="space-y-5 flex flex-col max-md:items-center">
+          <FadeText
+            text="Blogs"
+            direction="left"
+            framerProps={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: { duration: 1, delay: 0.3, type: "spring" },
+              },
+            }}
             className="scroll-m-10 uppercase tracking-tight
-          text-[3rem] md:text-[4rem] xl:text-[6rem] md:leading-[7rem] 
+          text-[5rem]  xl:text-[6rem] md:leading-[7rem] 
           drop-shadow-2xl font-semibold 
-          bg-clip-text text-transparent bg-gradient-to-r from-stone-800/80 dark:from-gray-200/80 to-lightone dark:to-darkone/80"
-          >
-            Blogs
-          </h1>
+          bg-clip-text text-transparent bg-gradient-to-r from-gray-500 dark:from-stone-500 to-stone-950 dark:to-white"
+          />
 
           <p className="text-sm ">
             Just some blogs to showcase learnings and findings

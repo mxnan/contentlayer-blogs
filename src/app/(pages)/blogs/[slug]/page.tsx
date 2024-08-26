@@ -1,8 +1,8 @@
 // src\app\(pages)\blogs\page.tsx
 import { Mdx } from "@/components/mdx/mdx-components";
 import { Button } from "@/components/ui/button";
+import LoaderCircleSpin from "@/components/ui/loader-circle-spin";
 import { getFormattedDate } from "@/lib/utils";
-
 import { allBlogs } from "contentlayer/generated";
 import { CircleArrowLeft, ClockIcon } from "lucide-react";
 import { Metadata } from "next";
@@ -20,6 +20,11 @@ const DynamicBlogPageDetails = dynamic(
   () => import("@/components/blog-page-details"),
   {
     ssr: false,
+    loading: () => (
+      <div className="w-full h-80 flex items-center justify-center">
+        <LoaderCircleSpin />{" "}
+      </div>
+    ),
   }
 );
 
@@ -56,11 +61,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         href="/blogs"
         className="w-[100px] hidden xl:block fixed top-44 left-12 2xl:left-32 self-start"
       >
-        <Button
-          className="flex items-center gap-2"
-          size={"destructive"}
-          variant={"destructive"}
-        >
+        <Button className="flex items-center gap-2" variant={"secondary"}>
           <CircleArrowLeft className="w-4 h-4" />
           Back
         </Button>
@@ -68,12 +69,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
       {/* Content */}
       <div className="w-full max-w-4xl 2xl:max-w-5xl mx-auto space-y-16">
-        <Button variant={"destructive"} className="xl:hidden mt-4">
+        <Button variant={"secondary"} className="xl:hidden mt-4">
           <Link href="/blogs" className="flex items-center gap-2">
             <CircleArrowLeft className="w-4 h-4" />
             Back
           </Link>
         </Button>
+        {/* blog page details for smaller screens */}
         <div className="w-full md:hidden flex flex-col gap-4">
           <h1 className="text-5xl font-bold capitalize text-gray-700">
             {blogs?.title}
@@ -91,7 +93,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             </span>
           </div>
         </div>
-        {/* custom image and  wobble card hidden under md */}
+        {/* custom image and  wobble card above md screens */}
         {blogs && <DynamicBlogPageDetails blogs={blogs} />}
         {/* MDX content div */}
         <div>
@@ -101,7 +103,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             href="/blogs"
             className="flex justify-start pt-12 mb-12 xl:hidden py-4 border-gray-500 border-t"
           >
-            <Button className="flex items-center gap-2" variant={"destructive"}>
+            <Button className="flex items-center gap-2" variant={"secondary"}>
               <CircleArrowLeft className="w-4 h-4" />
               Back
             </Button>

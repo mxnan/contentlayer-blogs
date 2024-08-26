@@ -6,6 +6,9 @@ import { ClockIcon } from "lucide-react";
 import type { Blogs } from "contentlayer/generated";
 import { motion } from "framer-motion";
 import { WobbleCard } from "./custom/wobble-card";
+
+
+
 const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
   const container = {
     hidden: { opacity: 0, y: -100 },
@@ -42,16 +45,16 @@ const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
             stiffness: 200,
           },
         }}
-        className="relative max-h-96 aspect-video overflow-hidden"
+        className="relative h-96 aspect-video overflow-hidden"
       >
         <motion.div
           initial={{ opacity: "0", y: -200 }}
           animate={{
             opacity: 100,
-            y: 0,           
+            y: 0,
             transition: {
               duration: 1,
-              
+
               type: "tween",
               damping: 50,
               stiffness: 200,
@@ -65,7 +68,7 @@ const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
             fill
             sizes="(100vw, 100vh)"
             priority
-            className="rounded-xl object-center object-cover border-4 border-gray-600 dark:border-gray-400"
+            className="rounded-2xl object-center object-cover border-4 border-gray-600 dark:border-gray-400"
           />
         </motion.div>
       </motion.div>
@@ -84,8 +87,8 @@ const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
             <motion.h1
               variants={item}
               className="scroll-m-10 uppercase tracking-tight
-     text-[2rem] md:text-[2.6rem] xl:text-[3.3rem] md:leading-[4rem] 
-     drop-shadow-2xl font-semibold "
+                  text-5xl
+                drop-shadow-2xl font-semibold "
             >
               {blogs?.title}
             </motion.h1>
@@ -101,15 +104,15 @@ const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
                   <motion.span
                     key={tag}
                     variants={item}
-                    className="text-sm p-2  font-bold text-muted-foreground"
+                    className="text-sm p-2 font-bold"
                   >
-                    [ <span className=" font-semibold ">{tag}</span> ]
+                    [ <span className=" font-medium ">{tag}</span> ]
                   </motion.span>
                 ))}
             </motion.div>
             <motion.div
               variants={container}
-              className="flex text-xs items-center gap-3"
+              className="flex text-xs font-medium items-center gap-3"
             >
               <motion.p variants={item} className="flex gap-3">
                 <ClockIcon className="w-4 h-4" />
@@ -117,7 +120,7 @@ const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
               </motion.p>{" "}
               <motion.span
                 variants={item}
-                className="pl-3 border-l-4 border-gray-500 "
+                className="pl-3 border-l-4 border-gray-200 dark:border-gray-600 "
               >
                 {blogs?.readingTime?.text}
               </motion.span>

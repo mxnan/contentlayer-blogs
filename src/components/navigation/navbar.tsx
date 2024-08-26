@@ -82,18 +82,18 @@ const DesktopNav = () => {
       transition={{
         duration: 0.3,
         type: "tween",
-        damping: 80,
-        stiffness: 200,
+        damping: 50,
+        stiffness: 180,
 
         ease: "easeInOut",
       }}
       className={cn(
-        "w-full backdrop-blur-3xl fixed -top-1  max-sm:py-6 inset-x-0 border-stone-200 dark:border-stone-800   ",
+        "w-full bg-white dark:bg-black fixed -top-1 inset-x-0 border-stone-200 dark:border-stone-800   ",
         isHidden ? "border-b-[5px]" : "border-b-[1px]  "
       )}
     >
       <BorderBeam />
-      <div className="relative mt-2 px-[1.5rem] lg:px-24 w-full flex items-center justify-between">
+      <div className="relative bg-white dark:bg-black pt-1 px-[1.5rem] lg:px-24 w-full flex items-center justify-between">
         <Link
           href="/"
           className="flex items-center text-sm text-gray-600 dark:text-gray-300 gap-3"
@@ -192,13 +192,8 @@ const MobileNav = () => {
         <div className="relative uppercase  font-body text-lg ">
           <div className="flex items-center justify-between gap-4">
             <Link href={Navlinks[0].link} legacyBehavior>
-              <a
-                className={cn(
-                  "font-medium block py-2",
-                  pathname === "/" && "text-plight dark:text-pdark"
-                )}
-              >
-                {Navlinks[0].name}
+              <a className="font-medium block py-2">
+                {pathname !== "/" && Navlinks[0].name}
               </a>
             </Link>
             <button
@@ -234,8 +229,8 @@ const MobileNav = () => {
                 animate="visible"
                 exit="exit"
                 className="absolute top-10 right-0 w-max mx-auto
-                 bg-stone-100 dark:bg-stone-900
-                  border-[1px] border-stone-200 dark:border-stone-800
+                 bg-white dark:bg-black
+                  border border-stone-300 dark:border-stone-700
                   shadow-md rounded-xl p-4 flex flex-col gap-3"
               >
                 {Navlinks.slice(1).map((link) => (
@@ -255,4 +250,3 @@ const MobileNav = () => {
     </div>
   );
 };
-

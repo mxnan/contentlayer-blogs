@@ -20,9 +20,9 @@ const buttonVariants = cva(
         link: "text-gray-600 dark:text-gray-500 ",
       },
       size: {
-        default: "h-9 px-4 py-2",
+        default: "rounded-xl px-3 py-2",
         sm: "px-3 py-2",
-        destructive: "px-3 py-2 rounded-xl",
+        
         link: "px-2 pb-2 pt-1",
         icon: "h-9 w-9",
       },

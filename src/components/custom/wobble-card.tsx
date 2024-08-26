@@ -37,7 +37,7 @@ export const WobbleCard = ({
         transition: "transform 0.1s ease-out",
       }}
       className={cn(
-        "rounded-xl",
+        "rounded-2xl border border-gray-600 dark:border-gray-400",
         containerClassName
       )}
     >

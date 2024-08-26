@@ -1,6 +1,5 @@
 import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
-import { TableOfContents } from "@/components/mdx/toc";
 import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
 
@@ -34,12 +33,7 @@ export default async function IntroPage() {
   return (
     <section className="flex-1 relative min-h-screen">
       <Mdx source={components.body.code} />
-      {components.toc && (
-        <TableOfContents
-          className="w-max hidden 2xl:block fixed top-44 right-8"
-          toc={components.toc}
-        />
-      )}
+   
     </section>
   );
 }

@@ -61,22 +61,7 @@ export const Components = defineDocumentType(() => ({
       type: "string",
       resolve: (doc) => doc._raw.flattenedPath.split("/")[1],
     },
-    toc: {
-      type: "json",
-      resolve: (doc) => {
-        const headings = doc.body.raw.match(/^## (.*$)/gm);
-        return headings
-          ? headings.map((heading: string) => {
-              const title = heading.replace("## ", "").trim();
-              const slug = title
-                .toLowerCase()
-                .replace(/\s+/g, "-")
-                .replace(/[^\w-]+/g, "");
-              return { title, slug };
-            })
-          : [];
-      },
-    },
+   
   },
 }));
 

@@ -55,7 +55,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
         <div className="flex items-center w-full justify-between px-2 ">
           {/* code info */}
           <span className="flex items-center gap-3">
-            <SquareCodeIcon className="text-lightone dark:text-darkone" />
+            <SquareCodeIcon className="text-emerald-600 dark:text-indigo-800" />
             <span className="text-black max-md:hidden text-sm">
               {category}/{path}.tsx
             </span>
@@ -66,13 +66,13 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             <TailwindCSS
               className={cn(
                 usingCN &&
-                  "fill-lightone dark:fill-darkone animate-bounce [animation-delay:-0.3s]"
+                  "fill-emerald-600 dark:fill-indigo-800 animate-bounce [animation-delay:-0.3s]"
               )}
             />
             <FramerLogo
               className={cn(
                 usingFramer &&
-                  "fill-lightone dark:fill-darkone animate-bounce [animation-delay:-0.13s]"
+                  "fill-emerald-600 dark:fill-indigo-800 animate-bounce [animation-delay:-0.13s]"
               )}
             />
           </div>
