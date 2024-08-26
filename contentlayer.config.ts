@@ -1,5 +1,5 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-
+import readingTime from 'reading-time';
 //defineDocumentType Blogs
 export const Blogs = defineDocumentType(() => ({
   name: "Blogs",
@@ -33,6 +33,10 @@ export const Blogs = defineDocumentType(() => ({
             })
           : [];
       },
+    },
+    readingTime: {
+      type: "json",
+      resolve: (doc) => readingTime(doc.body.raw)
     },
   },
 }));

@@ -5,7 +5,10 @@ import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/navigation/footer";
 import dynamic from "next/dynamic";
-import { Raleway as FontSans } from "next/font/google";
+import {
+  Anybody as FontSans,
+
+} from "next/font/google";
 
 // dynamic navbar for  animations
 const DynamicNavbar = dynamic(() => import("@/components/navigation/navbar"), {
@@ -16,6 +19,7 @@ const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
+
 
 //metadata
 export const metadata: Metadata = {
