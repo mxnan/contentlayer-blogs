@@ -3,6 +3,7 @@ import { Mdx } from "@/components/mdx/mdx-components";
 import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
 
+
 async function getComponents(slug: string): Promise<Components | undefined> {
   return allComponents.find((components) => components.slug === slug);
 }
@@ -32,8 +33,11 @@ export default async function IntroPage() {
 
   return (
     <section className="flex-1 relative min-h-screen">
-      <Mdx source={components.body.code} />
-   
+      
+       
+        
+        <Mdx source={components.body.code} />
+    
     </section>
   );
 }

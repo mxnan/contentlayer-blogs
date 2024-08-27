@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 const OpenCloseButton = ({
   onclickFunction,
@@ -19,14 +19,14 @@ const OpenCloseButton = ({
   return (
     <>
       <motion.div
-        className={cn("z-50", className)}
+        className={cn("z-50 ", className)}
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >
         <Button
           variant={"secondary"}
           onClick={onclickFunction}
-          className="flex items-center gap-4 bg-transparent hover:bg-transparent"
+          className="flex items-center gap-4 "
         >
           {text1 && text2 && <span>{isOpen ? text2 : text1}</span>}
 

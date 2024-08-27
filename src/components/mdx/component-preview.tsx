@@ -12,11 +12,8 @@ import { SquareCodeIcon } from "lucide-react";
 import FramerLogo from "../logos/framer";
 import TailwindCSS from "../logos/tailwind";
 import { cn } from "@/lib/utils";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../ui/collapsible";
+
+
 
 export interface ComponentPreviewProps {
   path: string;
@@ -96,12 +93,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
       </TabsContent>
       {/* tabs content code */}
       <TabsContent value="code">
-        <Collapsible className="w-full h-full">
-          <CollapsibleTrigger>expand ?</CollapsibleTrigger>
-          <CollapsibleContent>
-            <Mdx source={codeString} />
-          </CollapsibleContent>
-        </Collapsible>
+        <Mdx source={codeString} />
       </TabsContent>
     </Tabs>
   );

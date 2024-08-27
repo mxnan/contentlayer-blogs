@@ -13,7 +13,7 @@ import { BorderBeam } from "../custom/border-beam";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { Navlinks } from "@/lib/site.config";
-import OpenCloseButton from "../open-close-button";
+import OpenCloseButton from "./open-close-button";
 
 // main navbar for exporting to baselayout
 export default function Navbar() {

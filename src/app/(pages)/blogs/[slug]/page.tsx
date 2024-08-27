@@ -7,7 +7,7 @@ import { allBlogs } from "contentlayer/generated";
 import { CircleArrowLeft, ClockIcon } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
-
+import ProgressBar from "@/components/custom/progress-bar";
 import Link from "next/link";
 
 const DynamicTableOfContents = dynamic(
@@ -56,6 +56,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <section className="flex-1 relative min-h-screen">
+      <ProgressBar />
       {/* Back button */}
       <Link
         href="/blogs"

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { componentSidebar } from "@/lib/site.config";
 import Link from "next/link";
 import { ArrowDownRight, MoveRight } from "lucide-react";
-import OpenCloseButton from "../open-close-button";
+import OpenCloseButton from "./open-close-button";
 import { cn } from "@/lib/utils";
 
 const ResponsiveSidebar = () => {

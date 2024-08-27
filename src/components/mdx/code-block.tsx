@@ -2,6 +2,7 @@ import React from "react";
 import CopyPasteButton from "./copy-button";
 import { Code } from "bright";
 
+
 const CodeBlock = ({
   className,
   children,
