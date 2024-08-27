@@ -1,5 +1,5 @@
 // src/components/mdx/component-preview.tsx
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import dynamic from "next/dynamic";
 import {
   allShowcaseComponents,
@@ -12,6 +12,11 @@ import { SquareCodeIcon } from "lucide-react";
 import FramerLogo from "../logos/framer";
 import TailwindCSS from "../logos/tailwind";
 import { cn } from "@/lib/utils";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "../ui/collapsible";
 
 export interface ComponentPreviewProps {
   path: string;
@@ -27,7 +32,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
   usingCN,
 }) => {
   // get preview component from showcase/[]/[].tsx
-  const Preview = useMemo(() => {
+  const Preview = useCallback(() => {
     const DynamicComponent = dynamic(
       () => import(`@/showcase/${category}/${path}`),
       {
@@ -40,11 +45,10 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 
   // get codestring from showcase/[]/[].mdx
   const codeString = useMemo(() => {
-    const showcaseComponent = allShowcaseComponents.find(
+    const showcaseComponent = allShowcaseComponents.find<ShowcaseComponent>(
       (component): component is ShowcaseComponent =>
         component._raw.flattenedPath === `showcase/${category}/${path}`
     );
-
     return showcaseComponent ? showcaseComponent.body.code : "Code not found.";
   }, [path, category]);
 
@@ -88,11 +92,16 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
         className="bg-[#1f1f1f] border-b-2 border-gray-500 dark:border-stone-600 rounded-xl min-h-80"
         value="preview"
       >
-        {Preview}
+        <Preview />
       </TabsContent>
       {/* tabs content code */}
       <TabsContent value="code">
-        <Mdx source={codeString} />
+        <Collapsible className="w-full h-full">
+          <CollapsibleTrigger>expand ?</CollapsibleTrigger>
+          <CollapsibleContent>
+            <Mdx source={codeString} />
+          </CollapsibleContent>
+        </Collapsible>
       </TabsContent>
     </Tabs>
   );
