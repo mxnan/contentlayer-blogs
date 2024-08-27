@@ -25,9 +25,12 @@ export default async function BlogsPage() {
   const sortedBlogs = sortBlogsByDate(allBlogs);
 
   return (
-    <section className="w-full max-w-4xl mx-auto flex-1 lg:flex max-lg:space-y-32 py-12">
+    <section
+      className="w-full relative max-w-4xl mx-auto flex-1 lg:flex max-lg:space-y-32 
+    py-12 md:border-b border-gray-300 dark:border-gray-700"
+    >
       {/* BlogCards div */}
-      <div className="flex-1 h-max flex flex-col gap-8">
+      <div className="flex-1 h-max flex flex-col gap-8 ">
         <div className="space-y-5 flex flex-col max-md:items-center">
           <FadeText
             text="Blogs"

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import LoaderCircleSpin from "@/components/ui/loader-circle-spin";
 import { getFormattedDate } from "@/lib/utils";
 import { allBlogs } from "contentlayer/generated";
-import { CircleArrowLeft, ClockIcon } from "lucide-react";
+import { ArrowDownLeft, CircleArrowLeft, ClockIcon } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import ProgressBar from "@/components/custom/progress-bar";
@@ -60,22 +60,29 @@ export default async function BlogPage({ params }: BlogPageProps) {
       {/* Back button */}
       <Link
         href="/blogs"
-        className="w-[100px] hidden xl:block fixed top-44 left-12 2xl:left-32 self-start"
+        className="w-[100px] hidden xl:block fixed top-44 max-2xl:left-[calc(50%-40rem)] 2xl:left-[calc(50%-50rem)]"
       >
-        <Button className="flex items-center gap-2" variant={"secondary"}>
-          <CircleArrowLeft className="w-4 h-4" />
+        <Button
+          className="flex items-center gap-2 text-lg font-bold group/button"
+          variant={"secondary"}
+        >
+          <ArrowDownLeft className="w-5 h-5 stroke-[3px] group-hover/button:rotate-[30deg] transition-transform ease-in-out duration-500" />
           Back
         </Button>
       </Link>
 
       {/* Content */}
       <div className="w-full max-w-4xl 2xl:max-w-5xl mx-auto space-y-16">
-        <Button variant={"secondary"} className="xl:hidden mt-4">
-          <Link href="/blogs" className="flex items-center gap-2">
-            <CircleArrowLeft className="w-4 h-4" />
+        <Link href="/blogs" className="xl:hidden mt-4">
+          <Button
+            className="flex items-center gap-2 text-lg font-bold group/button"
+            variant={"secondary"}
+          >
+            <ArrowDownLeft className="w-5 h-5 stroke-[3px] group-hover/button:rotate-[30deg] transition-transform ease-in-out duration-500" />
             Back
-          </Link>
-        </Button>
+          </Button>
+        </Link>
+
         {/* blog page details for smaller screens */}
         <div className="w-full md:hidden flex flex-col gap-4">
           <h1 className="text-5xl font-bold capitalize text-gray-700">
@@ -94,26 +101,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
             </span>
           </div>
         </div>
-        {/* custom image and  wobble card above md screens */}
-        {blogs && <DynamicBlogPageDetails blogs={blogs} />}
-        {/* MDX content div */}
         <div>
-          <Mdx source={blogs?.body.code} />
+          {/* custom image and  wobble card above md screens */}
+          {blogs && <DynamicBlogPageDetails blogs={blogs} />}
+          {/* MDX content  */}
 
-          <Link
-            href="/blogs"
-            className="flex justify-start pt-12 mb-12 xl:hidden py-4 border-gray-500 border-t"
-          >
-            <Button className="flex items-center gap-2" variant={"secondary"}>
-              <CircleArrowLeft className="w-4 h-4" />
-              Back
-            </Button>
-          </Link>
+          <Mdx source={blogs?.body.code} />
         </div>
       </div>
       {/* Table of contents */}
       <DynamicTableOfContents
-        className="w-max hidden 2xl:block fixed top-44 right-8 "
+        className="w-max hidden 2xl:block fixed top-44 right-[calc(50%-45rem)]  "
         toc={blogs?.toc}
       />
     </section>

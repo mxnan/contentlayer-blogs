@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { componentSidebar } from "@/lib/site.config";
 import Link from "next/link";
-import { ArrowDownRight, MoveRight } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 import OpenCloseButton from "./open-close-button";
 import { cn } from "@/lib/utils";
 
@@ -59,7 +59,7 @@ const ResponsiveSidebar = () => {
           restDelta: 0.001,
         }}
       >
-        <nav className="flex-1 flex flex-col  gap-4">
+        <nav className="flex-1 flex flex-col pt-10 gap-4">
           {/* Mapping over componentSidebar from lib/site.config*/}
           {componentSidebar.map((category) => (
             <div key={category.category} className="flex flex-col gap-3">
@@ -78,7 +78,7 @@ const ResponsiveSidebar = () => {
                       className="custom-underline w-max pb-2 flex items-center gap-2 group/link"
                     >
                       {item.name}
-                      <ArrowDownRight className="w-4 h-4 group-hover/link:-rotate-45 transition-transform ease-in-out duration-300 " />
+                      <ArrowDownRight className="w-4 h-4 group-hover/link:-rotate-[30deg] transition-transform ease-in-out duration-300 " />
                     </Link>
                   </li>
                 ))}

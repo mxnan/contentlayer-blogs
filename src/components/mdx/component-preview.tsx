@@ -13,8 +13,6 @@ import FramerLogo from "../logos/framer";
 import TailwindCSS from "../logos/tailwind";
 import { cn } from "@/lib/utils";
 
-
-
 export interface ComponentPreviewProps {
   path: string;
   category: string;
@@ -51,29 +49,29 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 
   return (
     <Tabs className="my-8 bg-[#1f1f1f] rounded-3xl" defaultValue="preview">
-      <TabsList className="w-full relative border-t-2 border-x-2 border-gray-500 dark:border-stone-600 bg-gray-200 dark:bg-gray-200/60">
+      <TabsList className="w-full relative border border-gray-400 dark:border-gray-700 bg-gray-100 dark:bg-gray-100/90">
         {/* Tabs header */}
         <div className="flex items-center w-full justify-between px-2 ">
           {/* code info */}
           <span className="flex items-center gap-3">
-            <SquareCodeIcon className="text-emerald-600 dark:text-indigo-800" />
-            <span className="text-black max-md:hidden text-sm">
+            <SquareCodeIcon className="text-indigo-800 dark:text-amber-800" />
+            <span className="text-black max-md:hidden font-medium text-sm">
               {category}/{path}.tsx
             </span>
           </span>
 
           {/* icons container */}
-          <div className="flex items-center gap-4 mt-1 *:w-4 *:h-4">
+          <div className="flex items-center gap-4 mt-1 *:w-5 *:h-5">
             <TailwindCSS
               className={cn(
                 usingCN &&
-                  "fill-emerald-600 dark:fill-indigo-800 animate-bounce [animation-delay:-0.3s]"
+                  "fill-amber-800  dark:fill-indigo-800 animate-bounce [animation-delay:-0.3s]"
               )}
             />
             <FramerLogo
               className={cn(
                 usingFramer &&
-                  "fill-emerald-600 dark:fill-indigo-800 animate-bounce [animation-delay:-0.13s]"
+                  "fill-amber-800  dark:fill-indigo-800 animate-bounce [animation-delay:-0.13s]"
               )}
             />
           </div>

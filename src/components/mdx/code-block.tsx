@@ -26,7 +26,7 @@ const CodeBlock = ({
 
   return (
     <div className="relative my-6">
-      <span className="flex-1 absolute right-6 top-6 z-10">
+      <span className="flex-1 absolute right-10 top-3 z-10">
         <CopyPasteButton content={codeContent} />
       </span>
 

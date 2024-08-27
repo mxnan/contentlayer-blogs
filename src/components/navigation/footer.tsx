@@ -5,31 +5,31 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-import {
-  ArrowBigDown,
-  CircleArrowDown,
-  GithubIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
-import RetroGrid from "../custom/bg-grid-pattern";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import TwitterLogo from "../logos/twitter";
+import GithubLogo from "../logos/github";
+import LinkedinLogo from "@/components/logos/linkedin";
+import dynamic from "next/dynamic";
 
-interface NavigationItem {
+const DynamicRetroGrid = dynamic(() => import("../custom/bg-grid-pattern"), {
+  ssr: false,
+});
+interface FooterLinksProps {
   name: string;
   href: string;
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
 }
 
-const navigation: {
-  main: NavigationItem[];
-  social: NavigationItem[];
+export const FooterLinks: {
+  main: FooterLinksProps[];
+  social: FooterLinksProps[];
 } = {
   main: [
     { name: "Components", href: "/components" },
@@ -40,17 +40,17 @@ const navigation: {
     {
       name: "Twitter",
       href: "https://twitter.com/etc_etcx",
-      icon: <TwitterIcon className="w-6 h-6" />,
+      icon: <TwitterLogo className="w-6 h-6 " />,
     },
     {
       name: "GitHub",
       href: "https://github.com/mxnan",
-      icon: <GithubIcon className="w-6 h-6" />,
+      icon: <GithubLogo className="w-6 h-6" />,
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/manan-negi-377373140/",
-      icon: <LinkedinIcon className="w-6 h-6" />,
+      icon: <LinkedinLogo className="w-6 h-6" />,
     },
   ],
 };
@@ -59,14 +59,37 @@ const Footer: React.FC = () => {
   const pathname = usePathname();
   return (
     <footer className="w-full relative">
-      <RetroGrid />
+      <DynamicRetroGrid />
       <div
         className="mx-auto  w-full max-w-6xl
-   
-       px-4 py-12 sm:px-6 lg:px-8"
+      pb-32 pt-20 space-y-10"
       >
-        <nav className="flex flex-wrap justify-center">
-          {navigation.main.map((item) => (
+        <div className=" flex justify-center gap-2">
+          {FooterLinks.social.map((item) => (
+            <TooltipProvider key={item.name}>
+              <Tooltip disableHoverableContent delayDuration={0}>
+                <TooltipTrigger className="p-2 rounded-xl hover:bg-stone-200 dark:hover:bg-stone-800 group/icon">
+                  <a
+                    aria-label={item.name}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href={item.href}
+                    className="fill-black dark:fill-white group-hover/icon:fill-indigo-800 dark:group-hover/icon:fill-amber-700"
+                  >
+                    {item.icon}
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent className="mr-12 mb-2 text-indigo-800 dark:text-amber-700">
+                  <p className=" flex items-center gap-2 text-sm">
+                    {item.name} <ChevronDown className="w-4 h-4 " />
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ))}
+        </div>
+        <nav className="flex flex-wrap justify-center mr-4">
+          {FooterLinks.main.map((item) => (
             <div
               key={item.name}
               className="px-5 pt-1 flex items-center justify-center "
@@ -77,7 +100,7 @@ const Footer: React.FC = () => {
                   variant={"link"}
                   size={"link"}
                   className={cn(
-                    "text-sm custom-underline flex-1",
+                    "font-medium custom-underline flex-1",
                     pathname === item.href && "text-black dark:text-white"
                   )}
                 >
@@ -87,35 +110,12 @@ const Footer: React.FC = () => {
             </div>
           ))}
         </nav>
-        <div className="pt-8 flex justify-center gap-6 space-x-6">
-          {navigation.social.map((item) => (
-            <TooltipProvider key={item.name}>
-              <Tooltip disableHoverableContent delayDuration={0}>
-                <TooltipTrigger>
-                  <a
-                    aria-label={item.name}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    href={item.href}
-                    className=" text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
-                  >
-                    {item.icon}
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent className="mr-12 mb-2">
-                  <p className="font-title text-gray-500 flex items-center gap-2 text-sm">
-                    {item.name}{" "}
-                    <CircleArrowDown  className="w-4 h-4 text-black dark:text-white" />
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))}
-        </div>
         <p className="mt-6 flex flex-col text-center text-sm ">
           <span className="text-gray-500 font-semibold ">
             &copy; {new Date().getFullYear()}{" "}
-            <span className="mx-1 ">mxnan.com</span>{" "}
+            <span className="mx-1 font-semibold text-indigo-900 dark:text-amber-700">
+              mxnan.com
+            </span>{" "}
           </span>
           <span className="mt-2 "> All rights reserved.</span>
         </p>

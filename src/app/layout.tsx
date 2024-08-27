@@ -37,11 +37,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="scroll-smooth"
+      suppressHydrationWarning
+    >
       <body className={cn("relative w-full font-sans", fontSans.variable)}>
         <Providers>
           <DynamicNavbar />
-          <main className="py-28 mx-auto container w-full">{children}</main>
+          <main className="pt-28 pb-8 mx-auto container w-full">
+            {children}
+          </main>
           <Footer />
           <Toaster />
         </Providers>
