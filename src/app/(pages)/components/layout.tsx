@@ -1,8 +1,8 @@
 // app/components/layout.tsx
 import dynamic from "next/dynamic";
 
-const DynamicComponentSidebar = dynamic(
-  () => import("@/components/navigation/component-sidebar"),
+const DynamicResponsiveSidebar = dynamic(
+  () => import("@/components/navigation/responsive-sidebar"),
   { ssr: true }
 );
 
@@ -11,10 +11,11 @@ export default function ComponentsLayout({
 }: {
   children: React.ReactNode;
 }) {
+  
   return (
-    <div className="flex relative min-h-screen ">
-      <DynamicComponentSidebar />
-      <div className="relative pt-16 w-full max-w-5xl 2xl:max-w-7xl mx-auto">
+    <div className="relative min-h-screen ">
+      <DynamicResponsiveSidebar />
+      <div className="relative pt-16 xl:ml-56">
         {children}
       </div>
     </div>
