@@ -2,7 +2,6 @@ import React from "react";
 import CopyPasteButton from "./copy-button";
 import { Code } from "bright";
 
-
 const CodeBlock = ({
   className,
   children,
@@ -30,7 +29,7 @@ const CodeBlock = ({
         <CopyPasteButton content={codeContent} />
       </span>
 
-      <div className="bg-[#1f1f1f]  max-h-80 overflow-y-auto px-1 rounded-lg">
+      <div className="bg-[#1f1f1f] scrollbartrack max-h-80 overflow-y-auto px-1 rounded-lg">
         <Code
           className="text-sm"
           lang="tsx"

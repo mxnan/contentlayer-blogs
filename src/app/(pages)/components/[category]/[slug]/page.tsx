@@ -19,13 +19,14 @@ async function getComponents(
   );
 }
 
-export async function generateStaticParams(): Promise<ComponentPageProps["params"][]> {
+export async function generateStaticParams(): Promise<
+  ComponentPageProps["params"][]
+> {
   return allComponents.map((components) => ({
     category: components.category,
     slug: components.slug.split("/").pop() ?? "",
   }));
 }
- 
 
 export async function generateMetadata({
   params,
@@ -52,9 +53,8 @@ export default async function ComponentPage({
   }
 
   return (
-    <section className="flex-1 relative min-h-screen">
+    <section className="flex-1 relative">
       <Mdx source={component.body.code} />
-     
     </section>
   );
 }

@@ -49,9 +49,9 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 
   return (
     <Tabs className="my-8 bg-[#1f1f1f] rounded-3xl" defaultValue="preview">
-      <TabsList className="w-full relative border border-gray-400 dark:border-gray-700 bg-gray-100 dark:bg-gray-100/90">
+      <TabsList className="w-full relative  border border-gray-400 dark:border-gray-700 bg-gray-100 dark:bg-gray-100/90">
         {/* Tabs header */}
-        <div className="flex items-center w-full justify-between px-2 ">
+        <div className="flex items-center w-full justify-between px-2">
           {/* code info */}
           <span className="flex items-center gap-3">
             <SquareCodeIcon className="text-indigo-800 dark:text-amber-800" />
@@ -61,7 +61,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
           </span>
 
           {/* icons container */}
-          <div className="flex items-center gap-4 mt-1 *:w-5 *:h-5">
+          <div className="flex items-center gap-4 mt-1 *:w-4 *:h-4">
             <TailwindCSS
               className={cn(
                 usingCN &&

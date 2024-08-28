@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 import CustomLink from "./custom-link";
-import { steps } from "framer-motion";
+import { Callout } from "./call-out";
 
 export const basecomponents = {
   //////////////////////////////////////////////////////////////////////
@@ -127,4 +127,5 @@ export const basecomponents = {
       {...props}
     />
   ),
+  Callout,
 };

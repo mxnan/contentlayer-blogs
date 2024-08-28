@@ -1,8 +1,5 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
-
 import React from "react";
-import { Callout } from "./call-out";
-
 import dynamic from "next/dynamic";
 import LoaderCircleSpin from "../ui/loader-circle-spin";
 import { basecomponents } from "./mdx-base";
@@ -28,7 +25,7 @@ export const components = {
   // code block
   pre: CodeBlock, //pre as a  codeblock by bright.
   // callout
-  Callout,
+
   ComponentPreview,
   // importing dynamically on top
 };

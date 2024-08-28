@@ -17,9 +17,9 @@ export default function ComponentsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative min-h-screen ">
+    <div className="relative">
       <DynamicResponsiveSidebar />
-      <div className="relative pt-16 xl:ml-56 max-w-[1368px]">
+      <div className="relative pt-16 max-w-5xl xl:ml-[calc(50%-30rem)] mx-auto">
         <DynamicProgressBar />
         {children}
       </div>

@@ -95,27 +95,29 @@ const DesktopNav = () => {
     >
       <div className="relative bg-white dark:bg-black pt-1 px-[1.5rem] 2xl:px-20 w-full flex items-center justify-between">
         <BorderBeam />
-        <Link
-          href="/"
-          className="flex items-center text-sm text-gray-600 dark:text-gray-300 gap-3"
-        >
+        <Link href="/" className="flex items-center text-sm gap-3">
           {pathname === "/" ? <Wind className="w-5 h-5" /> : <p>mxnan.com</p>}
         </Link>
-        <div className="flex items-center my-3">
+        <div className="flex items-center my-3 2xl:mr-20">
           {Navlinks.slice(1).map((link, index) => (
             <Link
               key={link.link}
               href={link.link}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="relative block w-full px-6 py-2  h-full text-sm font-medium "
+              className={cn(
+                "relative block w-full px-5 py-2 font-medium h-full transition-colors duration-500 ease-in-out",
+                hoveredIndex === index
+                  ? "text-black dark:text-white "
+                  : " text-gray-400 dark:text-gray-500"
+              )}
             >
               <AnimatePresence mode="wait">
                 {hoveredIndex === index && (
                   <motion.span
                     className="absolute inset-0 h-full w-full block rounded-lg
-                  bg-gray-300/[0.2] dark:bg-stone-700/[0.5]
-                 border-gray-300 dark:border-gray-700 border"
+                  bg-gray-200/[0.1] dark:bg-stone-800/[0.1]
+                 border-indigo-800 dark:border-amber-700 border"
                     layoutId="hoverBackground"
                     initial={{ opacity: 0 }}
                     animate={{
@@ -213,11 +215,7 @@ const MobileNav = () => {
                   shadow-md rounded-xl p-4 flex flex-col gap-3"
               >
                 {Navlinks.slice(1).map((link) => (
-                  <Link
-                    key={link.link}
-                    href={link.link}
-                   
-                  >
+                  <Link key={link.link} href={link.link}>
                     {link.name}
                   </Link>
                 ))}

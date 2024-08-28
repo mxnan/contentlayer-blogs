@@ -7,14 +7,16 @@ import Link from "next/link";
 import { ArrowDownRight } from "lucide-react";
 import OpenCloseButton from "./open-close-button";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const ResponsiveSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1280); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth < 1440); // Adjust breakpoint as needed
     };
 
     checkMobile();
@@ -33,7 +35,7 @@ const ResponsiveSidebar = () => {
     <>
       {isMobile && (
         <OpenCloseButton
-          className="fixed top-5 left-20 md:left-32 md:top-3"
+          className="fixed top-4 left-20 md:left-28 md:top-3 "
           text1="See all ?"
           text2="Close"
           isOpen={isOpen}
@@ -42,10 +44,10 @@ const ResponsiveSidebar = () => {
       )}
       <motion.div
         className={cn(
-          "fixed z-30 left-0 top-44 h-[70vh] p-4 rounded-2xl shadow-xl border border-stone-300 dark:border-stone-700",
+          "fixed z-30 top-44 h-[70vh] p-4 ",
           isMobile
-            ? "w-64  bg-white dark:bg-black"
-            : "w-56 bg-transparent border-0 shadow-none flex justify-center 2xl:ml-4 "
+            ? "w-64 left-0 bg-white dark:bg-black rounded-2xl shadow-xl border border-stone-300 dark:border-stone-700"
+            : "w-56 bg-transparent border-0 shadow-none flex-1 left-[calc(50%-47rem)] 2xl:left-[calc(50%-50rem)]   "
         )}
         initial={isMobile ? "closed" : "open"}
         animate={isMobile ? (isOpen ? "open" : "closed") : "open"}
@@ -59,26 +61,40 @@ const ResponsiveSidebar = () => {
           restDelta: 0.001,
         }}
       >
-        <nav className="flex-1 flex flex-col pt-10 gap-4">
+        <nav
+          className={cn(
+            "flex-1 flex flex-col mt-10 gap-4",
+            isMobile
+              ? "pr-12 border-r-2 border-gray-400 dark:border-gray-700"
+              : ""
+          )}
+        >
           {/* Mapping over componentSidebar from lib/site.config*/}
           {componentSidebar.map((category) => (
-            <div key={category.category} className="flex flex-col gap-3">
-              <span className="font-medium text-xl px-1 py-1">
-                {category.category}
-              </span>
+            <div
+              key={category.category}
+              className="flex flex-col items-end gap-3"
+            >
+              <span className="font-medium text-xl">{category.category}</span>
 
-              <ul className="flex flex-col gap-1 text-gray-500 dark:text-gray-400">
+              <ul className="flex flex-col gap-1 ">
                 {category.items.map((item) => (
                   <li
                     key={item.name}
-                    className="hover:translate-x-2 transition-transform ease-in-out duration-300"
+                    className="hover:-translate-x-2 transition-transform ease-in-out duration-300"
                   >
                     <Link
                       href={item.href}
-                      className="custom-underline w-max pb-2 flex items-center gap-2 group/link"
+                      className="custom-underline font-light w-max pb-2 flex items-center gap-2 group/rotate"
                     >
                       {item.name}
-                      <ArrowDownRight className="w-4 h-4 group-hover/link:-rotate-[30deg] transition-transform ease-in-out duration-300 " />
+                      <ArrowDownRight
+                        className={cn(
+                          "w-4 h-4 text-gray-500 group-hover/rotate:-rotate-[30deg] transition-transform ease-in-out duration-300",
+                          item.href === pathname &&
+                            " text-black dark:text-white stroke-[3px] transition-colors ease-in-out duration-300"
+                        )}
+                      />
                     </Link>
                   </li>
                 ))}

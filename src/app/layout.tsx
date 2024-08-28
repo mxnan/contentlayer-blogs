@@ -7,6 +7,7 @@ import Footer from "@/components/navigation/footer";
 import dynamic from "next/dynamic";
 import { Anybody as FontSans } from "next/font/google";
 
+
 // dynamic navbar for  animations
 const DynamicNavbar = dynamic(() => import("@/components/navigation/navbar"), {
   ssr: false,

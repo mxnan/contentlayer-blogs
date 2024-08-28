@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-
 import { ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
 import {
@@ -59,7 +58,7 @@ const Footer: React.FC = () => {
   const pathname = usePathname();
   return (
     <footer className="w-full relative">
-      <DynamicRetroGrid />
+      <DynamicRetroGrid className="bottom-0 h-full opacity-50 [perspective:200px] " />
       <div
         className="mx-auto  w-full max-w-6xl
       pb-32 pt-20 space-y-10"

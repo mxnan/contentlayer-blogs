@@ -8,13 +8,14 @@
 .dark {
   @apply bg-black text-white;
 }
-
-@layer utilities {
-  .custom-underline {
-    @apply hover:bg-[url('/assets/underline.svg')] dark:hover:bg-[url('/assets/underline-dark.svg')];
-  }
+.custom-underline {
+  @apply hover:bg-[url('/assets/underline.svg')] dark:hover:bg-[url('/assets/underline-dark.svg')];
 }
-
+/* scrollbar track as class for codeblock */
+.scrollbartrack::-webkit-scrollbar-track {
+  @apply bg-stone-800 rounded-xl;
+}
+/* */
 *::-webkit-scrollbar {
   @apply w-3;
 }
@@ -28,5 +29,6 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-white dark:bg-white;
+  @apply bg-white dark:bg-gray-500;
 }
+/* root scrollbar */

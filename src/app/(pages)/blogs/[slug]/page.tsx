@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button";
 import LoaderCircleSpin from "@/components/ui/loader-circle-spin";
 import { getFormattedDate } from "@/lib/utils";
 import { allBlogs } from "contentlayer/generated";
-import { ArrowDownLeft, CircleArrowLeft, ClockIcon } from "lucide-react";
+import { ArrowDownLeft, ClockIcon } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import ProgressBar from "@/components/custom/progress-bar";
 import Link from "next/link";
 
+// dynamic imports
 const DynamicTableOfContents = dynamic(
   () => import("@/components/mdx/toc").then((mod) => mod.TableOfContents),
   {
@@ -60,7 +61,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       {/* Back button */}
       <Link
         href="/blogs"
-        className="w-[100px] hidden xl:block fixed top-44 max-2xl:left-[calc(50%-40rem)] 2xl:left-[calc(50%-50rem)]"
+        className="w-[100px] hidden xl:block fixed top-44 max-2xl:left-[calc(50%-38rem)] 2xl:left-[calc(50%-45rem)]"
       >
         <Button
           className="flex items-center gap-2 text-lg font-bold group/button"
@@ -72,7 +73,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       </Link>
 
       {/* Content */}
-      <div className="w-full max-w-4xl 2xl:max-w-5xl mx-auto space-y-16">
+      <div className="w-full max-w-4xl 2xl:max-w-5xl mx-auto space-y-10">
         <Link href="/blogs" className="xl:hidden mt-4">
           <Button
             className="flex items-center gap-2 text-lg font-bold group/button"
