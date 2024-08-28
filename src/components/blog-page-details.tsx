@@ -7,8 +7,6 @@ import type { Blogs } from "contentlayer/generated";
 import { motion } from "framer-motion";
 import { WobbleCard } from "./custom/wobble-card";
 
-
-
 const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
   const container = {
     hidden: { opacity: 0, y: -100 },
@@ -63,11 +61,12 @@ const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
           className="w-full h-full relative"
         >
           <Image
+            title={blogs?.title || ""}
             src={blogs?.image || ""}
             alt={blogs?.title || ""}
+            priority
             fill
             sizes="(100vw, 100vh)"
-            priority
             className="rounded-2xl object-center object-cover border-4 border-gray-600 dark:border-gray-400"
           />
         </motion.div>

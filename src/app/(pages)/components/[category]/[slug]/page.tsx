@@ -40,6 +40,9 @@ export async function generateMetadata({
   return {
     title: components.title,
     description: components.description,
+    alternates: {
+      canonical: `https://mxnan.com/components/${params.category}/${params.slug}`,
+    },
   };
 }
 

@@ -17,7 +17,10 @@ const DynamicBlogCard = dynamic(() => import("@/components/blog-card"), {
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Blogs",
-    description: "Showing some blogs.",
+    description: "Writing some blogs to showcase my learning and findings",
+    alternates: {
+      canonical: `https://mxnan.com/blogs`,
+    },
   };
 }
 

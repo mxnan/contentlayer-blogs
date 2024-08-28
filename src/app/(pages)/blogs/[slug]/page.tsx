@@ -50,6 +50,9 @@ export async function generateMetadata({
   return {
     title: blog?.title,
     description: blog?.description,
+    alternates: {
+      canonical: `https://mxnan.com/blogs/${params.slug}`,
+    },
   };
 }
 export default async function BlogPage({ params }: BlogPageProps) {

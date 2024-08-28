@@ -13,13 +13,17 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!components) {
     return {
       title: "Introduction",
-      description: "Component introduction",
+      description: "Introduction to custom react components, built with nextjs, tailwind, framer-motion and more.",
+    
     };
   }
 
   return {
     title: components.title,
     description: components.description,
+    alternates: {
+      canonical: 'https://mxnan.com/components',
+    },
   };
 }
 
