@@ -3,6 +3,9 @@ import React from "react";
 import dynamic from "next/dynamic";
 import LoaderCircleSpin from "../ui/loader-circle-spin";
 import { basecomponents } from "./mdx-base";
+import HyperText from "../custom/hyper-text";
+import { FadeText } from "../custom/fade-text";
+import GithubStar from "../custom/github-star";
 
 const CodeBlock = dynamic(() => import("./code-block"), {
   ssr: true,
@@ -24,10 +27,16 @@ export const components = {
 
   // code block
   pre: CodeBlock, //pre as a  codeblock by bright.
-  // callout
 
+  // for showing components and their code .
   ComponentPreview,
-  // importing dynamically on top
+
+  // hyper text animations
+  HyperText,
+  // fade text animations
+  FadeText,
+  // GithubStar,
+  GithubStar,
 };
 
 // types

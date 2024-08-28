@@ -69,7 +69,7 @@ export const basecomponents = {
   h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h6
       className={cn(
-        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+        "mt-8 scroll-m-20 text-base font-medium tracking-tight",
         className
       )}
       {...props}
@@ -77,7 +77,7 @@ export const basecomponents = {
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
-      className={cn("leading-7 text-sm [&:not(:first-child)]:mt-6", className)}
+      className={cn("leading-7  [&:not(:first-child)]:mt-6", className)}
       {...props}
     />
   ),
@@ -127,5 +127,7 @@ export const basecomponents = {
       {...props}
     />
   ),
+
+  // callout
   Callout,
 };

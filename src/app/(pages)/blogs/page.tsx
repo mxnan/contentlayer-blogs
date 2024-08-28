@@ -50,7 +50,7 @@ export default async function BlogsPage() {
           drop-shadow-2xl font-semibold 
           bg-clip-text text-transparent bg-gradient-to-r from-gray-500 dark:from-stone-500 to-stone-950 dark:to-white"
           />
-
+         
           <p className="text-sm ">
             Just some blogs to showcase learnings and findings
           </p>

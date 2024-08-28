@@ -20,7 +20,7 @@ export function FadeText({
   text,
 }: FadeTextProps) {
   const directionOffset = useMemo(() => {
-    const map = { up: 10, down: -10, left: -10, right: 10 };
+    const map = { up: 20, down: -20, left: -15, right: 15 };
     return map[direction];
   }, [direction]);
 

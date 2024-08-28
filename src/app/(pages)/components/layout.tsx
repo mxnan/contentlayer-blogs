@@ -19,7 +19,7 @@ export default function ComponentsLayout({
   return (
     <div className="relative">
       <DynamicResponsiveSidebar />
-      <div className="relative pt-16 max-w-5xl xl:ml-[calc(50%-30rem)] mx-auto">
+      <div className="relative pt-16 max-w-5xl xl:ml-[calc(50%-30rem)] min-h-screen mx-auto">
         <DynamicProgressBar />
         {children}
       </div>
