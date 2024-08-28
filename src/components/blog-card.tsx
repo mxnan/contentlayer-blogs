@@ -46,12 +46,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
           className="absolute inset-0 "
           quantity={40}
           ease={20}
-          color={"#6b7280"}
+          color={"#71717a"}
           refresh
         />
         <div className=" flex flex-col h-full *:w-full  *:py-2 *:rounded-xl">
           <h2 className="lg:text-xl font-bold uppercase ">{blog.title}</h2>
-          <p className="text-stone-600 dark:text-stone-500 mt-2 text-sm ">
+          <p className="text-stone-600 dark:text-stone-500 mt-1 text-sm ">
             {blog?.description}
           </p>
           <p className="font-semibold text-xs mt-1 ">
@@ -64,7 +64,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
             <span
               key={tag}
               className={cn(
-                "relative inline-block w-max rounded-xl px-[10px] py-[6px] text-xs font-semibold transition-colors duration-300 ease-in-out",
+                "relative inline-block w-max rounded-xl px-[10px] py-[6px] text-xs font-semibold transition-colors duration-500 ease-in-out",
                 hoveredIndex === index
                   ? "bg-gray-200 dark:bg-stone-800"
                   : "bg-transparent"
@@ -76,13 +76,13 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
           ))}
           <span
             className={cn(
-              "absolute max-md:hidden right-2 bottom-0  gap-2 px-[10px] py-[6px] text-sm rounded-xl transition-colors duration-300 ease-in-out",
+              "absolute max-md:hidden right-2 bottom-0  gap-2 px-[10px] py-[6px] text-xs rounded-xl transition-colors duration-500 ease-in-out",
               hoveredIndex === index
                 ? "bg-gray-200 dark:bg-stone-800"
                 : "bg-transparent"
             )}
           >
-            Read ?
+            {blog.readingTime.text}
           </span>
         </div>
       </div>

@@ -4,17 +4,28 @@ import { Button } from "@/components/ui/button";
 import LoaderCircleSpin from "@/components/ui/loader-circle-spin";
 import { getFormattedDate } from "@/lib/utils";
 import { allBlogs } from "contentlayer/generated";
-import { CircleArrowLeft, ClockIcon } from "lucide-react";
+import { ArrowDownLeft, ClockIcon } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import ProgressBar from "@/components/custom/progress-bar";
 import Link from "next/link";
 
+// dynamic imports
 const DynamicTableOfContents = dynamic(
   () => import("@/components/mdx/toc").then((mod) => mod.TableOfContents),
   {
     ssr: false,
-    loading: () => <LoaderCircleSpin />,
+  }
+);
+const DynamicBlogPageDetails = dynamic(
+  () => import("@/components/blog-page-details"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-80 flex items-center justify-center">
+        <LoaderCircleSpin />{" "}
+      </div>
+    ),
   }
 );
 
@@ -39,6 +50,9 @@ export async function generateMetadata({
   return {
     title: blog?.title,
     description: blog?.description,
+    alternates: {
+      canonical: `https://mxnan.com/blogs/${params.slug}`,
+    },
   };
 }
 export default async function BlogPage({ params }: BlogPageProps) {
@@ -46,97 +60,62 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <section className="flex-1 relative min-h-screen">
+      <ProgressBar />
       {/* Back button */}
-
       <Link
         href="/blogs"
-        className="w-[100px] hidden xl:block fixed top-44 left-12 2xl:left-32 self-start"
+        className="w-[100px] hidden xl:block fixed top-44 max-2xl:left-[calc(50%-38rem)] 2xl:left-[calc(50%-45rem)]"
       >
         <Button
-          className="flex items-center gap-2"
-          size={"destructive"}
-          variant={"destructive"}
+          className="flex items-center gap-2 text-lg font-bold group/button"
+          variant={"secondary"}
         >
-          <CircleArrowLeft className="w-4 h-4" />
+          <ArrowDownLeft className="w-5 h-5 stroke-[3px] group-hover/button:rotate-[30deg] transition-transform ease-in-out duration-500" />
           Back
         </Button>
       </Link>
 
       {/* Content */}
-      <div className="w-full max-w-4xl 2xl:max-w-5xl mx-auto space-y-16">
-        <Button variant={"destructive"} className="xl:hidden mt-4">
-          <Link href="/blogs" className="flex items-center gap-2">
-            <CircleArrowLeft className="w-4 h-4" />
+      <div className="w-full max-w-4xl 2xl:max-w-5xl mx-auto space-y-10">
+        <Link href="/blogs" className="xl:hidden mt-4">
+          <Button
+            className="flex items-center gap-2 text-lg font-bold group/button"
+            variant={"secondary"}
+          >
+            <ArrowDownLeft className="w-5 h-5 stroke-[3px] group-hover/button:rotate-[30deg] transition-transform ease-in-out duration-500" />
             Back
-          </Link>
-        </Button>
-        {/* upper div */}
-        <div className="w-full flex flex-col md:flex-row justify-between pb-4">
-          {/* text div */}
-          <div className="space-y-4 lg:pr-8 md:w-2/3">
-            <div className="space-y-6">
-              <h1
-                className="text-7xl xl:text-[6rem] uppercase font-semibold 
-              bg-clip-text text-transparent bg-gradient-to-r from-black dark:from-white to-lightone dark:to-darkone
-              "
-              >
-                {blogs?.title}
-              </h1>
-              <p className="text-base lg:text-lg ">{blogs?.description}</p>
-            </div>
+          </Button>
+        </Link>
 
-            <div className="flex flex-col text-gray-500  gap-2">
-              <div className="flex w-max">
-                {blogs?.tags &&
-                  blogs?.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-sm p-2 text-black dark:text-white font-bold text-muted-foreground"
-                    >
-                      [{" "}
-                      <span className="text-gray-500 font-semibold ">
-                        {tag}
-                      </span>{" "}
-                      ]
-                    </span>
-                  ))}
-              </div>
-              <p className="font-medium w-max text-xs flex items-center gap-2 ml-2">
-                <ClockIcon className="w-4 h-4 text-black dark:text-white" />{" "}
-                {getFormattedDate(blogs?.date || "")}
-              </p>
-            </div>
-          </div>
-          {/* image div */}
-          <div className="relative hidden md:block md:w-1/3 aspect-video">
-            <Image
-              src={blogs?.image || ""}
-              alt={blogs?.title || ""}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority
-              className="rounded-xl object-cover"
-            />
+        {/* blog page details for smaller screens */}
+        <div className="w-full md:hidden flex flex-col gap-4">
+          <h1 className="text-5xl font-bold capitalize text-gray-700">
+            {blogs?.title}
+          </h1>
+          <p className=" text-gray-600 dark:text-gray-400">
+            {blogs?.description}
+          </p>
+          <div className="flex text-xs items-center gap-3">
+            <p className="flex gap-3">
+              <ClockIcon className="w-4 h-4" />
+              {getFormattedDate(blogs?.date || "")}
+            </p>{" "}
+            <span className="pl-3 border-l-4 border-gray-500 ">
+              {blogs?.readingTime?.text}
+            </span>
           </div>
         </div>
-        {/* MDX content div */}
         <div>
-          <Mdx source={blogs?.body.code} />
+          {/* custom image and  wobble card above md screens */}
+          {blogs && <DynamicBlogPageDetails blogs={blogs} />}
+          {/* MDX content  */}
 
-          <Link
-            href="/blogs"
-            className="flex justify-start pt-12 mb-12 xl:hidden py-4 border-gray-500 border-t"
-          >
-            <Button className="flex items-center gap-2" variant={"destructive"}>
-              <CircleArrowLeft className="w-4 h-4" />
-              Back
-            </Button>
-          </Link>
+          <Mdx source={blogs?.body.code} />
         </div>
       </div>
       {/* Table of contents */}
       <DynamicTableOfContents
-        className="w-max hidden 2xl:block fixed top-44 right-8 "
+        className="w-max hidden 2xl:block fixed top-44 right-[calc(50%-45rem)]  "
         toc={blogs?.toc}
       />
     </section>

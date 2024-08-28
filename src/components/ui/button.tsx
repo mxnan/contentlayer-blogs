@@ -15,14 +15,14 @@ const buttonVariants = cva(
         outline:
           "border border-stone-200 bg-white hover:bg-stone-100 hover:text-stone-900 dark:border-stone-800 dark:bg-stone-950 dark:hover:bg-stone-800 dark:hover:text-stone-50",
         secondary:
-          "bg-stone-100 text-stone-900 hover:bg-stone-100/80 dark:bg-stone-800 dark:text-stone-50 dark:hover:bg-stone-800/80",
+          "bg-gray-100 text-black hover:bg-gray-200 dark:bg-stone-900 dark:text-white dark:hover:bg-stone-800",
         ghost: "hover:bg-stone-200 dark:hover:bg-stone-800 ",
         link: "text-gray-600 dark:text-gray-500 ",
       },
       size: {
-        default: "h-9 px-4 py-2",
+        default: "rounded-xl px-3 py-2",
         sm: "px-3 py-2",
-        destructive: "px-3 py-2 rounded-xl",
+        
         link: "px-2 pb-2 pt-1",
         icon: "h-9 w-9",
       },

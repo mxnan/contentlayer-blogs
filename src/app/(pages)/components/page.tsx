@@ -1,6 +1,5 @@
 import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
-import { TableOfContents } from "@/components/mdx/toc";
 import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
 
@@ -10,17 +9,12 @@ async function getComponents(slug: string): Promise<Components | undefined> {
 
 export async function generateMetadata(): Promise<Metadata> {
   const components = await getComponents("intro");
-
-  if (!components) {
-    return {
-      title: "Introduction",
-      description: "Component introduction",
-    };
-  }
-
   return {
-    title: components.title,
-    description: components.description,
+    title: components?.title,
+    description: components?.description,
+    alternates: {
+      canonical: "https://mxnan.com/components",
+    },
   };
 }
 
@@ -32,14 +26,8 @@ export default async function IntroPage() {
   }
 
   return (
-    <section className="flex-1 relative min-h-screen">
+    <section className="flex-1 relative">
       <Mdx source={components.body.code} />
-      {components.toc && (
-        <TableOfContents
-          className="w-max hidden 2xl:block fixed top-44 right-8"
-          toc={components.toc}
-        />
-      )}
     </section>
   );
 }

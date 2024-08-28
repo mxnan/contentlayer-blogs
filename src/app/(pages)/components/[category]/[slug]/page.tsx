@@ -3,7 +3,6 @@ import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
 import type { Metadata } from "next";
 import type { Components } from "contentlayer/generated";
-import { TableOfContents } from "@/components/mdx/toc";
 
 interface ComponentPageProps {
   params: { category: string; slug: string };
@@ -20,26 +19,26 @@ async function getComponents(
   );
 }
 
-export async function generateStaticParams(): Promise<ComponentPageProps["params"][]> {
+export async function generateStaticParams(): Promise<
+  ComponentPageProps["params"][]
+> {
   return allComponents.map((components) => ({
     category: components.category,
     slug: components.slug.split("/").pop() ?? "",
   }));
 }
- 
 
 export async function generateMetadata({
   params,
 }: ComponentPageProps): Promise<Metadata> {
   const components = await getComponents(params.category, params.slug);
 
-  if (!components) {
-    return {};
-  }
-
   return {
-    title: components.title,
-    description: components.description,
+    title: components?.title,
+    description: components?.description,
+    alternates: {
+      canonical: `https://mxnan.com/components/${params.category}/${params.slug}`,
+    },
   };
 }
 
@@ -53,14 +52,8 @@ export default async function ComponentPage({
   }
 
   return (
-    <section className="flex-1 relative min-h-screen">
+    <section className="flex-1 relative">
       <Mdx source={component.body.code} />
-      {component.toc && (
-        <TableOfContents
-          className="w-max font-title hidden 2xl:block fixed top-44 right-8"
-          toc={component.toc}
-        />
-      )}
     </section>
   );
 }

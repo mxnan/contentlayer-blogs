@@ -5,7 +5,7 @@ import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/navigation/footer";
 import dynamic from "next/dynamic";
-import { Raleway as FontSans } from "next/font/google";
+import { Anybody as FontSans } from "next/font/google";
 
 // dynamic navbar for  animations
 const DynamicNavbar = dynamic(() => import("@/components/navigation/navbar"), {
@@ -19,14 +19,54 @@ const fontSans = FontSans({
 
 //metadata
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mxnan.com"),
   title: {
-    template: "%s || mxnan.com",
+    template: "%s || mxnan",
     default: "mxnan.com",
   },
-  description: `Personal website, creating components and some blogs . `,
+  description: `Personal website @mxnan with some blogs and creating some custom react components for usage. Using Nextjs, Tailwind, Contentlayer, Framer-motion and more.`,
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  metadataBase: new URL("https://mxnan.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://mxnan.com",
+    siteName: "mxnan.com",
+    images: [
+      {
+        url: "/open-graph.jpg",
+        width: 1200,
+        height: 800,
+        alt: "mxnan.com",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "https://mxnan.com",
+    creator: "@etc_etcx",
+    images: ["/open-graph.jpg"],
+  },
+  keywords: [
+    "Next.js",
+    "React",
+    "Web Development",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Contentlayer",
+    "Components",
+    "Blog",
+    "Mdx",
+  ],
+  authors: [{ name: "Manan", url: "https://mxnan.com" }],
+  creator: "Manan",
+  publisher: "mxnan.com",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
 };
 
@@ -37,11 +77,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={cn("relative w-full font-sans", fontSans.variable)}>
         <Providers>
           <DynamicNavbar />
-          <main className="py-28 mx-auto container w-full">{children}</main>
+          <main className="pt-28 pb-8 mx-auto container w-full">
+            {children}
+          </main>
           <Footer />
           <Toaster />
         </Providers>

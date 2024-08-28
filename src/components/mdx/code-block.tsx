@@ -25,11 +25,11 @@ const CodeBlock = ({
 
   return (
     <div className="relative my-6">
-      <span className="flex-1 absolute right-6 top-6 z-10">
+      <span className="flex-1 absolute right-10 top-3 z-10">
         <CopyPasteButton content={codeContent} />
       </span>
 
-      <div className="bg-[#1f1f1f]  max-h-80 overflow-y-auto px-1 rounded-lg">
+      <div className="bg-[#1f1f1f] scrollbartrack max-h-80 overflow-y-auto px-1 rounded-lg">
         <Code
           className="text-sm"
           lang="tsx"

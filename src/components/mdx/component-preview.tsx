@@ -1,5 +1,5 @@
 // src/components/mdx/component-preview.tsx
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import dynamic from "next/dynamic";
 import {
   allShowcaseComponents,
@@ -27,7 +27,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
   usingCN,
 }) => {
   // get preview component from showcase/[]/[].tsx
-  const Preview = useMemo(() => {
+  const Preview = useCallback(() => {
     const DynamicComponent = dynamic(
       () => import(`@/showcase/${category}/${path}`),
       {
@@ -40,23 +40,22 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 
   // get codestring from showcase/[]/[].mdx
   const codeString = useMemo(() => {
-    const showcaseComponent = allShowcaseComponents.find(
+    const showcaseComponent = allShowcaseComponents.find<ShowcaseComponent>(
       (component): component is ShowcaseComponent =>
         component._raw.flattenedPath === `showcase/${category}/${path}`
     );
-
     return showcaseComponent ? showcaseComponent.body.code : "Code not found.";
   }, [path, category]);
 
   return (
     <Tabs className="my-8 bg-[#1f1f1f] rounded-3xl" defaultValue="preview">
-      <TabsList className="w-full relative border-t-2 border-x-2 border-gray-500 dark:border-stone-600 bg-gray-200 dark:bg-gray-200/60">
+      <TabsList className="w-full relative  border border-gray-400 dark:border-gray-700 bg-gray-100 dark:bg-gray-100/90">
         {/* Tabs header */}
-        <div className="flex items-center w-full justify-between px-2 ">
+        <div className="flex items-center w-full justify-between px-2">
           {/* code info */}
           <span className="flex items-center gap-3">
-            <SquareCodeIcon className="text-lightone dark:text-darkone" />
-            <span className="text-black max-md:hidden text-sm">
+            <SquareCodeIcon className="text-indigo-800 dark:text-amber-800" />
+            <span className="text-black max-md:hidden font-medium text-sm">
               {category}/{path}.tsx
             </span>
           </span>
@@ -66,13 +65,13 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             <TailwindCSS
               className={cn(
                 usingCN &&
-                  "fill-lightone dark:fill-darkone animate-bounce [animation-delay:-0.3s]"
+                  "fill-amber-800  dark:fill-indigo-800 animate-bounce [animation-delay:-0.3s]"
               )}
             />
             <FramerLogo
               className={cn(
                 usingFramer &&
-                  "fill-lightone dark:fill-darkone animate-bounce [animation-delay:-0.13s]"
+                  "fill-amber-800  dark:fill-indigo-800 animate-bounce [animation-delay:-0.13s]"
               )}
             />
           </div>
@@ -88,7 +87,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
         className="bg-[#1f1f1f] border-b-2 border-gray-500 dark:border-stone-600 rounded-xl min-h-80"
         value="preview"
       >
-        {Preview}
+        <Preview />
       </TabsContent>
       {/* tabs content code */}
       <TabsContent value="code">
