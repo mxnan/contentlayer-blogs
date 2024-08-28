@@ -9,14 +9,14 @@ import { WobbleCard } from "./custom/wobble-card";
 
 const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
   const container = {
-    hidden: { opacity: 0, y: -100 },
+    hidden: { y: -100 },
     show: {
-      opacity: 1,
       y: 0,
+      opacity: 1,
       transition: {
         duration: 1,
         staggerChildren: 0.2,
-        type: "tween",
+        type: "spring",
         damping: 50,
         stiffness: 200,
       },
@@ -31,14 +31,14 @@ const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
     <div className="relative hidden md:block ">
       {/* image div*/}
       <motion.div
-        initial={{ width: 0 }}
+        initial={{ y: -100 }}
         animate={{
-          width: "100%",
+          y: 0,
           transition: {
             duration: 1,
-            width: { duration: 1 },
-            height: { duration: 1 },
-            type: "tween",
+
+            type: "spring",
+            ease: "easeInOut",
             damping: 50,
             stiffness: 200,
           },

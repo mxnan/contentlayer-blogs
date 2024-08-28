@@ -9,20 +9,11 @@ async function getComponents(slug: string): Promise<Components | undefined> {
 
 export async function generateMetadata(): Promise<Metadata> {
   const components = await getComponents("intro");
-
-  if (!components) {
-    return {
-      title: "Introduction",
-      description: "Introduction to custom react components, built with nextjs, tailwind, framer-motion and more.",
-    
-    };
-  }
-
   return {
-    title: components.title,
-    description: components.description,
+    title: components?.title,
+    description: components?.description,
     alternates: {
-      canonical: 'https://mxnan.com/components',
+      canonical: "https://mxnan.com/components",
     },
   };
 }

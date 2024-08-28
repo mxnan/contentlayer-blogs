@@ -33,13 +33,9 @@ export async function generateMetadata({
 }: ComponentPageProps): Promise<Metadata> {
   const components = await getComponents(params.category, params.slug);
 
-  if (!components) {
-    return {};
-  }
-
   return {
-    title: components.title,
-    description: components.description,
+    title: components?.title,
+    description: components?.description,
     alternates: {
       canonical: `https://mxnan.com/components/${params.category}/${params.slug}`,
     },
