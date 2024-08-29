@@ -12,8 +12,7 @@ const buttonVariants = cva(
         default:
           "bg-stone-900 text-stone-50 hover:bg-stone-900/90 dark:bg-stone-50 dark:text-stone-900 dark:hover:bg-stone-50/90",
         destructive: "bg-lightone text-white dark:bg-darkone dark:text-gray-200 hover:bg-lightone/90 dark:hover:bg-darkone/90",
-        outline:
-          "border border-stone-200 bg-white hover:bg-stone-100 hover:text-stone-900 dark:border-stone-800 dark:bg-stone-950 dark:hover:bg-stone-800 dark:hover:text-stone-50",
+        
         secondary:
           "bg-gray-100 text-black hover:bg-gray-200 dark:bg-stone-900 dark:text-white dark:hover:bg-stone-800",
         ghost: "hover:bg-stone-200 dark:hover:bg-stone-800 ",
@@ -22,7 +21,7 @@ const buttonVariants = cva(
       size: {
         default: "rounded-xl px-3 py-2",
         sm: "px-3 py-2",
-        
+       
         link: "px-2 pb-2 pt-1",
         icon: "h-9 w-9",
       },

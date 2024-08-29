@@ -42,7 +42,7 @@ export const basecomponents = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "capitalize mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "capitalize mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -99,13 +99,13 @@ export const basecomponents = {
   //////////////////////////////////////////////////////////////////////
   // custom components down here
 
-  hr: ({ ...props }) => <hr className="my-4 max-w-3xl w-full border-gray-300 dark:border-gray-700" {...props} />,
+  hr: ({ ...props }) => <hr className="my-10 max-w-3xl w-full border-gray-300 dark:border-gray-700" {...props} />,
 
   // customLink
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <CustomLink
       className={cn(
-        "font-semibold text-gray-500 dark:text-gray-600 custom-underline mx-1 pb-[6px]",
+        "font-semibold text-gray-500 dark:text-gray-600 custom-underline mx-1 pb-2 text-sm",
         className
       )}
       {...props}
