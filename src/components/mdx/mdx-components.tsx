@@ -5,7 +5,7 @@ import LoaderCircleSpin from "../ui/loader-circle-spin";
 import { basecomponents } from "./mdx-base";
 import HyperText from "../custom/hyper-text";
 import { FadeText } from "../custom/fade-text";
-import GithubStar from "../custom/github-star";
+import GithubStar from "./github-star";
 
 const CodeBlock = dynamic(() => import("./code-block"), {
   ssr: true,
