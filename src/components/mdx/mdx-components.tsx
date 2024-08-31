@@ -24,18 +24,15 @@ const ComponentPreview = dynamic(() => import("./component-preview"), {
 //define all mdx components here
 export const components = {
   ...basecomponents, // imported from mdx-base.tsx
-
   // code block
   pre: CodeBlock, //pre as a  codeblock by bright.
-
   // for showing components and their code .
   ComponentPreview,
-
   // hyper text animations
   HyperText,
   // fade text animations
   FadeText,
-  // GithubStar,
+  // GithubStar for intro page,
   GithubStar,
 };
 

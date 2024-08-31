@@ -28,7 +28,7 @@ const BlogPageDetails = ({ blogs }: { blogs: Blogs }) => {
     show: { opacity: 1 },
   };
   return (
-    <div className="relative hidden md:block ">
+    <div className="relative hidden md:block mb-10">
       {/* image div*/}
       <motion.div
         initial={{ y: -100 }}
