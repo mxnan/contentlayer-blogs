@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Wrench } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   Tooltip,
@@ -109,15 +109,25 @@ const Footer: React.FC = () => {
             </div>
           ))}
         </nav>
-        <p className="mt-6 flex flex-col text-center text-sm ">
-          <span className="text-gray-500 font-semibold ">
+
+        <div className="mt-6 flex flex-col items-center justify-center text-sm ">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="repo-link"
+            href="https://github.com/mxnan/mxnan.com"
+            className="w-max my-3 pb-2 flex justify-center gap-2 custom-underline"
+          >
+            Found a Bug ? <Wrench className="w-4 h-4" /> Contribute ?
+          </a>
+          <span className="text-gray-500 font-semibold mt-4">
             &copy; {new Date().getFullYear()}{" "}
             <span className="mx-1 font-semibold text-indigo-900 dark:text-amber-700">
               mxnan.com
             </span>{" "}
           </span>
           <span className="mt-2 "> All rights reserved.</span>
-        </p>
+        </div>
       </div>
     </footer>
   );

@@ -33,7 +33,7 @@ const CopyPasteButton = ({ content }: { content: string }) => {
     <motion.button
       whileTap={{ scale: 0.9, opacity: 0.8 }}
       onClick={handleCopy}
-      className="flex-1  flex items-center text-sm gap-3 justify-center px-3 py-2 rounded-lg text-white bg-stone-900 hover:bg-stone-800 cursor-pointer"
+      className="flex-1  flex items-center text-sm font-semibold gap-3 justify-center px-3 py-2 rounded-xl text-black bg-white hover:bg-white/90 cursor-pointer"
     >
       Copy ?
       <AnimatePresence mode="wait" initial={false}>
@@ -45,7 +45,7 @@ const CopyPasteButton = ({ content }: { content: string }) => {
             animate="visible"
             exit="hidden"
           >
-            <Check className="w-4 h-4 text-green-500" />
+            <Check className="w-4 h-4 stroke-[3px] text-green-800" />
           </motion.span>
         ) : (
           <motion.span
@@ -56,7 +56,7 @@ const CopyPasteButton = ({ content }: { content: string }) => {
             exit="hidden"
             className="flex items-center gap-2"
           >
-            <CopyPlus className="w-4 h-4 text-amber-400" />
+            <CopyPlus className="w-4 h-4 text-indigo-800" />
           </motion.span>
         )}
       </AnimatePresence>

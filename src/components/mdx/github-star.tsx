@@ -49,6 +49,19 @@ const GithubStar = () => {
     },
   };
 
+  const textVariant = {
+    initial: {
+      y: -50,
+    },
+    hover: {
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <a
       target="_blank"
@@ -62,7 +75,7 @@ const GithubStar = () => {
         animate="animate"
         whileHover="hover"
         className="flex items-center gap-8 my-4 py-2 px-4 rounded-xl max-sm:hidden
-     bg-stone-950 text-stone-50 *:font-semibold
+     bg-stone-950 text-stone-50 *:font-semibold overflow-hidden
     dark:bg-stone-50 dark:text-stone-950 group
      border border-gray-400 dark:border-gray-700"
       >
@@ -83,9 +96,11 @@ const GithubStar = () => {
         <span className="relative px-2 py-1 flex items-center gap-2">
           <motion.span
             variants={bghoverVariant}
-            className="absolute rounded-lg inset-0 bg-blue-500/[0.3] dark:bg-emerald-600/[0.3]"
+            className="absolute z-10 rounded-lg inset-0 bg-blue-500/[0.3] dark:bg-emerald-600/[0.3]"
           />
-          Give a Star on Github ?{" "}
+          <motion.span variants={textVariant}>
+            Give a Star on Github ?
+          </motion.span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

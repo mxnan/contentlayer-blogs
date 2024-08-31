@@ -5,6 +5,7 @@ import { cn, getFormattedDate } from "@/lib/utils";
 import { Blogs } from "contentlayer/generated";
 import Particles from "./custom/particles";
 import { AnimatePresence, motion } from "framer-motion";
+import { FadeText } from "./custom/fade-text";
 
 export interface BlogCardProps {
   blog: Blogs;
@@ -18,7 +19,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
       href={`/blogs/${blog.slug}`}
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
-      className="relative block w-full max-w-lg h-full max-md:border-b border-gray-300 dark:border-gray-700 "
+      className="relative block w-full max-w-2xl h-full max-md:border-b border-gray-300 dark:border-gray-700 "
     >
       <AnimatePresence mode="wait">
         {hoveredIndex === index && (
@@ -41,7 +42,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
           />
         )}
       </AnimatePresence>
-      <div className="p-4 lg:p-6 relative ">
+      <div className="p-4 lg:p-6 relative flex flex-col justify-between h-full">
         <Particles
           className="absolute inset-0 "
           quantity={40}
@@ -50,24 +51,42 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
           refresh
         />
         <div className=" flex flex-col h-full *:w-full  *:py-2 *:rounded-xl">
-          <h2 className="lg:text-xl font-bold uppercase ">{blog.title}</h2>
-          <p className="text-stone-600 dark:text-stone-500 mt-1 text-sm ">
+          <span className="flex max-md:flex-col max-md:gap-3 justify-between">
+            <FadeText
+             direction="left"
+             framerProps={{
+               hidden: { opacity: 0 },
+               show: {
+                 opacity: 1,
+                 transition: { duration: 1, delay: 0.3, type: "spring" },
+               },
+             }}
+              text={blog.title}
+              className="lg:text-2xl font-semibold uppercase 
+              bg-clip-text text-transparent bg-gradient-to-r from-gray-500 dark:from-stone-500 to-stone-950 dark:to-white"
+            />
+            <p
+              className={cn(
+                "font-semibold text-indigo-800 dark:text-amber-700 text-xs transition-all duration-300 ease-in-out",
+                hoveredIndex === index && "opacity-0"
+              )}
+            >
+              {getFormattedDate(blog.date)}
+            </p>
+          </span>
+          <p className=" mt-3 text-sm font-medium text-stone-400 dark:text-stone-500">
             {blog?.description}
-          </p>
-          <p className="font-semibold text-xs mt-1 ">
-            {getFormattedDate(blog.date)}
           </p>
         </div>
 
-        <div className="mt-4 space-x-2 relative">
+        <div className="mt-4 space-x-4 relative">
           {blog.tags.map((tag) => (
             <span
               key={tag}
               className={cn(
-                "relative inline-block w-max rounded-xl px-[10px] py-[6px] text-xs font-semibold transition-colors duration-500 ease-in-out",
-                hoveredIndex === index
-                  ? "bg-gray-200 dark:bg-stone-800"
-                  : "bg-transparent"
+                "relative inline-block w-max rounded-xl  pb-2 text-xs font-semibold transition-transform duration-300 ease-in-out",
+                hoveredIndex === index &&
+                  "bg-[url('/assets/underline.svg')] dark:bg-[url('/assets/underline-dark.svg')]"
               )}
             >
               {"# "}
@@ -76,10 +95,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, index }) => {
           ))}
           <span
             className={cn(
-              "absolute max-md:hidden right-2 bottom-0  gap-2 px-[10px] py-[6px] text-xs rounded-xl transition-colors duration-500 ease-in-out",
-              hoveredIndex === index
-                ? "bg-gray-200 dark:bg-stone-800"
-                : "bg-transparent"
+              "absolute max-md:hidden right-2 bottom-0  gap-2 px-[10px] py-[6px] text-xs rounded-xl bg-transparent transition-all duration-300 ease-in-out",
+              hoveredIndex === index &&
+                "bg-indigo-600/[0.3] dark:bg-amber-700/[0.3] font-semibold"
             )}
           >
             {blog.readingTime.text}

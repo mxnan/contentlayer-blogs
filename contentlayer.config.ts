@@ -11,12 +11,15 @@ export const Blogs = defineDocumentType(() => ({
     date: { type: "string", required: true },
     image: { type: "string", required: true },
     tags: { type: "list", of: { type: "string" }, default: [] },
-    slug: { type: "string", required: true },
   },
   computedFields: {
     url: {
       type: "string",
       resolve: (doc) => `/blogs/${doc.slug}`,
+    },
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.replace(/^blogs\//, ""),
     },
     toc: {
       type: "json",
