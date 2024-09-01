@@ -1,0 +1,123 @@
+---
+
+title: MDX List
+date: 10-08-2024
+description: Not a blog, but list of all mdx-components used by this app.
+tags: [list, mdx, components]
+image: https://images.unsplash.com/photo-1700592581105-892b90bfac92?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+---
+---
+<GithubStar />
+---
+
+---
+# H1 heading
+---
+## H2 as toc heading
+--- 
+### H3 heading
+---
+#### H4 heading
+---
+##### H5 heading
+---
+###### H6 heading
+---
+
+p tag
+
+---
+> Blockquote
+--- 
+1. Orderded list
+2. Orderded list
+3. Orderded list
+---
+* Lorem ipsum
+* Lorem ipsum
+* Lorem ipsum
+---
+- list
+- list
+- list
+---
+Callout
+
+<Callout>
+Default
+</Callout>
+
+<Callout type="warning">
+Warning
+</Callout>
+
+<Callout type="danger">
+Danger
+</Callout>
+---
+Code Block
+
+```/app.tsx
+const Lorem = () => {
+  return console.log("lorem");
+}
+```
+---
+
+Anchor tag 
+
+[Link](/)
+
+---
+<Callout type="danger">
+Custom Components 
+</Callout>
+---
+Steps and Step 
+
+<Steps>
+
+### Lorem ipsum
+
+<Step className="text-sm">
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit .
+
+</Step>
+
+<Step className="text-sm">
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+
+</Step>
+
+</Steps>
+---
+<FadeText
+  text="Fade Text"
+  direction="right"
+  framerProps={{
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { duration: 1, delay: 0.3, type: "spring" },
+    },
+  }}
+  className="capitalize tracking-tight
+          text-4xl lg:text-6xl
+          drop-shadow-2xl font-semibold 
+          bg-clip-text text-transparent bg-gradient-to-r from-gray-500 dark:from-stone-500 to-stone-950 dark:to-white"
+/>
+---
+<HyperText
+  text="Hyper Text"
+  className="capitalize tracking-tight
+          text-4xl lg:text-6xl
+          font-semibold 
+        "
+/>
+---
+Component preview 
+
+<ComponentPreview category="loaders" path="spin" usingCN />
+---
